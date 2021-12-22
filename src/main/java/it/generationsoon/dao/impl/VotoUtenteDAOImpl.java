@@ -13,6 +13,8 @@ import it.generationsoon.model.Utente;
 import it.generationsoon.model.VotoUtente;
 
 public class VotoUtenteDAOImpl implements VotoUtenteDAO{
+	
+	
 
 	@Override
 	public VotoUtente findById(Connection connection, int id) throws DAOException {
@@ -50,7 +52,7 @@ public class VotoUtenteDAOImpl implements VotoUtenteDAO{
 
 	@Override
 	public void update(Connection connection,VotoUtente votoUtente) throws DAOException {
-		String sql = "UPDATE Voto_film SET voto=? WHERE id=?";
+		String sql = "UPDATE Voto_film SET voto=? WHERE Film_id=? and Utente_id=?";
 		System.out.println(sql);
 		// Statement statement = null;
 		PreparedStatement statement = null;
@@ -58,7 +60,8 @@ public class VotoUtenteDAOImpl implements VotoUtenteDAO{
 			// statement = connection.createStatement();
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, votoUtente.getVoto());
-			statement.setInt(2, votoUtente.getId());
+			statement.setInt(2, votoUtente.getFilm().getId());
+			statement.setInt(3, votoUtente.getUtente().getId());
 			// statement.executeUpdate(sql);
 			statement.executeUpdate();
 			// COMMIT
@@ -69,6 +72,35 @@ public class VotoUtenteDAOImpl implements VotoUtenteDAO{
 		} finally {
 			DBUtil.close(statement);
 		}
+	}
+
+	@Override
+	public int findIdVotoUtente(Connection connection, int film_id, int utente_id) throws DAOException {
+		int votoUtenteId = 0;
+		String sql = "select voto_film.id from voto_film inner join utente on utente.id = voto_film.utente_id inner join film on voto_film.film_id = film.id where film.id = ? and utente.id = ?";
+		System.out.println(sql);
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, film_id);
+			statement.setInt(2, utente_id);
+			resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				
+				votoUtenteId = resultSet.getInt(1);
+
+
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return votoUtenteId;
 	}
 		
 	}

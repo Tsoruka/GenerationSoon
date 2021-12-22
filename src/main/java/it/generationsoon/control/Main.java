@@ -33,6 +33,7 @@ public class Main {
 	private static RuoloService ruoloService = new RuoloServiceImpl();
 	private static UtenteService utenteService = new UtenteServiceImpl();
 	private static VotoUtenteService votoUtenteService = new VotoUtenteServiceImpl();
+	
 
 	public static void main(String[] args) {
 //		findById(3);
@@ -41,11 +42,42 @@ public class Main {
 //		// registaFindById(2);
 //		ruoloFindById(1);
 		// utenteFindById(1);
-		// saveUtente();
+		 //saveUtente();
 		// utenteFindByUser("AnnaB");
-		// findVotoById(1);
-		
+		// findVotoById(1)
+		// voto_utente(1,1);
+		votoUpdate();
 	}
+		//Utente utente;
+		private static void votoUpdate() {
+		try {
+			Utente utente;
+			Film film = filmService.findById(1);
+			utente = utenteService.findById(1);
+			VotoUtente votou = new VotoUtente();
+			votou.setFilm(film);
+			votou.setUtente(utente);
+			votou.setVoto(4);
+			votoUtenteService.update(votou);
+			System.out.println(votou.toString());
+		} catch (ServiceException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//pippof.setUtente(utente);
+		//pippof.setUtente(utenteFindByUser("AnnaB"));
+		//votoUtenteService.update( );
+	}
+
+		private static void voto_utente(int utenteId, int FIlmId) {
+			try {
+		int pippoIdTopGun = votoUtenteService.votoUtenteId(1, 1);
+		System.out.println(pippoIdTopGun);
+			} catch (ServiceException e) {
+				System.err.println(e.getMessage());
+			}
+			}
 	
 	
 	
@@ -73,7 +105,7 @@ public class Main {
 			Utente utente = new Utente();
 			utente.setNome("Anna");
 			utente.setCognome("Bonomo");
-			utente.setUsername("AnnaB");
+			utente.setUsername("AnnaB2");
 			utente.setPassword("123");
 			utenteService.save(utente);
 		} catch (ServiceException e) {
@@ -136,3 +168,4 @@ public class Main {
 	}
 
 }
+

@@ -11,6 +11,7 @@ public interface VotoUtenteDAO {
 	
 	void update(Connection connection, VotoUtente votoUtente) throws DAOException;
 
+	int findIdVotoUtente(Connection connection, int film_id, int utente_id) throws DAOException;
 }
 
 

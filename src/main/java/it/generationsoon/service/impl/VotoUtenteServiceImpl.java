@@ -55,4 +55,24 @@ public class VotoUtenteServiceImpl implements VotoUtenteService  {
 		
 	}
 
+
+	@Override
+	public int votoUtenteId(int utente_id, int film_id) throws ServiceException {
+		Connection connection = null;
+		int utenteId = 0;
+		try {
+			connection = DataSource.getInstance().getConnection();
+			DBUtil.setAutoCommit(connection, false);
+			utenteId = votoUtenteDAO.findIdVotoUtente(connection, utente_id, film_id);
+			DBUtil.commit(connection);
+		} catch (DAOException e) {
+			System.err.println(e.getMessage());
+			DBUtil.rollback(connection);
+			throw new ServiceException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(connection);
+		}
+		return utenteId;
+	}
+
 }
