@@ -7,7 +7,7 @@ public class Regista {
 //  `nome` VARCHAR(45) NOT NULL,
 	private String nome;
 //  `cognome` VARCHAR(45) NOT NULL,
-	private String congnome; 
+	private String cognome; 
 //  `data_di_nascita` DATE NOT NULL,
 	private String dataDiNascita;
 //  `nazionalita` VARCHAR(45) NOT NULL,
@@ -27,11 +27,11 @@ public class Regista {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getCongnome() {
-		return congnome;
+	public String getCognome() {
+		return cognome;
 	}
-	public void setCongnome(String congnome) {
-		this.congnome = congnome;
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
 	}
 	public String getDataDiNascita() {
 		return dataDiNascita;
@@ -54,7 +54,7 @@ public class Regista {
 	
 	@Override
 	public String toString() {
-		return "Regista [id=" + id + ", nome=" + nome + ", congnome=" + congnome + ", dataDiNascita=" + dataDiNascita
+		return "Regista [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", dataDiNascita=" + dataDiNascita
 				+ ", nazionalita=" + nazionalita + ", dataDiDecesso=" + dataDiDecesso + "]";
 	}
 	
