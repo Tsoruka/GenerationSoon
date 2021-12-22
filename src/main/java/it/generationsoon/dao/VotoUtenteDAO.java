@@ -9,7 +9,7 @@ public interface VotoUtenteDAO {
 	
 	VotoUtente findById(Connection connection, int id) throws DAOException;
 	
-	void update(Connection connection, VotoUtente votoUtente ) throws DAOException;
+	void update(Connection connection, VotoUtente votoUtente) throws DAOException;
 
 }
 

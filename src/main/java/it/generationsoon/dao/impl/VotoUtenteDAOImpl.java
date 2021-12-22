@@ -49,7 +49,7 @@ public class VotoUtenteDAOImpl implements VotoUtenteDAO{
 	}
 
 	@Override
-	public void update(Connection connection, VotoUtente votoUtente) throws DAOException {
+	public void update(Connection connection,VotoUtente votoUtente) throws DAOException {
 		String sql = "UPDATE Voto_film SET voto=? WHERE id=?";
 		System.out.println(sql);
 		// Statement statement = null;

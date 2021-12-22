@@ -16,7 +16,7 @@ public class GenereDAOImpl implements GenereDAO {
 	@Override
 	public Genere findById(Connection connection, int id) throws DAOException {
 		Genere genere = null;
-		String sql = "SELECT * FROM Genere WHERE id=?";
+		String sql = "SELECT * FROM Film WHERE Genere_id=?";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -26,7 +26,11 @@ public class GenereDAOImpl implements GenereDAO {
 			statement.setInt(1, id);
 			resultSet = statement.executeQuery();
 			if (resultSet.next()) {				
-				
+				for (Genere gen : Genere.values()) {
+					if(resultSet.getInt(1) == gen.getId()) {
+						genere.fromId(id);
+					}
+				}
 				genere.setId(resultSet.getInt(1));
 
 				//genere().setId(resultSet.getInt(1));
