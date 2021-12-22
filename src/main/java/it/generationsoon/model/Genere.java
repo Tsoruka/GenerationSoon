@@ -1,5 +1,6 @@
 package it.generationsoon.model;
 
+
 public enum Genere {
 	ANIMAZIONE(1,"animazione"), AZIONE(2,"azione"), AVVENTURA(3,"avventura"), BIOGRAFIA(4,"biografia"), COMMEDIA(5,"commedia"), DOCUMENTARIO(6,"documentario"), DRAMMATICO(7,"drammatico"), 
 	FANTASCIENZA(8,"fantascienza"), FANTASTICO(9,"fantastico"), GIALLO(10,"giallo"), GUERRA(11,"guerra"), HORROR(12,"horror"), MUSICALE(13,"musicale"), SENTIMENTALE(14,"sentimentale"), 
@@ -20,5 +21,23 @@ public enum Genere {
 	public int getId() {
 		return id;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+	
+	public static Genere fromId(int id) {
+		for(Genere genere : values()) {
+			if(genere.id == id) {
+				return genere;
+			} 
+		}
+		return null;
+	}
+
 	
 }

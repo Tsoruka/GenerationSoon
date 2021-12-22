@@ -45,7 +45,7 @@ public class UtenteDAOImpl implements UtenteDAO{
 	@Override
 	public Utente findById(Connection connection, int id) throws DAOException {
 		Utente utente = null;
-		String sql = "SELECT * FROM utente WHERE id=?";
+		String sql = "SELECT * FROM Utente WHERE id=?";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
