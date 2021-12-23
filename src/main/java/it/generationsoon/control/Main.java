@@ -38,15 +38,39 @@ public class Main {
 	public static void main(String[] args) {
 //		findById(3);
 //		filmFindById(2);
-//		// genereFindById(17);
+ genereFindById(17);
 //		// registaFindById(2);
 //		ruoloFindById(1);
-		// utenteFindById(1);
+		 //utenteFindById(1);
 		 //saveUtente();
 		// utenteFindByUser("AnnaB");
 		// findVotoById(1)
 		// voto_utente(1,1);
-		votoUpdate();
+		//votoUpdate();
+getGenereFindById(3);
+getRegistaFindById(3);
+	}
+	
+	
+	//GET GENERE DA FILM SERVICE 
+		private static void getRegistaFindById(int filmId) {
+			try {
+				Regista regista = filmService.findRegistaByFilmId(filmId);
+				//System.out.println(regista);
+				System.out.println("Regista: " + regista.getNome() + " " + regista.getCognome());
+			} catch (ServiceException e) {
+				System.err.println(e.getMessage());
+			}
+		}
+	
+	//GET GENERE DA FILM SERVICE 
+	private static void getGenereFindById(int filmId) {
+		try {
+			Genere genere = filmService.findGenereByFilmId(filmId);
+			System.out.println(genere);
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 		//Utente utente;
 		private static void votoUpdate() {
