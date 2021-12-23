@@ -35,9 +35,9 @@
 	<br>
 	<br>
 	<!-- genere value (?) -->
-	<h3>Genere: ${genereFilm.value}</h3>
+	<h3>Genere: ${film.genere.value}</h3>
 
-	<h3>Regista: ${registaFilm.nome} ${registaFilm.cognome} </h3>
+	<h3>Regista: ${film.regista.nome} ${film.regista.cognome} </h3>
 
 	
 </body>

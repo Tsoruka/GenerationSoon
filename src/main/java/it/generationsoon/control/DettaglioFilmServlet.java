@@ -3,8 +3,6 @@ package it.generationsoon.control;
 import java.io.IOException;
 
 import it.generationsoon.model.Film;
-import it.generationsoon.model.Genere;
-import it.generationsoon.model.Regista;
 import it.generationsoon.service.FilmService;
 import it.generationsoon.service.ServiceException;
 import it.generationsoon.service.impl.FilmServiceImpl;
@@ -13,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 
 /**
  * Servlet implementation class DettaglioFilmServlet
@@ -47,15 +46,10 @@ public class DettaglioFilmServlet extends HttpServlet {
 			//tramite metodo findById(fimId)
 			Film film = filmService.findById(filmId);
 			//info relative al genere del medesimo film 
-			Genere genereFilm = filmService.findGenereByFilmId(filmId);
-			//same per il regista
-			Regista registaFilm = filmService.findRegistaByFilmId(filmId);
+			
 			//inoltro informazioni relative al film 
 			request.setAttribute("film", film);
-			//al genere del film
-			request.setAttribute("genereFilm", genereFilm);
-			//e al regista del film 
-			request.setAttribute("registaFilm", registaFilm);
+			
 			//formula magica per inoltrare gli attributi alla nostra pagina web
 			request.getRequestDispatcher("film_info.jsp").forward(request, response);
 			

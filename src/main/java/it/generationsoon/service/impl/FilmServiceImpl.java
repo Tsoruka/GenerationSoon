@@ -30,6 +30,11 @@ public class FilmServiceImpl implements FilmService  {
 			connection = DataSource.getInstance().getConnection();
 			DBUtil.setAutoCommit(connection, false);
 			film = filmDAO.findById(connection, id);
+			Genere genere = genereDAO.findById(connection, film.getGenere().getId());
+			Regista regista = registaDAO.findById(connection, film.getRegista().getId());
+			film.setGenere(genere);
+			film.setRegista(regista);
+			
 			DBUtil.commit(connection);
 		} catch (DAOException e) {
 			System.err.println(e.getMessage());
@@ -41,51 +46,6 @@ public class FilmServiceImpl implements FilmService  {
 		return film;
 	}
 
-
-	@Override
-	public Genere findGenereByFilmId(int filmId) throws ServiceException {
-		Genere genere = null;
-		Film film = null;
-		Connection connection = null;
-		try {
-			connection = DataSource.getInstance().getConnection();
-			DBUtil.setAutoCommit(connection, false);
-			film = filmDAO.findById(connection, filmId);
-													//recuperando genere_id dall'oggetto film 
-			genere = genereDAO.findById(connection, film.getGenere().getId());
-			DBUtil.commit(connection);
-		} catch (DAOException e) {
-			System.err.println(e.getMessage());
-			DBUtil.rollback(connection);
-			throw new ServiceException(e.getMessage(), e);
-		} finally {
-			DBUtil.close(connection);
-		}
-		return genere;
-	}
-
-
-	@Override
-	public Regista findRegistaByFilmId(int filmId) throws ServiceException {
-		Regista regista = null;
-		Film film = null;
-		Connection connection = null;
-		try {
-			connection = DataSource.getInstance().getConnection();
-			DBUtil.setAutoCommit(connection, false);
-			film = filmDAO.findById(connection, filmId);
-													//recuperando regista_id dall'oggetto film 
-			regista = registaDAO.findById(connection, film.getRegista().getId());
-			DBUtil.commit(connection);
-		} catch (DAOException e) {
-			System.err.println(e.getMessage());
-			DBUtil.rollback(connection);
-			throw new ServiceException(e.getMessage(), e);
-		} finally {
-			DBUtil.close(connection);
-		}
-		return regista;
-	}
 
 
 }
