@@ -14,6 +14,8 @@ public class Film {
 	private int anno;
 //  `durata` INT NOT NULL,
 	private int durata;
+	
+	private double mediaVoti;
 //  `foto` VARCHAR(500) NOT NULL,
 	private String foto;
 //  `distribuzione` VARCHAR(45) NOT NULL,
@@ -112,12 +114,24 @@ public class Film {
 		this.votiUtenti = votiUtenti;
 	}
 	
+	public double getMediaVoti() {
+		return mediaVoti;
+	}
+	public void setMediaVoti(double mediaVoti) {
+		this.mediaVoti = mediaVoti;
+	}
+	
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", titolo=" + titolo + ", descrizione=" + descrizione + ", anno=" + anno + ", durata="
-				+ durata + ", foto=" + foto + ", distribuzione=" + distribuzione + ", paese=" + paese
-				+ ", dataDiUscita=" + dataDiUscita + ", genere=" + genere + ", regista=" + regista + "]";
+				+ durata + ", mediaVoti=" + mediaVoti + ", foto=" + foto + ", distribuzione=" + distribuzione
+				+ ", paese=" + paese + ", dataDiUscita=" + dataDiUscita + ", genere=" + genere + ", regista=" + regista
+				+ ", attori=" + attori + ", votiUtenti=" + votiUtenti + "]";
 	}
+	
+	
+	
+	
 	
 	
 		
