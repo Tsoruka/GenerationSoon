@@ -2,24 +2,16 @@ package it.generationsoon.control;
 
 import it.generationsoon.model.Attore;
 import it.generationsoon.model.Film;
-import it.generationsoon.model.Genere;
-import it.generationsoon.model.Regista;
 import it.generationsoon.model.Ruolo;
 import it.generationsoon.model.Utente;
 import it.generationsoon.model.VotoUtente;
 import it.generationsoon.service.AttoreService;
 import it.generationsoon.service.FilmService;
-import it.generationsoon.service.GenereService;
-import it.generationsoon.service.RegistaService;
-import it.generationsoon.service.RuoloService;
 import it.generationsoon.service.ServiceException;
 import it.generationsoon.service.UtenteService;
 import it.generationsoon.service.VotoUtenteService;
 import it.generationsoon.service.impl.AttoreServiceImpl;
 import it.generationsoon.service.impl.FilmServiceImpl;
-import it.generationsoon.service.impl.GenereServiceImpl;
-import it.generationsoon.service.impl.RegistaServiceImpl;
-import it.generationsoon.service.impl.RuoloServiceImpl;
 import it.generationsoon.service.impl.UtenteServiceImpl;
 import it.generationsoon.service.impl.VotoUtenteServiceImpl;
 
@@ -28,19 +20,17 @@ public class Main {
 	//private static Attore attore = new Attore();
 	private static AttoreService attoreService = new AttoreServiceImpl();
 	private static FilmService filmService = new FilmServiceImpl();
-	private static GenereService genereService = new GenereServiceImpl();
-	private static RegistaService registaService = new RegistaServiceImpl();
-	private static RuoloService ruoloService = new RuoloServiceImpl();
+	
 	private static UtenteService utenteService = new UtenteServiceImpl();
 	private static VotoUtenteService votoUtenteService = new VotoUtenteServiceImpl();
 	
 
 	public static void main(String[] args) {
 //		findById(3);
-//		filmFindById(2);
+		//filmFindById(3);
  //genereFindById(17);
 //		// registaFindById(2);
-//		ruoloFindById(1);
+	ruoloFindById(1);
 		 //utenteFindById(1);
 		 //saveUtente();
 		// utenteFindByUser("AnnaB");
@@ -51,7 +41,15 @@ public class Main {
 //getRegistaFindById(3);
 	}
 	
-	
+	private static void ruoloFindById(int id) {
+		try {
+			Ruolo ruolo = filmService.getRuolo(id);
+			System.out.println(ruolo);
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
 	//GET GENERE DA FILM SERVICE 
 //		private static void getRegistaFindById(int filmId) {
 //			try {
@@ -155,32 +153,7 @@ public class Main {
 		}
 	}
 
-	private static void genereFindById(int id) {
-		try {
-			Genere genere = genereService.findById(id);
-			System.out.println(genere);
-		} catch (ServiceException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	private static void registaFindById(int id) {
-		try {
-			Regista regista = registaService.findById(id);
-			System.out.println(regista);
-		} catch (ServiceException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	private static void ruoloFindById(int id) {
-		try {
-			Ruolo ruolo = ruoloService.findById(id);
-			System.out.println(ruolo);
-		} catch (ServiceException e) {
-			System.err.println(e.getMessage());
-		}
-	}
+	
 
 	private static void utenteFindById(int id) {
 		try {
