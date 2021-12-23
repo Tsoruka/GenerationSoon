@@ -8,6 +8,7 @@ import it.generationsoon.dao.DataSource;
 import it.generationsoon.dao.FilmDAO;
 import it.generationsoon.dao.impl.FilmDAOImpl;
 import it.generationsoon.model.Film;
+import it.generationsoon.model.Genere;
 import it.generationsoon.service.FilmService;
 import it.generationsoon.service.ServiceException;
 
@@ -32,6 +33,13 @@ public class FilmServiceImpl implements FilmService  {
 			DBUtil.close(connection);
 		}
 		return film;
+	}
+
+
+	@Override
+	public Genere findGenereById(int genereId) throws ServiceException {
+		
+		
 	}
 
 }
