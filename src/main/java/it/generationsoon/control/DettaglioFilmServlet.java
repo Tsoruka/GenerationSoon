@@ -39,7 +39,7 @@ public class DettaglioFilmServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int filmId = 3;
 		try {
 			//creazione di un oggetto tipo film a partire dal filmService
