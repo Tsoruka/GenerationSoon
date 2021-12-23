@@ -25,7 +25,7 @@ import it.generationsoon.service.impl.VotoUtenteServiceImpl;
 
 public class Main {
 
-	private static Attore attore = new Attore();
+	//private static Attore attore = new Attore();
 	private static AttoreService attoreService = new AttoreServiceImpl();
 	private static FilmService filmService = new FilmServiceImpl();
 	private static GenereService genereService = new GenereServiceImpl();
