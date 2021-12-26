@@ -14,7 +14,7 @@ public class Film {
 	private int anno;
 //  `durata` INT NOT NULL,
 	private int durata;
-	
+	//TODO: calcolo media voti 
 	private double mediaVoti;
 //  `foto` VARCHAR(500) NOT NULL,
 	private String foto;

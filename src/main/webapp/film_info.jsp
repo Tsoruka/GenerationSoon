@@ -41,7 +41,11 @@
 	<br>
 	<br>
 	<h3>Cast: </h3>
-	<p>${film.descrizione}</p>
-	
+	<!-- 
+	<p>${film.attori}</p>  -->
+	<c:forEach items="${film.attori}" var="cast">
+		<p>${cast.attore.nome} ${cast.attore.cognome} interpreta <i>${cast.nomeRuolo}</i></p>
+	</c:forEach>
+	 
 </body>
 </html>

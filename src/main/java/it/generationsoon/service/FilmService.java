@@ -9,5 +9,5 @@ public interface FilmService {
 	//recuperiamo informazioni sul nostro FILM (conoscendo id) 
 	Film findById(int id) throws ServiceException;
 	
-	Ruolo getRuolo(int id) throws ServiceException;
+	//Ruolo getRuolo(int id) throws ServiceException;
 }

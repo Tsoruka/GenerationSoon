@@ -50,6 +50,9 @@ public class FilmServiceImpl implements FilmService  {
 			film.setRegista(regista);
 			
 			//TODO: LISTA DI ATTORI
+			cast = ruoloDAO.findCastByFilmId(connection, id);
+			
+			film.setAttori(cast);
 			
 			DBUtil.commit(connection);
 		} catch (DAOException e) {
@@ -62,31 +65,6 @@ public class FilmServiceImpl implements FilmService  {
 		return film;
 	}
 
-	@Override
-	public Ruolo getRuolo(int id) throws ServiceException {
-		Ruolo ruolo = null;
-		Attore attore = null;
-		Film film = null;
-		Connection connection = null;
-		
-		try {
-			connection = DataSource.getInstance().getConnection();
-			DBUtil.setAutoCommit(connection, false);
-			ruolo = ruoloDAO.findById(connection, id);
-			attore = attoreDAO.findById(connection, ruolo.getAttore().getId());
-			film = filmDAO.findById(connection, ruolo.getFilm().getId());
-			ruolo.setAttore(attore);
-			ruolo.setFilm(film);
-			DBUtil.commit(connection);
-		} catch (DAOException e) {
-			System.err.println(e.getMessage());
-			DBUtil.rollback(connection);
-			throw new ServiceException(e.getMessage(), e);
-		} finally {
-			DBUtil.close(connection);
-		}
-		return ruolo;
-	}
-
+	
 
 }

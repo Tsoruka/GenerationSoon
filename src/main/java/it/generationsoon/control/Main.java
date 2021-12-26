@@ -26,11 +26,11 @@ public class Main {
 	
 
 	public static void main(String[] args) {
-//		findById(3);
-		//filmFindById(3);
+		//findById(3);
+		filmFindById(3);
  //genereFindById(17);
 //		// registaFindById(2);
-	ruoloFindById(1);
+
 		 //utenteFindById(1);
 		 //saveUtente();
 		// utenteFindByUser("AnnaB");
@@ -41,14 +41,7 @@ public class Main {
 //getRegistaFindById(3);
 	}
 	
-	private static void ruoloFindById(int id) {
-		try {
-			Ruolo ruolo = filmService.getRuolo(id);
-			System.out.println(ruolo);
-		} catch (ServiceException e) {
-			System.err.println(e.getMessage());
-		}
-	}
+
 
 	//GET GENERE DA FILM SERVICE 
 //		private static void getRegistaFindById(int filmId) {

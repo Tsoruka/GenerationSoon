@@ -22,29 +22,49 @@ public class RuoloDAOImpl implements RuoloDAO {
 	private FilmDAO filmDAO = new FilmDAOImpl();
 	
 	@Override
-	public Ruolo findById(Connection connection, int filmId) throws DAOException {
-		Ruolo ruolo = null;
-		String sql = "SELECT * FROM Attore_film WHERE film_id=?";
+	//TODO: LISTA CAST ATTORI 
+	public List<Ruolo> findCastByFilmId(Connection connection, int filmId) throws DAOException {
+		List<Ruolo> cast = new ArrayList<Ruolo>();
+		String sql = "SELECT af.id, af.film_id, af.attore_id, af.ruolo, a.nome, a.cognome from Attore_Film AS af INNER JOIN Attore AS a ON a.id = af.Attore_id WHERE af.Film_id = ?";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		
 		try {
 			statement = connection.prepareStatement(sql);
+			//setta id del film (in session) per recuperare il cast di quel film 
+			//sostituire il "?" della query con filmId
 			statement.setInt(1, filmId);
 			resultSet = statement.executeQuery();
-			if (resultSet.next()) {
-				ruolo = new Ruolo();
+			while (resultSet.next()) {
+				Ruolo ruolo = new Ruolo();
+				//col (1) - id tabella Attore_Film
 				ruolo.setId(resultSet.getInt(1));
 				Film film = new Film();
+				//col(2) - Film_id 
 				film.setId(resultSet.getInt(2));
+				//assegno id film al modello di Ruolo 
+				//(solo id del film, lascio gli altri spazi vuoti) 
 				ruolo.setFilm(film);
 				
 				Attore attore = new Attore();
+				//col(3) - Attore_id
 				attore.setId(resultSet.getInt(3));
-				ruolo.setAttore(attore);
+				
+				//col(4) - nomeRuolo interpretato dall'attore nel film  
 				ruolo.setNomeRuolo(resultSet.getString(4));
-
+				
+				//col(5) - nome attore 
+				attore.setNome(resultSet.getString(5));
+				//col(6) - cognome attore
+				attore.setCognome(resultSet.getString(6));
+				
+				//assegno id, nome e cognome attore al modello di Ruolo 
+				//(lascio gli altri spazi vuoti) 
+				ruolo.setAttore(attore);
+				
+				//aggiorna lista di ruoli 
+				cast.add(ruolo);
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -53,7 +73,62 @@ public class RuoloDAOImpl implements RuoloDAO {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
 		}
-		return ruolo;
+		return cast;
 	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
