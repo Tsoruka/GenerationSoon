@@ -40,7 +40,9 @@ public class DettaglioFilmServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//TODO: sostituire parametro con trasporto di variabile in session (o requestDispatcher) 
 		int filmId = 3;
+		
 		try {
 			//creazione di un oggetto tipo film a partire dal filmService
 			//tramite metodo findById(fimId)
