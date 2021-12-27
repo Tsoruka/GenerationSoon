@@ -16,7 +16,7 @@ public class UtenteDAOImpl implements UtenteDAO{
 
 	@Override
 	public void save(Connection connection, Utente utente) throws DAOException {
-		String sql = "INSERT INTO utente(nome, cognome, username,password) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO utente(nome,cognome,email,username,password) VALUES(?,?,?,?,?)";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet generatedKeys = null;
@@ -25,8 +25,9 @@ public class UtenteDAOImpl implements UtenteDAO{
 			statement = connection.prepareStatement(sql, new String[] { "id" });
 			statement.setString(1, utente.getNome());
 			statement.setString(2, utente.getCognome());
-			statement.setString(3, utente.getUsername());
-			statement.setString(4, utente.getPassword());
+			statement.setString(3, utente.getEmail());
+			statement.setString(4, utente.getUsername());
+			statement.setString(5, utente.getPassword());
 			statement.executeUpdate();
 			generatedKeys = statement.getGeneratedKeys();
 			if (generatedKeys.next()) {
@@ -59,8 +60,9 @@ public class UtenteDAOImpl implements UtenteDAO{
 				utente.setId(resultSet.getInt(1));
 				utente.setNome(resultSet.getString(2));
 				utente.setCognome(resultSet.getString(3));
-				utente.setUsername(resultSet.getString(4));
-				utente.setPassword(resultSet.getString(5));
+				utente.setEmail(resultSet.getString(4));
+				utente.setUsername(resultSet.getString(5));
+				utente.setPassword(resultSet.getString(6));
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -89,8 +91,9 @@ public class UtenteDAOImpl implements UtenteDAO{
 				utente.setId(resultSet.getInt(1));
 				utente.setNome(resultSet.getString(2));
 				utente.setCognome(resultSet.getString(3));
-				utente.setUsername(resultSet.getString(4));
-				utente.setPassword(resultSet.getString(5));
+				utente.setEmail(resultSet.getString(4));
+				utente.setUsername(resultSet.getString(5));
+				utente.setPassword(resultSet.getString(6));
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
