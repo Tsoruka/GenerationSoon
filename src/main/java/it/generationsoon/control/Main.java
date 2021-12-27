@@ -27,13 +27,13 @@ public class Main {
 
 	public static void main(String[] args) {
 		//findById(3);
-		filmFindById(3);
+		// filmFindById(3);
  //genereFindById(17);
 //		// registaFindById(2);
 
-		 //utenteFindById(1);
-		 //saveUtente();
-		// utenteFindByUser("AnnaB");
+		 // utenteFindById(1);
+		 // saveUtente();
+		// utenteFindByUser("AnnaB2");
 		// findVotoById(1)
 		// voto_utente(1,1);
 		//votoUpdate();
@@ -120,6 +120,7 @@ public class Main {
 			Utente utente = new Utente();
 			utente.setNome("Anna");
 			utente.setCognome("Bonomo");
+			utente.setEmail("annaB@gmail.com");
 			utente.setUsername("AnnaB2");
 			utente.setPassword("123");
 			utenteService.save(utente);
