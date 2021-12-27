@@ -1,6 +1,7 @@
 package it.generationsoon.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import it.generationsoon.model.Film;
 import it.generationsoon.service.FilmService;
@@ -14,25 +15,18 @@ import jakarta.servlet.http.HttpServletResponse;
 
 
 /**
- * Servlet implementation class DettaglioFilmServlet
+ * Servlet implementation class TrovaTuttiFilmServlet
  */
-@WebServlet("/dettaglio-film")
-public class DettaglioFilmServlet extends HttpServlet {
+@WebServlet("/trova-tutti-film")
+public class TrovaTuttiFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	
-	//mi serve per richiamare le funzioni di FilmService
-	//all'interno della Servlet di dettaglio di quello 
-	//specifico film - selezionato dall'utente
 	private FilmService filmService = new FilmServiceImpl();
-	
-	// ------------------------------------------------  //
-	//TODO: TRASPORTO DI id relativo al film selezionato 
-	// ------------------------------------------------  //
-	
     /**
      * Default constructor. 
      */
-    public DettaglioFilmServlet() {
+    public TrovaTuttiFilmServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -40,25 +34,29 @@ public class DettaglioFilmServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO: sostituire parametro con trasporto di variabile in session (o requestDispatcher) 
-		int filmId = Integer.parseInt(request.getParameter("filmId"));
-		
+	
 		try {
 			//creazione di un oggetto tipo film a partire dal filmService
 			//tramite metodo findById(fimId)
-			Film film = filmService.findById(filmId);
+	List<Film> listaFilm = filmService.findAll();
 			//info relative al genere del medesimo film 
 			
 			//inoltro informazioni relative al film 
-			request.setAttribute("film", film);
+			request.setAttribute("listaFilm", listaFilm);
 			
 			//formula magica per inoltrare gli attributi alla nostra pagina web
-			request.getRequestDispatcher("film_info.jsp").forward(request, response);
+			request.getRequestDispatcher("lista_film.jsp").forward(request, response);
 			
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
 			response.sendRedirect("500.html");
 		}
+	
+		
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	
 }
