@@ -1,5 +1,8 @@
 package it.generationsoon.control;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import it.generationsoon.model.Attore;
 import it.generationsoon.model.Film;
 import it.generationsoon.model.Ruolo;
@@ -39,6 +42,7 @@ public class Main {
 		//votoUpdate();
 //getGenereFindById(3);
 //getRegistaFindById(3);
+		filmByName();
 	}
 	
 
@@ -157,6 +161,18 @@ public class Main {
 			System.err.println(e.getMessage());
 		}
 	}
+	
+private static void filmByName() {
+	
+	try {	List<Film> films = filmService.orderByName();
+		films.toString();
+		
+	}
+	catch (ServiceException e) {
+		System.err.println(e.getMessage());
+		// TODO: handle exception
+	}
+}
 
 }
 

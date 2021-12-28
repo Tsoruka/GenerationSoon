@@ -15,5 +15,5 @@ public interface FilmService {
 	
 	List<Film> findAll() throws ServiceException;
 
-
+	List<Film> orderByName() throws ServiceException;
 }

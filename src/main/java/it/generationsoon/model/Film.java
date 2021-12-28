@@ -3,7 +3,7 @@ package it.generationsoon.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Film {
+public class Film implements Comparable<Film> {
 // `id` INT NOT NULL AUTO_INCREMENT,
 	private int id;
 //  `titolo` VARCHAR(45) NOT NULL,
@@ -129,6 +129,11 @@ public class Film {
 				+ ", attori=" + attori + ", votiUtenti=" + votiUtenti + "]";
 	}
 	
+	//metodo necessario all'ordinamento in FilmServiceImpl.OrderByName()
+	@Override
+	    public int compareTo(Film other) {
+	        return titolo.compareTo(other.titolo);
+	    }
 	
 	
 	
