@@ -112,7 +112,7 @@ public class FilmDAOImpl implements FilmDAO{
 	@Override
 	public List<Film> findByTitolo(Connection connection, String titolo) throws DAOException {
 		List<Film> listaFilm= new ArrayList<Film>(); 
-		String sql = "SELECT * FROM Film where titolo=?";
+		String sql = "SELECT * FROM Film where titolo like ?";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -122,7 +122,7 @@ public class FilmDAOImpl implements FilmDAO{
 			//setta id del film (in session) per recuperare il cast di quel film 
 			//sostituire il "?" della query con filmId
 			
-			statement.setString(1, titolo);
+			statement.setString(1, "%" + titolo + "%");
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				
