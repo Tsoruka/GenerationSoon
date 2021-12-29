@@ -30,7 +30,6 @@ public class FilmServiceImpl implements FilmService  {
 	private FilmDAO filmDAO = new FilmDAOImpl();
 	private GenereDAO genereDAO = new GenereDAOImpl();
 	private RegistaDAO registaDAO = new RegistaDAOImpl();
-	private AttoreDAO attoreDAO = new AttoreDAOImpl();
 	private RuoloDAO ruoloDAO = new RuoloDAOImpl();
 	
 	public Film findById(int id) throws ServiceException {
@@ -43,8 +42,6 @@ public class FilmServiceImpl implements FilmService  {
 			film = filmDAO.findById(connection, id);
 			Genere genere = genereDAO.findById(connection, film.getGenere().getId());
 			Regista regista = registaDAO.findById(connection, film.getRegista().getId());
-			
-			Attore attore = attoreDAO.findById(connection, id);
 			
 			film.setGenere(genere);
 			film.setRegista(regista);

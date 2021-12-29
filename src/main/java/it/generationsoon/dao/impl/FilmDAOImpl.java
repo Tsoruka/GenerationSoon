@@ -10,11 +10,10 @@ import java.util.List;
 import it.generationsoon.dao.DAOException;
 import it.generationsoon.dao.DBUtil;
 import it.generationsoon.dao.FilmDAO;
-import it.generationsoon.model.Attore;
 import it.generationsoon.model.Film;
 import it.generationsoon.model.Genere;
 import it.generationsoon.model.Regista;
-import it.generationsoon.model.Ruolo;
+
 
 
 public class FilmDAOImpl implements FilmDAO{
