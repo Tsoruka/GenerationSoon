@@ -14,18 +14,16 @@
 
 <c:forEach items="${listaFilm}" var="film">
 				
-		<form action="dettaglio-film" method="get">
-	
-
-		<h1> ${film.titolo}</h1>
-
-	<h3> ${film.anno} </h3>
-	
-	<!-- genere value (?) -->
-	<h3>${film.genere.value}</h3>
-	<input type="hidden" name="filmId" value="${film.id}">
-	<input type="submit" value="vai a dettaglio film">
-</form>
+	<form action="dettaglio-film" method="get">
+		<button style="cursor:pointer;" type="submit">
+			<h1> ${film.titolo}</h1>
+			<img src="${film.foto}" width="400px" height="500px">
+			<h3> ${film.anno} </h3>
+			<!-- genere value (?) -->
+			<h3>${film.genere.value}</h3>
+			<input type="hidden" name="filmId" value="${film.id}">
+		</button>
+	</form>
 	</c:forEach>
 </body>
 </html>
