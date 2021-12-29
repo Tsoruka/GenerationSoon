@@ -1,5 +1,7 @@
 package it.generationsoon.control;
 
+import java.util.List;
+
 import it.generationsoon.model.Attore;
 import it.generationsoon.model.Film;
 import it.generationsoon.model.Ruolo;
@@ -39,6 +41,7 @@ public class Main {
 		//votoUpdate();
 //getGenereFindById(3);
 //getRegistaFindById(3);
+		FindByTitolo("spiderman");
 	}
 	
 
@@ -153,6 +156,15 @@ public class Main {
 		try {
 			Utente utente = utenteService.findById(id);
 			System.out.println(utente);
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	private static void FindByTitolo(String titolo) {
+		try {
+			List<Film> film = filmService.findByTitolo(titolo); 
+			System.out.println(film);
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
 		}
