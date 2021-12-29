@@ -10,6 +10,8 @@ public interface FilmDAO {
 	Film findById(Connection connection, int id) throws DAOException;
 	
 	List<Film> findAll(Connection connection) throws DAOException;
+	
+	List<Film> findByTitolo(Connection connection, String titolo) throws DAOException;
 
 	
 

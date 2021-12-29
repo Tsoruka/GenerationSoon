@@ -64,7 +64,7 @@ public class FilmDAOImpl implements FilmDAO{
 	public List<Film> findAll(Connection connection) throws DAOException {
 		
 		List<Film> listaFilm= new ArrayList<Film>(); 
-		String sql = "SELECT * FROM Film order by data_di_uscita desc;";
+		String sql = "SELECT * FROM Film order by data_di_uscita desc";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -107,6 +107,52 @@ public class FilmDAOImpl implements FilmDAO{
 		
 		
 		
+	}
+
+	@Override
+	public List<Film> findByTitolo(Connection connection, String titolo) throws DAOException {
+		List<Film> listaFilm= new ArrayList<Film>(); 
+		String sql = "SELECT * FROM Film where titolo=?";
+		System.out.println(sql);
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			statement = connection.prepareStatement(sql);
+			//setta id del film (in session) per recuperare il cast di quel film 
+			//sostituire il "?" della query con filmId
+			
+			statement.setString(1, titolo);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				
+				Film film = new Film();
+				
+				film.setId(resultSet.getInt(1));
+				film.setTitolo(resultSet.getString(2));
+				film.setDescrizione(resultSet.getString(3));
+				film.setAnno(resultSet.getInt(4));
+				film.setDurata(resultSet.getInt(5));
+				film.setFoto(resultSet.getString(6));
+				film.setDistribuzione(resultSet.getString(7));
+				film.setPaese(resultSet.getString(8));
+				film.setDataDiUscita(resultSet.getString(9));
+				film.setGenere(Genere.fromId(resultSet.getInt(10)));
+				Regista regista = new Regista();
+				regista.setId(resultSet.getInt(11));
+				film.setRegista(regista);
+				
+				//aggiorna lista di ruoli 
+				listaFilm.add(film);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return listaFilm;
 	}
 
 }
