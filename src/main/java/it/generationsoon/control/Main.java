@@ -1,5 +1,8 @@
 package it.generationsoon.control;
 
+import java.util.List;
+
+import it.generationsoon.dao.FilmDAO;
 import it.generationsoon.model.Attore;
 import it.generationsoon.model.Film;
 import it.generationsoon.model.Ruolo;
@@ -39,9 +42,20 @@ public class Main {
 		//votoUpdate();
 //getGenereFindById(3);
 //getRegistaFindById(3);
+		filtro("z", 0);
 	}
 	
-
+ private static void filtro(String genere, int anno) {
+	 
+		try {
+			List<Film> lista = filmService.filterByGenereAndAnno(genere, anno);  
+			System.out.println(lista);
+	
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+		
+ }
 
 	//GET GENERE DA FILM SERVICE 
 //		private static void getRegistaFindById(int filmId) {

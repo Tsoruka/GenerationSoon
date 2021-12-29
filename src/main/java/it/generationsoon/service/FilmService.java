@@ -17,8 +17,10 @@ public interface FilmService {
 	//funzionalità 1 -> trova tutti i film in ordine decrescente
 	List<Film> findAll() throws ServiceException;
 	
+	//funzionalità 2 -> filtra film per genere e anno
+	List<Film> filterByGenereAndAnno(String genere, int anno) throws ServiceException;
+	
 	//funzionalità 3 -> trova i film per il titolo
 	List<Film> findByTitolo(String titolo) throws ServiceException;
-
-
+	
 }

@@ -154,4 +154,72 @@ public class FilmDAOImpl implements FilmDAO{
 		return listaFilm;
 	}
 
+	@Override
+	public List<Film> filterByGenereAndAnno(Connection connection,String genere, int anno) throws DAOException{
+		List<Film> listaFilm= new ArrayList<Film>(); 
+		String sqlGenereAnno = "SELECT * FROM film AS f INNER JOIN genere AS g ON f.genere_id = g.id WHERE genere LIKE ? AND anno LIKE ?";
+		String sqlGenere = "SELECT * FROM film AS f INNER JOIN genere AS g ON f.genere_id = g.id WHERE genere LIKE ?";
+		String sqlAnno = "SELECT * FROM film AS f INNER JOIN genere AS g ON f.genere_id = g.id WHERE anno LIKE ?";
+		//System.out.println(sql);
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			//setta id del film (in session) per recuperare il cast di quel film 
+			//sostituire il "?" della query con filmId
+			
+			//if else inserito per strutturare la query nei casi in cui abbiamo sia anno che genere o solo uno dei due dati
+			if ((genere.isEmpty() == false) && (anno == 0)) {
+				
+				statement = connection.prepareStatement(sqlGenere);
+
+				statement.setString(1,'%' + genere  + '%');
+			}
+			else if ((genere.isEmpty() == false) && (anno > 0)) {
+				
+				statement = connection.prepareStatement(sqlGenereAnno);
+
+				statement.setString(1,'%' + genere  + '%');
+				statement.setInt(2, anno );
+			}
+			else if ((genere.isEmpty() == true) && (anno > 0)) {
+				
+				statement = connection.prepareStatement(sqlAnno);
+
+				statement.setInt(1,  anno );			
+			}
+			
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				
+				Film film = new Film();
+				
+				film.setId(resultSet.getInt(1));
+				film.setTitolo(resultSet.getString(2));
+				film.setDescrizione(resultSet.getString(3));
+				film.setAnno(resultSet.getInt(4));
+				film.setDurata(resultSet.getInt(5));
+				film.setFoto(resultSet.getString(6));
+				film.setDistribuzione(resultSet.getString(7));
+				film.setPaese(resultSet.getString(8));
+				film.setDataDiUscita(resultSet.getString(9));
+				
+				film.setGenere(Genere.fromId(resultSet.getInt(10)));
+				Regista regista = new Regista();
+				regista.setId(resultSet.getInt(11));
+				film.setRegista(regista);
+				
+				//aggiorna lista di ruoli 
+				listaFilm.add(film);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return listaFilm;
+		
+	}
 }

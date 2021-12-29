@@ -19,13 +19,13 @@ import jakarta.servlet.http.HttpServletResponse;
  * Servlet implementation class TrovaFilmPerTitolo
  */
 @WebServlet("/trova-film-per-titolo")
-public class TrovaFilmPerTitolo extends HttpServlet {
+public class TrovaFilmPerTitoloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public TrovaFilmPerTitolo() {
+    public TrovaFilmPerTitoloServlet() {
         // TODO Auto-generated constructor stub
     }
     

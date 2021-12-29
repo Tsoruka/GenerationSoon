@@ -45,4 +45,5 @@ public class GenereDAOImpl implements GenereDAO {
 		return genere;
 	}
 
+
 }

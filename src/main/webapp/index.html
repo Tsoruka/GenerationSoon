@@ -8,18 +8,33 @@
 <h1> Indice</h1>
 <br>
 <br>
-<form action="trova-tutti-film" method="get">
-	<input type="submit" value="vai a lista film">
-</form>
+<h3>Registrazione</h3>
 <form action="registrazione.jsp">
 	<input type="submit" value="registrati">
 </form>
+<h3>Login</h3>
 <form action="login.jsp">
 	<input type="submit" value="login">
 </form>
+<br>
+
+<h3>Funzionalità 1 trova tutti i film</h3>
+<form action="trova-tutti-film" method="get">
+	<input type="submit" value="vai a lista film">
+</form>
+<br>
+<h3>Funzionalità 2 filtro ricerca per genere e anno </h3>
+<form action="filtro-genere-anno" method="get">
+	<input type="text" name="genere" placeholder="genere">
+	<input type="text" name="anno" placeholder="anno">
+	<input type="submit" value="cerca">	
+</form>
+<br>
+<h3>Funzionalità 3 ricerca per titolo</h3>
 <form action="trova-film-per-titolo" method="get">
 	<input type="text" name="titolo">
 	<input type="submit" value="cerca">	
 </form>
+
 </body>
 </html>
