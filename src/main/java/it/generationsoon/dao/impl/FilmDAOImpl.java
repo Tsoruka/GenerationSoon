@@ -174,18 +174,23 @@ public class FilmDAOImpl implements FilmDAO{
 
 				statement.setString(1,'%' + genere  + '%');
 			}
-			else if ((genere.isEmpty() == false) && (anno > 0)) {
+			else if ((genere.isEmpty() == false) && (anno != 0)) {
 				
 				statement = connection.prepareStatement(sqlGenereAnno);
 
 				statement.setString(1,'%' + genere  + '%');
 				statement.setInt(2, anno );
 			}
-			else if ((genere.isEmpty() == true) && (anno > 0)) {
+			else if ((genere.isEmpty() == true) && (anno != 0)) {
 				
 				statement = connection.prepareStatement(sqlAnno);
 
 				statement.setInt(1,  anno );			
+			}
+			else {
+				statement = connection.prepareStatement(sqlGenereAnno);
+				statement.setString(1,'%' + genere  + '%');
+				statement.setInt(2, anno );
 			}
 			
 			resultSet = statement.executeQuery();
