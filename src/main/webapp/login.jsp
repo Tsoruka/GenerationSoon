@@ -35,7 +35,7 @@
                   <p class="text-white-50 mb-5">
                     Inserisci i tuoi dati per accedere!
                   </p>
-
+				  <form action="login" method="post">
                   <div class="form-outline form-white mb-4">
                     <input
                       type="text"
@@ -64,6 +64,8 @@
                     class="btn btn-outline-light btn-lg px-5" type="submit">
                     Accedi
                   </button>
+                  
+                  </form>
 <!--
                   <div
                     class="d-flex justify-content-center text-center mt-4 pt-1"
@@ -84,7 +86,7 @@
                 <div>
                   <p class="mb-0">
                     Non hai un account?
-                    <a href="#!" class="text-white-50 fw-bold">Registrati</a>
+                    <a href="registrazione.jsp" class="text-white-50 fw-bold">Registrati</a>
                   </p>
                 </div>
               </div>
