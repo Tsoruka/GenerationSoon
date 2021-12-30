@@ -42,7 +42,13 @@
                       id="nome_new_utente"
                       name="nome"
                       class="form-control form-control-lg"
+                      
                     />
+                    <!--  riuscita a bloccare pagina se non messi tutti i dati 
+                    ma niente messaggio di errore -->
+                     <c:if test="${errorNome != null}">
+                  	<p class="error">${errorNome}</p>
+                  </c:if>
                     <label class="form-label" for="nome_new_utente">Nome</label>
                   </div>
 
@@ -52,7 +58,9 @@
                   id="cognome_new_utente"
                   name="cognome"
                   class="form-control form-control-lg"
+                  required
                   />
+                  
                   <label class="form-label" for="cognome_new_utente">Cognome</label>
                   </div>
                   
@@ -62,6 +70,7 @@
                   id="email_new_utente"
                   name="email"
                   class="form-control form-control-lg"
+                  required
                   />
                   <label class="form-label" for="email_new_utente">Email</label>
                   </div>
@@ -72,6 +81,7 @@
                   id="username_new_utente"
                   name="username"
                   class="form-control form-control-lg"
+                  required
                   />
                   <label class="form-label" for="username_new_utente">Username</label>
                   </div>
@@ -82,6 +92,7 @@
                       id="password_new_utente"
                       name="password"
                       class="form-control form-control-lg"
+                      required
                     />
                     <label class="form-label" for="password_new_utente">Password</label>
                   </div>
