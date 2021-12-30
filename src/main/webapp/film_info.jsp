@@ -44,7 +44,14 @@
 	<!-- 
 	<p>${film.attori}</p>  -->
 	<c:forEach items="${film.attori}" var="cast">
+		<form action="dettaglio-attore" method="get">
+		<button style="cursor:pointer;" type="submit">
 		<p>${cast.attore.nome} ${cast.attore.cognome} interpreta <i>${cast.nomeRuolo}</i></p>
+			<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQynIAJReBEhr6FGTQHQkIo0jmfWLY07G0J7qMOUQow9hBHf-Ad" width="400px" height="500px">
+			<input type="hidden" name="attoreId" value="${cast.attore.id}">
+		</button>
+		</form>
+		
 	</c:forEach>
 	 
 </body>
