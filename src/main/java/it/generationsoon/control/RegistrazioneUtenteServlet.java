@@ -38,7 +38,7 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
 		utente.setPassword(request.getParameter("password"));
 		
 		if(validate(request)) {
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("loginBrutta.jsp").forward(request, response);
 			return;
 		}
 		
@@ -49,7 +49,7 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
 			session.setAttribute("username", utente.getUsername());
 			session.setAttribute("idUtente", utente.getId());
 			//TODO forse aggiungere voto
-			response.sendRedirect("login.jsp"); // forse serve servlet
+			response.sendRedirect("loginBrutta.jsp"); // forse serve servlet
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
 			response.sendRedirect("500.html");
