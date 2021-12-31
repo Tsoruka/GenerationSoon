@@ -35,9 +35,20 @@ public class FiltroGenereAnnoServlet extends HttpServlet {
 		String genere = request.getParameter("genere");
 		String annoStr = request.getParameter("anno");
 		int anno = 0;
-		if (annoStr.isBlank() == false) {
+		if (annoStr.isBlank() == false){
+			// try/catch inserito per gestire i casi in cui annoStr non è type int
+			// preferibilmente da gestire lato frontend
+			try {
 		anno = Integer.parseInt(annoStr);
+			}
+			catch (NumberFormatException e) {
+				System.err.println(e.getMessage());
+				response.sendRedirect("500.html");
+				return;
+			}
 		}
+		
+		
 
 		try {
 			//creazione di un oggetto tipo film a partire dal filmService
