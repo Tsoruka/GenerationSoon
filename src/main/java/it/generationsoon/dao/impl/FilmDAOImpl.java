@@ -227,4 +227,31 @@ public class FilmDAOImpl implements FilmDAO{
 		return listaFilm;
 		
 	}
+
+	@Override
+	public double mediaVotoFilm(Connection connection, int film_id) throws DAOException {
+		String sql = "select avg(voto) from voto_film where film_id = ?";
+		System.out.println(sql);
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		double mediaVoto = 0;
+		
+		try {			
+		statement = connection.prepareStatement(sql);
+		statement.setInt(1, film_id);
+		resultSet = statement.executeQuery();
+		while (resultSet.next()) {
+		mediaVoto = resultSet.getDouble(1);
+		}
+		}
+		catch(SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		}
+		finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return mediaVoto;
+	}
 }

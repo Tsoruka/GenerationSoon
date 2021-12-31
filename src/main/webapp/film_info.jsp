@@ -38,6 +38,8 @@
 	<h3>Genere: ${film.genere.value}</h3>
 
 	<h3>Regista: ${film.regista.nome} ${film.regista.cognome} </h3>
+	
+	<h3>Media voto: ${film.mediaVoti}</h3>
 	<br>
 	<br>
 	<h3>Cast: </h3>

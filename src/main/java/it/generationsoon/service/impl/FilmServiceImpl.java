@@ -40,6 +40,7 @@ public class FilmServiceImpl implements FilmService  {
 			connection = DataSource.getInstance().getConnection();
 			DBUtil.setAutoCommit(connection, false);
 			film = filmDAO.findById(connection, id);
+			film.setMediaVoti(filmDAO.mediaVotoFilm(connection, id));
 			Genere genere = genereDAO.findById(connection, film.getGenere().getId());
 			Regista regista = registaDAO.findById(connection, film.getRegista().getId());
 			
