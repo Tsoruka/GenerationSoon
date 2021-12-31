@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("idUtente", utente.getId());
 				request.getSession().setAttribute("username", utente.getUsername());
 				// request.getSession().setAttribute("utente", utente);
-				response.sendRedirect("trova-tutti-film");
+				response.sendRedirect("index.html");
 			} else {
 				response.sendRedirect("500.html");
 				// TODO password errata/chiedere di reinserire dati
