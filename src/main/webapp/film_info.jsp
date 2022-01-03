@@ -41,6 +41,17 @@
 	
 	<h3>Media voto: ${film.mediaVoti}</h3>
 	<br>
+	<form action="voto-utente" method="get">
+
+
+			
+			<input type="hidden" name="utenteId" value="">
+			<input type="hidden" name="filmId" value="${film.id}">
+			<input type="text" name="voto" placeholder="0">
+			<input type="submit" name="Dai un voto">
+
+
+		</form>
 	<br>
 	<h3>Cast: </h3>
 	<!-- 
@@ -55,6 +66,7 @@
 		</form>
 		
 	</c:forEach>
+	
 	 
 </body>
 </html>
