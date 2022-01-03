@@ -165,26 +165,22 @@ public class FilmDAOImpl implements FilmDAO{
 		ResultSet resultSet = null;
 		try {
 			//setta id del film (in session) per recuperare il cast di quel film 
-			//sostituire il "?" della query con filmId
-			
+			//sostituire il "?" della query con filmId		
 			//if else inserito per strutturare la query nei casi in cui abbiamo sia anno che genere o solo uno dei due dati
 			if ((genere.isEmpty() == false) && (anno == 0)) {
 				
 				statement = connection.prepareStatement(sqlGenere);
-
 				statement.setString(1,'%' + genere  + '%');
 			}
 			else if ((genere.isEmpty() == false) && (anno != 0)) {
 				
 				statement = connection.prepareStatement(sqlGenereAnno);
-
 				statement.setString(1,'%' + genere  + '%');
 				statement.setInt(2, anno );
 			}
 			else if ((genere.isEmpty() == true) && (anno != 0)) {
 				
 				statement = connection.prepareStatement(sqlAnno);
-
 				statement.setInt(1,  anno );			
 			}
 			else {
