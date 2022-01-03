@@ -20,44 +20,58 @@ import it.generationsoon.service.impl.VotoUtenteServiceImpl;
 
 public class Main {
 
-	//private static Attore attore = new Attore();
+	// private static Attore attore = new Attore();
 	private static AttoreService attoreService = new AttoreServiceImpl();
 	private static FilmService filmService = new FilmServiceImpl();
-	
+
 	private static UtenteService utenteService = new UtenteServiceImpl();
 	private static VotoUtenteService votoUtenteService = new VotoUtenteServiceImpl();
-	
 
 	public static void main(String[] args) {
-		//findById(3);
+		// findById(3);
 		// filmFindById(3);
- //genereFindById(17);
+		// genereFindById(17);
 //		// registaFindById(2);
 
-		 // utenteFindById(1);
-		 // saveUtente();
+		// utenteFindById(1);
+		// saveUtente();
 		// utenteFindByUser("AnnaB2");
 		// findVotoById(1)
 		// voto_utente(1,1);
-		//votoUpdate();
+		// votoUpdate();
 //getGenereFindById(3);
 //getRegistaFindById(3);
-		filtro("z", 0);
+		// filtro("z", 0);
+		saveVotoUtente();
 	}
 	
- private static void filtro(String genere, int anno) {
-	 
+	private static void saveVotoUtente() {
 		try {
-			List<Film> lista = filmService.filterByGenereAndAnno(genere, anno);  
-			System.out.println(lista);
-	
+			VotoUtente votoUtente = new VotoUtente();
+			Film film = filmService.findById(2);
+			votoUtente.setFilm(film);
+			Utente utente = utenteService.findById(3);
+			votoUtente.setUtente(utente);
+			votoUtente.setVoto(4);
+			votoUtenteService.save(votoUtente);
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
 		}
-		
- }
+	}
 
-	//GET GENERE DA FILM SERVICE 
+	private static void filtro(String genere, int anno) {
+
+		try {
+			List<Film> lista = filmService.filterByGenereAndAnno(genere, anno);
+			System.out.println(lista);
+
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+
+	}
+
+	// GET GENERE DA FILM SERVICE
 //		private static void getRegistaFindById(int filmId) {
 //			try {
 //				Regista regista = filmService.findRegistaByFilmId(filmId);
@@ -68,7 +82,7 @@ public class Main {
 //			}
 //		}
 //	
-	//GET GENERE DA FILM SERVICE 
+	// GET GENERE DA FILM SERVICE
 //	private static void getGenereFindById(int filmId) {
 //		try {
 //			Genere genere = filmService.findGenereByFilmId(filmId);
@@ -77,8 +91,8 @@ public class Main {
 //			System.err.println(e.getMessage());
 //		}
 //	}
-		//Utente utente;
-		private static void votoUpdate() {
+	// Utente utente;
+	private static void votoUpdate() {
 		try {
 			Utente utente;
 			Film film = filmService.findById(1);
@@ -90,26 +104,24 @@ public class Main {
 			votoUtenteService.update(votou);
 			System.out.println(votou.toString());
 		} catch (ServiceException e) {
-			
+
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//pippof.setUtente(utente);
-		//pippof.setUtente(utenteFindByUser("AnnaB"));
-		//votoUtenteService.update( );
+		// pippof.setUtente(utente);
+		// pippof.setUtente(utenteFindByUser("AnnaB"));
+		// votoUtenteService.update( );
 	}
 
-		private static void voto_utente(int utenteId, int FIlmId) {
-			try {
-		int pippoIdTopGun = votoUtenteService.votoUtenteId(1, 1);
-		System.out.println(pippoIdTopGun);
-			} catch (ServiceException e) {
-				System.err.println(e.getMessage());
-			}
-			}
-	
-	
-	
+	private static void voto_utente(int utenteId, int FIlmId) {
+		try {
+			int pippoIdTopGun = votoUtenteService.votoUtenteId(1, 1);
+			System.out.println(pippoIdTopGun);
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
 	private static void findVotoById(int id) {
 		try {
 			VotoUtente votoUtente = votoUtenteService.findById(id);
@@ -117,9 +129,9 @@ public class Main {
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
 		}
-		
+
 	}
-	
+
 	private static void utenteFindByUser(String username) {
 		try {
 			Utente utente = utenteService.findByUsername(username);
@@ -161,8 +173,6 @@ public class Main {
 		}
 	}
 
-	
-
 	private static void utenteFindById(int id) {
 		try {
 			Utente utente = utenteService.findById(id);
@@ -173,4 +183,3 @@ public class Main {
 	}
 
 }
-
