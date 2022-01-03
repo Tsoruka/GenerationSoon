@@ -75,4 +75,22 @@ public class VotoUtenteServiceImpl implements VotoUtenteService  {
 		return utenteId;
 	}
 
+
+	@Override
+	public void save(VotoUtente votoutente) throws ServiceException {
+		Connection connection = null;
+		try {
+			connection = DataSource.getInstance().getConnection();
+			DBUtil.setAutoCommit(connection, false);
+			votoUtenteDAO.save(connection, votoutente);
+			DBUtil.commit(connection);
+		} catch (DAOException e) {
+			System.err.println(e.getMessage());
+			throw new ServiceException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+	}
+
 }

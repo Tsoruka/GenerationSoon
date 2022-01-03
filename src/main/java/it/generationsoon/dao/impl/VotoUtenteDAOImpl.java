@@ -75,7 +75,7 @@ public class VotoUtenteDAOImpl implements VotoUtenteDAO{
 	}
 
 	@Override
-	public int findIdVotoUtente(Connection connection, int film_id, int utente_id) throws DAOException {
+	public int findIdVotoUtente(Connection connection, int filmId, int utenteId) throws DAOException {
 		int votoUtenteId = 0;
 		String sql = "select voto_film.id from voto_film inner join utente on utente.id = voto_film.utente_id inner join film on voto_film.film_id = film.id where film.id = ? and utente.id = ?";
 		System.out.println(sql);
@@ -84,8 +84,8 @@ public class VotoUtenteDAOImpl implements VotoUtenteDAO{
 		
 		try {
 			statement = connection.prepareStatement(sql);
-			statement.setInt(1, film_id);
-			statement.setInt(2, utente_id);
+			statement.setInt(1, filmId);
+			statement.setInt(2, utenteId);
 			resultSet = statement.executeQuery();
 			if (resultSet.next()) {
 				
@@ -101,6 +101,32 @@ public class VotoUtenteDAOImpl implements VotoUtenteDAO{
 			DBUtil.close(statement);
 		}
 		return votoUtenteId;
+	}
+
+	@Override
+	public void save(Connection connection, VotoUtente votoUtente) throws DAOException {
+		String sql = "INSERT INTO Voto_film(Film_id,Utente_id,voto) VALUES(?,?,?)";
+		System.out.println(sql);
+		PreparedStatement statement = null;
+		ResultSet generatedKeys = null;
+		try {
+			statement = connection.prepareStatement(sql, new String[] { "id" });
+			statement.setInt(1, votoUtente.getFilm().getId());
+			statement.setInt(2, votoUtente.getUtente().getId());
+			statement.setInt(3, votoUtente.getVoto());
+			statement.executeUpdate();
+			generatedKeys = statement.getGeneratedKeys();
+			if(generatedKeys.next()) {
+				votoUtente.setId(generatedKeys.getInt(1));
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(generatedKeys);
+			DBUtil.close(statement);
+		}
+		
 	}
 		
 	}

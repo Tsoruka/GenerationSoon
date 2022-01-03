@@ -10,5 +10,7 @@ public interface VotoUtenteService {
 	void update(VotoUtente votoUtente) throws ServiceException;
 	
 	int votoUtenteId(int utente_id, int film_id) throws ServiceException;
+	
+	void save(VotoUtente votoutente) throws ServiceException;
 
 }
