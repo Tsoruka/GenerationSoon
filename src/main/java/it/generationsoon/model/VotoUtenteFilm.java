@@ -1,6 +1,6 @@
 package it.generationsoon.model;
 
-public class VotoUtente {
+public class VotoUtenteFilm {
 	private int id; 
 	private Utente utente; 
 	private Film film; 
@@ -35,7 +35,4 @@ public class VotoUtente {
 	public String toString() {
 		return "VotoUtente [id=" + id + ", utente=" + utente + ", film=" + film + ", voto=" + voto + "]";
 	} 
-	
-	
-	
 }

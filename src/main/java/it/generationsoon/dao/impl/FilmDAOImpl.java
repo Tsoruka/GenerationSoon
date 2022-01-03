@@ -21,7 +21,7 @@ public class FilmDAOImpl implements FilmDAO{
 	@Override
 	public Film findById(Connection connection, int id) throws DAOException {
 		Film film = null;
-		String sql = "SELECT * FROM Film WHERE id=?";
+		String sql = "SELECT * FROM film WHERE id=?";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -63,7 +63,7 @@ public class FilmDAOImpl implements FilmDAO{
 	public List<Film> findAll(Connection connection) throws DAOException {
 		
 		List<Film> listaFilm= new ArrayList<Film>(); 
-		String sql = "SELECT * FROM Film order by data_di_uscita desc";
+		String sql = "SELECT * FROM film ORDER BY data_di_uscita desc";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -111,7 +111,7 @@ public class FilmDAOImpl implements FilmDAO{
 	@Override
 	public List<Film> findByTitolo(Connection connection, String titolo) throws DAOException {
 		List<Film> listaFilm= new ArrayList<Film>(); 
-		String sql = "SELECT * FROM Film where titolo like ?";
+		String sql = "SELECT * FROM film WHERE titolo LIKE ?";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -167,18 +167,18 @@ public class FilmDAOImpl implements FilmDAO{
 			//setta id del film (in session) per recuperare il cast di quel film 
 			//sostituire il "?" della query con filmId		
 			//if else inserito per strutturare la query nei casi in cui abbiamo sia anno che genere o solo uno dei due dati
-			if ((genere.isEmpty() == false) && (anno == 0)) {
+			if (!genere.isEmpty() && (anno == 0)) {
 				
 				statement = connection.prepareStatement(sqlGenere);
 				statement.setString(1,'%' + genere  + '%');
 			}
-			else if ((genere.isEmpty() == false) && (anno != 0)) {
+			else if (!genere.isEmpty() && (anno != 0)) {
 				
 				statement = connection.prepareStatement(sqlGenereAnno);
 				statement.setString(1,'%' + genere  + '%');
 				statement.setInt(2, anno );
 			}
-			else if ((genere.isEmpty() == true) && (anno != 0)) {
+			else if (genere.isEmpty() && (anno != 0)) {
 				
 				statement = connection.prepareStatement(sqlAnno);
 				statement.setInt(1,  anno );			
@@ -224,30 +224,4 @@ public class FilmDAOImpl implements FilmDAO{
 		
 	}
 
-	@Override
-	public double mediaVotoFilm(Connection connection, int film_id) throws DAOException {
-		String sql = "select avg(voto) from voto_film where film_id = ?";
-		System.out.println(sql);
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		double mediaVoto = 0;
-		
-		try {			
-		statement = connection.prepareStatement(sql);
-		statement.setInt(1, film_id);
-		resultSet = statement.executeQuery();
-		while (resultSet.next()) {
-		mediaVoto = resultSet.getDouble(1);
-		}
-		}
-		catch(SQLException e) {
-			System.err.println(e.getMessage());
-			throw new DAOException(e.getMessage(), e);
-		}
-		finally {
-			DBUtil.close(resultSet);
-			DBUtil.close(statement);
-		}
-		return mediaVoto;
-	}
 }

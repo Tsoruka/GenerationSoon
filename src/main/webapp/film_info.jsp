@@ -34,24 +34,26 @@
 	
 	<br>
 	<br>
-	<!-- genere value (?) -->
+	
 	<h3>Genere: ${film.genere.value}</h3>
 
 	<h3>Regista: ${film.regista.nome} ${film.regista.cognome} </h3>
 	
 	<h3>Media voto: ${film.mediaVoti}</h3>
 	<br>
-	<form action="voto-utente" method="get">
-
-
+	<form action="voto-utente" method="post">
+	
+	<!-- solo a titolo esplicativo -->
+	<p>idUtente in session => ${sessionScope.idUtente}</p>
+	<p>film id => ${film.id} </p>
+	<!-- ///////////////////////// -->
 			
-			<input type="hidden" name="utenteId" value="">
-			<input type="hidden" name="filmId" value="${film.id}">
-			<input type="text" name="voto" placeholder="0">
-			<input type="submit" name="Dai un voto">
-
-
-		</form>
+		<input type="hidden" name="utenteId" value="${sessionScope.idUtente}">
+		<input type="hidden" name="filmId" value="${film.id}">
+		<input type="text" name="voto" placeholder="8"> /10
+		<input type="submit" name="Dai un voto">
+	</form>
+	
 	<br>
 	<h3>Cast: </h3>
 	<!-- 

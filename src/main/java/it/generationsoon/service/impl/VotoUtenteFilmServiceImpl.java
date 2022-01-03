@@ -5,24 +5,23 @@ import java.sql.Connection;
 import it.generationsoon.dao.DAOException;
 import it.generationsoon.dao.DBUtil;
 import it.generationsoon.dao.DataSource;
-import it.generationsoon.dao.VotoUtenteDAO;
-import it.generationsoon.dao.impl.VotoUtenteDAOImpl;
-import it.generationsoon.model.VotoUtente;
+import it.generationsoon.dao.VotoUtenteFilmDAO;
+import it.generationsoon.dao.impl.VotoUtenteFilmDAOImpl;
 import it.generationsoon.service.ServiceException;
-import it.generationsoon.service.VotoUtenteService;
+import it.generationsoon.service.VotoUtenteFilmService;
 
-public class VotoUtenteServiceImpl implements VotoUtenteService  {
+public class VotoUtenteFilmServiceImpl implements VotoUtenteFilmService  {
 	
-	private VotoUtenteDAO votoUtenteDAO = new VotoUtenteDAOImpl();
+	private VotoUtenteFilmDAO votoUtenteFilmDAO = new VotoUtenteFilmDAOImpl();
 
-	
-	public VotoUtente findById(int id) throws ServiceException {
-		VotoUtente votoUtente = null;
+	@Override
+	public void update(int filmId, int utenteId, int voto) throws ServiceException {
+
 		Connection connection = null;
 		try {
 			connection = DataSource.getInstance().getConnection();
 			DBUtil.setAutoCommit(connection, false);
-			votoUtente = votoUtenteDAO.findById(connection, id);
+			votoUtenteFilmDAO.update(connection, filmId, utenteId, voto);
 			DBUtil.commit(connection);
 		} catch (DAOException e) {
 			System.err.println(e.getMessage());
@@ -31,58 +30,16 @@ public class VotoUtenteServiceImpl implements VotoUtenteService  {
 		} finally {
 			DBUtil.close(connection);
 		}
-		return votoUtente;
 	}
 
 
 	@Override
-	public void update(VotoUtente votoUtente) throws ServiceException {
-
+	public void save(int filmId, int utenteId, int voto) throws ServiceException {
 		Connection connection = null;
 		try {
 			connection = DataSource.getInstance().getConnection();
 			DBUtil.setAutoCommit(connection, false);
-			votoUtenteDAO.update(connection, votoUtente);
-			DBUtil.commit(connection);
-		} catch (DAOException e) {
-			System.err.println(e.getMessage());
-			DBUtil.rollback(connection);
-			throw new ServiceException(e.getMessage(), e);
-		} finally {
-			DBUtil.close(connection);
-		}
-
-		
-	}
-
-
-	@Override
-	public int votoUtenteId(int utente_id, int film_id) throws ServiceException {
-		Connection connection = null;
-		int utenteId = 0;
-		try {
-			connection = DataSource.getInstance().getConnection();
-			DBUtil.setAutoCommit(connection, false);
-			utenteId = votoUtenteDAO.findIdVotoUtente(connection, utente_id, film_id);
-			DBUtil.commit(connection);
-		} catch (DAOException e) {
-			System.err.println(e.getMessage());
-			DBUtil.rollback(connection);
-			throw new ServiceException(e.getMessage(), e);
-		} finally {
-			DBUtil.close(connection);
-		}
-		return utenteId;
-	}
-
-
-	@Override
-	public void save(VotoUtente votoutente) throws ServiceException {
-		Connection connection = null;
-		try {
-			connection = DataSource.getInstance().getConnection();
-			DBUtil.setAutoCommit(connection, false);
-			votoUtenteDAO.save(connection, votoutente);
+			votoUtenteFilmDAO.save(connection, filmId, utenteId, voto);
 			DBUtil.commit(connection);
 		} catch (DAOException e) {
 			System.err.println(e.getMessage());
@@ -92,5 +49,25 @@ public class VotoUtenteServiceImpl implements VotoUtenteService  {
 		}
 		
 	}
+
+
+	@Override
+	public int votato(int filmId, int utenteId) throws ServiceException {
+		int voted = 0;
+		Connection connection = null;
+		try {
+			connection = DataSource.getInstance().getConnection();
+			DBUtil.setAutoCommit(connection, false);
+			voted = votoUtenteFilmDAO.votato(connection, filmId, utenteId);
+			DBUtil.commit(connection);
+		} catch (DAOException e) {
+			System.err.println(e.getMessage());
+			throw new ServiceException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(connection);
+		}
+		return voted;
+	}
+
 
 }

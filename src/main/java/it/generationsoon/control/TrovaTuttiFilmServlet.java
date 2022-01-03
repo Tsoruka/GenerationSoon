@@ -36,12 +36,13 @@ public class TrovaTuttiFilmServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		try {
-			//creazione di un oggetto tipo film a partire dal filmService
-			//tramite metodo findById(fimId)
-	List<Film> listaFilm = filmService.findAll();
+			//creazione di una lista di film a partire dal filmService
+			//tramite metodo findAll()
+			List<Film> listaFilm = filmService.findAll();
 			//info relative al genere del medesimo film 
 			
-			//inoltro informazioni relative al film 
+			//inoltro richiesta HTTP per la stampa (in una pagina web) della lista film 
+			//che sono stati presi dalle info del database di riferimento 
 			request.setAttribute("listaFilm", listaFilm);
 			
 			//formula magica per inoltrare gli attributi alla nostra pagina web

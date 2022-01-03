@@ -37,9 +37,15 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Utente utente = utenteService.findByUsername(username);
 			if(utente != null && utente.getPassword().equals(password)) {
+				//imposta parametri per la session after LOGIN
+				//da richiamare in .jsp con expression language come 
+				
+				// ${ sessionScope.idUtente } --> cast (Integer)
 				request.getSession().setAttribute("idUtente", utente.getId());
+				// ${ sessionScope.username } --> cast (String)
 				request.getSession().setAttribute("username", utente.getUsername());
-				// request.getSession().setAttribute("utente", utente);
+				
+				//REMEMBER: operare cast sui tipi HttpServletRequest 
 				response.sendRedirect("index.html");
 			} else {
 				response.sendRedirect("500.html");

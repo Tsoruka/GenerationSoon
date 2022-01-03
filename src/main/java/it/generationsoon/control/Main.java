@@ -7,16 +7,16 @@ import it.generationsoon.model.Attore;
 import it.generationsoon.model.Film;
 import it.generationsoon.model.Ruolo;
 import it.generationsoon.model.Utente;
-import it.generationsoon.model.VotoUtente;
+import it.generationsoon.model.VotoUtenteFilm;
 import it.generationsoon.service.AttoreService;
 import it.generationsoon.service.FilmService;
 import it.generationsoon.service.ServiceException;
 import it.generationsoon.service.UtenteService;
-import it.generationsoon.service.VotoUtenteService;
+import it.generationsoon.service.VotoUtenteFilmService;
 import it.generationsoon.service.impl.AttoreServiceImpl;
 import it.generationsoon.service.impl.FilmServiceImpl;
 import it.generationsoon.service.impl.UtenteServiceImpl;
-import it.generationsoon.service.impl.VotoUtenteServiceImpl;
+import it.generationsoon.service.impl.VotoUtenteFilmServiceImpl;
 
 public class Main {
 
@@ -25,7 +25,7 @@ public class Main {
 	private static FilmService filmService = new FilmServiceImpl();
 
 	private static UtenteService utenteService = new UtenteServiceImpl();
-	private static VotoUtenteService votoUtenteService = new VotoUtenteServiceImpl();
+	private static VotoUtenteFilmService votoUtenteFilmService = new VotoUtenteFilmServiceImpl();
 
 	public static void main(String[] args) {
 		// findById(3);
@@ -41,18 +41,28 @@ public class Main {
 //getGenereFindById(3);
 //getRegistaFindById(3);
 		// filtro("z", 0);
-		saveVotoUtente();
+		controlloVotoUtente();
 	}
 	
 	private static void saveVotoUtente() {
-		try {
-			VotoUtente votoUtente = new VotoUtente();
-			Film film = filmService.findById(2);
-			votoUtente.setFilm(film);
-			Utente utente = utenteService.findById(3);
-			votoUtente.setUtente(utente);
-			votoUtente.setVoto(4);
-			votoUtenteService.save(votoUtente);
+		try {			
+			votoUtenteFilmService.save(2,3,7);
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	private static void controlloVotoUtente() {
+		try {			
+			System.out.print("main: " + votoUtenteFilmService.votato(2,5));
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	
+	private static void updateVotoUtente() {
+		try {			
+			votoUtenteFilmService.update(2,5,9);
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
 		}
@@ -91,45 +101,10 @@ public class Main {
 //		}
 //	}
 	// Utente utente;
-	private static void votoUpdate() {
-		try {
-			Utente utente;
-			Film film = filmService.findById(1);
-			utente = utenteService.findById(1);
-			VotoUtente votou = new VotoUtente();
-			votou.setFilm(film);
-			votou.setUtente(utente);
-			votou.setVoto(4);
-			votoUtenteService.update(votou);
-			System.out.println(votou.toString());
-		} catch (ServiceException e) {
+	
 
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// pippof.setUtente(utente);
-		// pippof.setUtente(utenteFindByUser("AnnaB"));
-		// votoUtenteService.update( );
-	}
 
-	private static void voto_utente(int utenteId, int FIlmId) {
-		try {
-			int pippoIdTopGun = votoUtenteService.votoUtenteId(1, 1);
-			System.out.println(pippoIdTopGun);
-		} catch (ServiceException e) {
-			System.err.println(e.getMessage());
-		}
-	}
 
-	private static void findVotoById(int id) {
-		try {
-			VotoUtente votoUtente = votoUtenteService.findById(id);
-			System.out.println(votoUtente);
-		} catch (ServiceException e) {
-			System.err.println(e.getMessage());
-		}
-
-	}
 
 	private static void utenteFindByUser(String username) {
 		try {

@@ -2,18 +2,15 @@ package it.generationsoon.control;
 
 import java.io.IOException;
 
-import it.generationsoon.dao.impl.VotoUtenteDAOImpl;
-import it.generationsoon.model.Utente;
-import it.generationsoon.model.VotoUtente;
-import it.generationsoon.service.UtenteService;
-import it.generationsoon.service.VotoUtenteService;
-import it.generationsoon.service.impl.UtenteServiceImpl;
-import it.generationsoon.service.impl.VotoUtenteServiceImpl;
+import it.generationsoon.service.ServiceException;
+import it.generationsoon.service.VotoUtenteFilmService;
+import it.generationsoon.service.impl.VotoUtenteFilmServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class VotoUtenteServlet
@@ -21,8 +18,8 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/voto-utente")
 public class VotoUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private VotoUtenteService votoUtenteService = new VotoUtenteServiceImpl();
-	private UtenteService utente = new UtenteServiceImpl();
+	
+	private VotoUtenteFilmService votoUtenteFilmService = new VotoUtenteFilmServiceImpl();
     /**
      * Default constructor. 
      */
@@ -34,15 +31,38 @@ public class VotoUtenteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			int utenteId = Integer.parseInt(request.getSession().getAttribute("idUtente").toString());
-			int filmId = Integer.parseInt(request.getParameter("filmId"));
-			int voto = Integer.parseInt(request.getParameter("voto"));
-			//utente = VotoUtenteService.findById(utenteId);
-			//VotoUtente votoUtente = new VotoUtente(); 
-			//votoUtente.setUtente().setId();
-			//votoUtente.save(null)
+		//raccolgo parametri della pagina film_info-jsp corrente
+		//che mi fornisce filmId
+		int filmId = Integer.parseInt(request.getParameter("filmId"));
+		//voto che utente (in session) assegna al film corrente
+		int voto = Integer.parseInt(request.getParameter("voto"));
+		
+		//dichiaro la session separatemente per rendere il codic epiù pulito e leggibile 
+		//in una parola ELEGANTE, ogni riferimento è puramente casuale (per il Signor Monroe) 
+		HttpSession session = request.getSession();
+		try {
+			//richiamo idUtente salvato in session con login utente
+			int utenteId = (Integer) session.getAttribute("idUtente");
+			
+			//variabile di controllo per scelta del tipo di voto save/update 
+			int controllo = votoUtenteFilmService.votato(filmId, utenteId);
+			
+			//se controllo è a 0 allora save new voto 
+			if(controllo == 0) {
+				votoUtenteFilmService.save(filmId, utenteId, voto);
+				response.sendRedirect("trova-tutti-film");
+			} else if(controllo > 0) {
+				votoUtenteFilmService.update(filmId, utenteId, voto);
+				response.sendRedirect("index.html");
+			} else {
+				response.sendRedirect("500.html");
+			}
 			
 			
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+			response.sendRedirect("500.html");
+		}			
 	}
 
 }

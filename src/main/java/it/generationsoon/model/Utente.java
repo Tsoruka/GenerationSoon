@@ -22,7 +22,7 @@ public class Utente {
 	// voti degli utenti ai film
 	// pi� utenti votano uno stesso film
 	// pi� film vengono votati da pi� utenti
-	private List<VotoUtente> filmVotati = new ArrayList<VotoUtente>();
+	private List<VotoUtenteFilm> filmVotati = new ArrayList<VotoUtenteFilm>();
 
 	public int getId() {
 		return id;
@@ -72,11 +72,11 @@ public class Utente {
 		this.email = email;
 	}
 
-	public List<VotoUtente> getFilmVotati() {
+	public List<VotoUtenteFilm> getFilmVotati() {
 		return filmVotati;
 	}
 
-	public void setFilmVotati(List<VotoUtente> filmVotati) {
+	public void setFilmVotati(List<VotoUtenteFilm> filmVotati) {
 		this.filmVotati = filmVotati;
 	}
 

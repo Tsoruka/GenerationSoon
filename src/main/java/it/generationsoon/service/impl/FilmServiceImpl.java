@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.generationsoon.dao.AttoreDAO;
 import it.generationsoon.dao.DAOException;
 import it.generationsoon.dao.DBUtil;
 import it.generationsoon.dao.DataSource;
@@ -12,12 +11,12 @@ import it.generationsoon.dao.FilmDAO;
 import it.generationsoon.dao.GenereDAO;
 import it.generationsoon.dao.RegistaDAO;
 import it.generationsoon.dao.RuoloDAO;
-import it.generationsoon.dao.impl.AttoreDAOImpl;
+import it.generationsoon.dao.VotoUtenteFilmDAO;
 import it.generationsoon.dao.impl.FilmDAOImpl;
 import it.generationsoon.dao.impl.GenereDAOImpl;
 import it.generationsoon.dao.impl.RegistaDAOImpl;
 import it.generationsoon.dao.impl.RuoloDAOImpl;
-import it.generationsoon.model.Attore;
+import it.generationsoon.dao.impl.VotoUtenteFilmDAOImpl;
 import it.generationsoon.model.Film;
 import it.generationsoon.model.Genere;
 import it.generationsoon.model.Regista;
@@ -31,6 +30,8 @@ public class FilmServiceImpl implements FilmService  {
 	private GenereDAO genereDAO = new GenereDAOImpl();
 	private RegistaDAO registaDAO = new RegistaDAOImpl();
 	private RuoloDAO ruoloDAO = new RuoloDAOImpl();
+	//richiamo la DAO corrispondente alla tabella voto_film
+	private VotoUtenteFilmDAO votoUtenteFilmDAO= new VotoUtenteFilmDAOImpl();
 	
 	public Film findById(int id) throws ServiceException {
 		Film film = null;
@@ -40,7 +41,8 @@ public class FilmServiceImpl implements FilmService  {
 			connection = DataSource.getInstance().getConnection();
 			DBUtil.setAutoCommit(connection, false);
 			film = filmDAO.findById(connection, id);
-			film.setMediaVoti(filmDAO.mediaVotoFilm(connection, id));
+			//richiamo la DAO corrispondente alla tabella voto_film
+			film.setMediaVoti(votoUtenteFilmDAO.mediaVotoFilm(connection, id));
 			Genere genere = genereDAO.findById(connection, film.getGenere().getId());
 			Regista regista = registaDAO.findById(connection, film.getRegista().getId());
 			
@@ -59,7 +61,7 @@ public class FilmServiceImpl implements FilmService  {
 			throw new ServiceException(e.getMessage(), e);
 		} finally {
 			DBUtil.close(connection);
-		}
+		} 
 		return film;
 	}
 

@@ -32,7 +32,7 @@ public class Film {
 	//lista dei ruoli interpretati dagli attori 
 	private List<Ruolo> attori = new ArrayList<Ruolo>();
 	//lista dei voti dati al film dagli N utenti
-	private List<VotoUtente> votiUtenti = new ArrayList<VotoUtente>();
+	private List<VotoUtenteFilm> votiUtenti = new ArrayList<VotoUtenteFilm>();
 //  PRIMARY KEY (`id`),
 //	FOREIGN KEY (`Regista_id`) REFERENCES `generation_soon`.`Regista` (`id`)
 	public int getId() {
@@ -107,10 +107,10 @@ public class Film {
 	public void setAttori(List<Ruolo> attori) {
 		this.attori = attori;
 	}
-	public List<VotoUtente> getVotiUtenti() {
+	public List<VotoUtenteFilm> getVotiUtenti() {
 		return votiUtenti;
 	}
-	public void setVotiUtenti(List<VotoUtente> votiUtenti) {
+	public void setVotiUtenti(List<VotoUtenteFilm> votiUtenti) {
 		this.votiUtenti = votiUtenti;
 	}
 	

@@ -40,6 +40,7 @@
                     <input
                       type="text"
                       id="username"
+                      name="username"
                       class="form-control form-control-lg"
                     />
                     <label class="form-label" for="username">Username</label>
@@ -49,6 +50,7 @@
                     <input
                       type="password"
                       id="password"
+                      name="password"
                       class="form-control form-control-lg"
                     />
                     <label class="form-label" for="password"
