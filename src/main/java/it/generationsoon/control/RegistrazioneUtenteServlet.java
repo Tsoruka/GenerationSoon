@@ -38,18 +38,24 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
 		utente.setPassword(request.getParameter("password"));
 		
 		if(validate(request)) {
-			request.getRequestDispatcher("loginBrutta.jsp").forward(request, response);
+			request.getRequestDispatcher("registrazione.jsp").forward(request, response);
 			return;
 		}
 		
 		try {
+			//Utente controlloUtente = utenteService.findByUsername(utente.getUsername());
+//			if(utente.getUsername() != null) {
 			utenteService.save(utente);
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("utente", utente);
 			session.setAttribute("username", utente.getUsername());
 			session.setAttribute("idUtente", utente.getId());
-			//TODO forse aggiungere voto
-			response.sendRedirect("login.jsp"); // forse serve servlet
+			response.sendRedirect("login.jsp");
+//			} else {
+//				System.out.println(4);
+//				response.sendRedirect("registrazione?errorUtente");
+//			}
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
 			response.sendRedirect("500.html");
@@ -65,29 +71,33 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
 		String password = request.getParameter("password");
 
 		boolean hasErrors = false;
+		
+//		if(utenteService.findByUsername(username) == null) {
+//			request.setAttribute("errorUtente", "Username già in uso");
+//		}
 
 		if (nome == null || nome.trim().isEmpty()) {
-			request.setAttribute("errorNome", "campo nome obbligatorio");
+			request.setAttribute("errorNome", "Campo nome obbligatorio");
 			hasErrors = true;
 		}
 		
 		if (cognome == null || cognome.trim().isEmpty()) {
-			request.setAttribute("errorCognome", "campo cognome obbligatorio");
+			request.setAttribute("errorCognome", "Campo cognome obbligatorio");
 			hasErrors = true;
 		}
 		
 		if (email == null || email.trim().isEmpty()) {
-			request.setAttribute("errorEmail", "campo email obbligatorio");
+			request.setAttribute("errorEmail", "Campo email obbligatorio");
 			hasErrors = true;
 		}
 
 		if (username == null || username.trim().isEmpty()) {
-			request.setAttribute("errorUsername", "campo username obbligatorio");
+			request.setAttribute("errorUsername", "Campo username obbligatorio");
 			hasErrors = true;
 		}
 
 		if (password == null || password.trim().isEmpty()) {
-			request.setAttribute("errorPassword", "campo password obbligatorio");
+			request.setAttribute("errorPassword", "Campo password obbligatorio");
 			hasErrors = true;
 		}
 

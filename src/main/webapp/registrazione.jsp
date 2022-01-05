@@ -14,7 +14,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
 <title>Registrazione</title>
 <link
       rel="stylesheet"
@@ -42,14 +42,12 @@
                       id="nome_new_utente"
                       name="nome"
                       class="form-control form-control-lg"
+                      placeholder="Nome"
                       
                     />
-                    <!--  riuscita a bloccare pagina se non messi tutti i dati 
-                    ma niente messaggio di errore -->
                      <c:if test="${errorNome != null}">
-                  	<p class="error">${errorNome}</p>
-                  </c:if>
-                    <label class="form-label" for="nome_new_utente">Nome</label>
+                  	<p class="my-error">${errorNome}</p>
+                    </c:if>
                   </div>
 
                   <div class="form-outline form-white mb-3">
@@ -58,10 +56,14 @@
                   id="cognome_new_utente"
                   name="cognome"
                   class="form-control form-control-lg"
-                  required
-                  />
+                  placeholder="Cognome"
                   
-                  <label class="form-label" for="cognome_new_utente">Cognome</label>
+                  />
+                 
+                  
+                  <c:if test="${errorCognome != null}">
+                  	<p class="my-error">${errorCognome}</p>
+                  </c:if>
                   </div>
                   
 				  <div class="form-outline form-white mb-3">
@@ -70,9 +72,13 @@
                   id="email_new_utente"
                   name="email"
                   class="form-control form-control-lg"
-                  required
+                  placeholder="Email"
+                
                   />
-                  <label class="form-label" for="email_new_utente">Email</label>
+                  <c:if test="${errorEmail != null}">
+                  	<p class="my-error">${errorEmail}</p>
+                  </c:if>
+                  
                   </div>
                   
                   <div class="form-outline form-white mb-3">
@@ -81,9 +87,16 @@
                   id="username_new_utente"
                   name="username"
                   class="form-control form-control-lg"
-                  required
+                  placeholder="Username"
+                  
                   />
-                  <label class="form-label" for="username_new_utente">Username</label>
+                  <c:if test="${errorUsername != null}">
+                  	<p class="my-error">${errorUsername}</p>
+                  </c:if>
+                  <c:if test="${errorUtente != null }">
+                  	<p class="error">${errorUtente}</p>
+                  </c:if>
+                 
                   </div>
 
                   <div class="form-outline form-white mb-3">
@@ -92,9 +105,13 @@
                       id="password_new_utente"
                       name="password"
                       class="form-control form-control-lg"
-                      required
+                      placeholder="Password"
+                      
                     />
-                    <label class="form-label" for="password_new_utente">Password</label>
+                    <c:if test="${errorPassword != null}">
+                  	<p class="my-error">${errorPassword}</p>
+                  </c:if>
+                    
                   </div>
 
                   <button

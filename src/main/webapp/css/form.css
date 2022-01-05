@@ -19,6 +19,7 @@
   
 }
 
-error {
-	color: red;
+.my-error {
+	font-size: 13px;
+	color: #ff0d43;
 }
