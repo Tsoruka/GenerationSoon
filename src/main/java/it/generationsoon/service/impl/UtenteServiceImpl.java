@@ -70,4 +70,23 @@ public class UtenteServiceImpl implements UtenteService{
 		return utente;
 	}
 
+	@Override
+	public Utente findByEmail(String email) throws ServiceException {
+		Utente utente = null;
+		Connection connection = null;
+		try {
+			connection = DataSource.getInstance().getConnection();
+			DBUtil.setAutoCommit(connection, false);
+			utente = utenteDAO.findByEmail(connection, email);
+			DBUtil.commit(connection);
+		} catch (DAOException e) {
+			System.err.println(e.getMessage());
+			DBUtil.rollback(connection);
+			throw new ServiceException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(connection);
+		}
+		return utente;
+	}
+
 }

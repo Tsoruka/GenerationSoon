@@ -14,8 +14,8 @@ public interface UtenteDAO {
 	
 	//String per username --> query Select username from utente where username=?
 	
-	// findbyEmail
+	Utente findByEmail(Connection connection, String email) throws DAOException;
 	
-	// String per email
+	//String per email
 
 }

@@ -9,4 +9,6 @@ public interface UtenteService {
 	Utente findById(int id) throws ServiceException;
 
 	Utente findByUsername(String username) throws ServiceException;
+	
+	Utente findByEmail(String email) throws ServiceException;
 }

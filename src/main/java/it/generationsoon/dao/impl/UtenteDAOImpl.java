@@ -105,4 +105,34 @@ public class UtenteDAOImpl implements UtenteDAO{
 		return utente;
 	}
 
+	@Override
+	public Utente findByEmail(Connection connection, String email) throws DAOException {
+		Utente utente = null;
+		String sql = "SELECT * FROM Utente WHERE email=?";
+		System.out.println(sql);
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, email);
+			resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				utente = new Utente();
+				utente.setId(resultSet.getInt(1));
+				utente.setNome(resultSet.getString(2));
+				utente.setCognome(resultSet.getString(3));
+				utente.setEmail(resultSet.getString(4));
+				utente.setUsername(resultSet.getString(5));
+				utente.setPassword(resultSet.getString(6));
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return utente;
+	}
+
 }

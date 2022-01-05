@@ -41,7 +41,17 @@ public class Main {
 //getGenereFindById(3);
 //getRegistaFindById(3);
 		// filtro("z", 0);
-		controlloVotoUtente();
+		// controlloVotoUtente();
+		findUtenteByEmail("mario.rossi@gmail.com");
+	}
+	
+	private static void findUtenteByEmail(String email) {
+		try {
+			Utente utente = utenteService.findByEmail(email);
+			System.out.println(utente);
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 	
 	private static void saveVotoUtente() {
