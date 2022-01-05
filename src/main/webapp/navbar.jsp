@@ -55,7 +55,15 @@
         <div class="profile">
             <div class="profile-selected">
            
-                <p class="name-user">Accedi</p>
+           		<!-- Condizione per ACCEDI ==> USERNAME -->
+                <c:choose>
+				    <c:when test="${sessionScope.username != null}">
+				        <p class="name-user">${sessionScope.username}</p>
+				    </c:when>    
+				    <c:otherwise>
+				        <p class="name-user">Accedi</p>
+				    </c:otherwise>
+				</c:choose>
             
                 <img class="avatar img-user" src="img/user.svg" alt="">
             </div>
@@ -63,33 +71,40 @@
             <nav class="profile-nav">
                 <!-- hover -->
                 <ul class="profile-nav-options">
-                    <li><form action="login.jsp">
-                    <button class="my-nav-buttons">
-                    <p>Login</p>
-                    </button>
+                
+                <!-- Condizione per Login/Registrazione ==> Logout -->
+                    <c:choose>
+		    <c:when test="${sessionScope.username == null}">
+		    <li><form action="login.jsp">
+	                  <button class="my-nav-buttons">
+	                   <p class="l-effect">Login</p>
+	                   </button>
 					</form></li>
-                    <li><form action="registrazione.jsp">
-                    <button class="my-nav-buttons"s>
-                    <p>Registrati</p>
-                    </button>
-					</form>
-				</li>
+					
+	                   <li>
+	                   <form action="registrazione.jsp">
+	                   <button class="my-nav-buttons"s>
+	                   <p class="l-effect">Registrati</p>
+	                  </button>	                    
+				</form>
+			</li>
+		    </c:when>    
+		    <c:otherwise>
+		    <li>
+		       <form action="logout" method="post">
+				<button class="my-nav-buttons"s>
+	                   <p class="l-effect">Logout</p>
+	                  </button>	
+				</form>
+			</li>
+		    </c:otherwise>
+		</c:choose>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- SLIDER GRANDE DA METTERE-->
-    
-    
-       
-      
-        
-    <!-- Films -->
-       
-     
-    <!-- Footer -->
-  
+
 </body>
 
 </html>

@@ -321,3 +321,13 @@ a {
 .plus-perfil:hover {
   background: rgb(102, 102, 102);
 }
+
+
+
+/* effectto su login/registrazione/logout */
+.l-effect:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #5a86d3;
+   text-decoration: none;
+
+ }
