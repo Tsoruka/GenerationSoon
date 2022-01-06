@@ -19,7 +19,7 @@
 
     <!-- Header -->
     <header class="header">
-        <a href="index.html" class="logo"><i class="fal fa-film" style="color: white;">GrezzoSoon</i></a>
+        <a href="index.html" class="logo"><img src="img/GrezzoSoon.png"></a>
             <nav class="nav-links">
                 <ul>
                     <li><form action="index.html">
