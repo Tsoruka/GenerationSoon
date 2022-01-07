@@ -10,6 +10,9 @@
 <title>Lista Attori</title>
 </head>
 <body>
+
+<%@ include file="navbar.jsp" %>
+
 <h1> Lista Attori</h1>
 
 <c:forEach items="${listaAttori}" var="attore">
