@@ -12,10 +12,10 @@ public interface UtenteDAO {
 
 	Utente findByUsername(Connection connection, String username) throws DAOException;
 	
-	//String per username --> query Select username from utente where username=?
-	
 	Utente findByEmail(Connection connection, String email) throws DAOException;
 	
-	//String per email
+	String usernameInUso(Connection connection, String username) throws DAOException;
+	
+	String emailInUso(Connection connection, String email) throws DAOException;
 
 }

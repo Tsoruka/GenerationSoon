@@ -11,10 +11,10 @@ import it.generationsoon.model.Utente;
 import it.generationsoon.service.ServiceException;
 import it.generationsoon.service.UtenteService;
 
-public class UtenteServiceImpl implements UtenteService{
+public class UtenteServiceImpl implements UtenteService {
 
 	private UtenteDAO utenteDAO = new UtenteDAOImpl();
-	
+
 	@Override
 	public void save(Utente utente) throws ServiceException {
 		Connection connection = null;
@@ -87,6 +87,44 @@ public class UtenteServiceImpl implements UtenteService{
 			DBUtil.close(connection);
 		}
 		return utente;
+	}
+
+	@Override
+	public String usernameInUso(String username) throws ServiceException {
+		String usernameInUso = null;
+		Connection connection = null;
+		try {
+			connection = DataSource.getInstance().getConnection();
+			DBUtil.setAutoCommit(connection, false);
+			usernameInUso = utenteDAO.usernameInUso(connection, username);
+			DBUtil.commit(connection);
+		} catch (DAOException e) {
+			System.err.println(e.getMessage());
+			DBUtil.rollback(connection);
+			throw new ServiceException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(connection);
+		}
+		return usernameInUso;
+	}
+
+	@Override
+	public String emailInUso(String email) throws ServiceException {
+		String emailInUso = null;
+		Connection connection = null;
+		try {
+			connection = DataSource.getInstance().getConnection();
+			DBUtil.setAutoCommit(connection, false);
+			emailInUso = utenteDAO.emailInUso(connection, email);
+			DBUtil.commit(connection);
+		} catch (DAOException e) {
+			System.err.println(e.getMessage());
+			DBUtil.rollback(connection);
+			throw new ServiceException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(connection);
+		}
+		return emailInUso;
 	}
 
 }

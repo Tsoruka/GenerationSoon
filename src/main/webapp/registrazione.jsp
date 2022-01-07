@@ -78,6 +78,9 @@
                   <c:if test="${errorEmail != null}">
                   	<p class="my-error">${errorEmail}</p>
                   </c:if>
+                  <c:if test="${param.errorUtenteEmail != null}">
+                  	<p class="my-error">Email già registrata</p>
+                  </c:if>
                   
                   </div>
                   
@@ -93,8 +96,9 @@
                   <c:if test="${errorUsername != null}">
                   	<p class="my-error">${errorUsername}</p>
                   </c:if>
-                  <c:if test="${errorUtente != null }">
-                  	<p class="error">${errorUtente}</p>
+                  
+                  <c:if test="${param.errorUtenteUser != null }">
+                  	<p class="my-error">Username già in uso</p>
                   </c:if>
                  
                   </div>
@@ -113,7 +117,10 @@
                   </c:if>
                     
                   </div>
-
+					<c:if test="${param.errorUtente != null}">
+                  	<p class="my-error">Email e Username già in uso</p>
+                  </c:if>
+                  
                   <button
                     class="btn btn-outline-light btn-lg px-5"
                     type="submit"

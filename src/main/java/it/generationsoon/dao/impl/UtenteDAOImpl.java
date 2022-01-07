@@ -10,9 +10,7 @@ import it.generationsoon.dao.DBUtil;
 import it.generationsoon.dao.UtenteDAO;
 import it.generationsoon.model.Utente;
 
-
-
-public class UtenteDAOImpl implements UtenteDAO{
+public class UtenteDAOImpl implements UtenteDAO {
 
 	@Override
 	public void save(Connection connection, Utente utente) throws DAOException {
@@ -20,7 +18,7 @@ public class UtenteDAOImpl implements UtenteDAO{
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet generatedKeys = null;
-		
+
 		try {
 			statement = connection.prepareStatement(sql, new String[] { "id" });
 			statement.setString(1, utente.getNome());
@@ -40,7 +38,7 @@ public class UtenteDAOImpl implements UtenteDAO{
 			DBUtil.close(generatedKeys);
 			DBUtil.close(statement);
 		}
-		
+
 	}
 
 	@Override
@@ -50,7 +48,7 @@ public class UtenteDAOImpl implements UtenteDAO{
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		
+
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, id);
@@ -81,7 +79,7 @@ public class UtenteDAOImpl implements UtenteDAO{
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		
+
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, username);
@@ -133,6 +131,54 @@ public class UtenteDAOImpl implements UtenteDAO{
 			DBUtil.close(statement);
 		}
 		return utente;
+	}
+
+	@Override
+	public String usernameInUso(Connection connection, String username) throws DAOException {
+		String sql = "SELECT username FROM Utente WHERE username=?";
+		System.out.println(sql);
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		String usernameInUso = null;
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, username);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				usernameInUso = resultSet.getString(1);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return usernameInUso;
+	}
+
+	@Override
+	public String emailInUso(Connection connection, String email) throws DAOException {
+		String sql = "SELECT email FROM Utente WHERE email=?";
+		System.out.println(sql);
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		String emailInUso = null;
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, email);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				emailInUso = resultSet.getString(1);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return emailInUso;
 	}
 
 }

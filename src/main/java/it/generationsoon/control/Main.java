@@ -42,7 +42,24 @@ public class Main {
 //getRegistaFindById(3);
 		// filtro("z", 0);
 		// controlloVotoUtente();
-		findUtenteByEmail("mario.rossi@gmail.com");
+		// findUtenteByEmail("mario.rossi@gmail.com");
+		controlloEmailUtente();
+	}
+	
+	private static void controlloEmailUtente() {
+		try {
+			System.out.println("main: "+utenteService.emailInUso("annaraggi@gmail.com"));
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	private static void controlloUsernameUtente() {
+		try {
+			System.out.println("main: "+ utenteService.usernameInUso("MarioR"));
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 	
 	private static void findUtenteByEmail(String email) {

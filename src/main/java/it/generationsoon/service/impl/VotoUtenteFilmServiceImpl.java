@@ -43,6 +43,7 @@ public class VotoUtenteFilmServiceImpl implements VotoUtenteFilmService  {
 			DBUtil.commit(connection);
 		} catch (DAOException e) {
 			System.err.println(e.getMessage());
+			DBUtil.rollback(connection);
 			throw new ServiceException(e.getMessage(), e);
 		} finally {
 			DBUtil.close(connection);
@@ -62,6 +63,7 @@ public class VotoUtenteFilmServiceImpl implements VotoUtenteFilmService  {
 			DBUtil.commit(connection);
 		} catch (DAOException e) {
 			System.err.println(e.getMessage());
+			DBUtil.rollback(connection);
 			throw new ServiceException(e.getMessage(), e);
 		} finally {
 			DBUtil.close(connection);
