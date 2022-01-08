@@ -26,6 +26,9 @@
 		</button>
 		
 	</form>
-	</c:forEach>
+</c:forEach>
+	
+<%@ include file="footer.jsp" %>
+
 </body>
 </html>

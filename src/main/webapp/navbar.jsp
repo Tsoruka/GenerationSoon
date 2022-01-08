@@ -22,7 +22,7 @@
         <a href="index.html" class="logo"><img src="img/GrezzoSoon.png"></a>
             <nav class="nav-links">
                 <ul>
-                    <li><form action="index.html">
+                    <li><form action="home.jsp">
                     	<button class="my-nav-buttons">
                             <span class="icons"><svg alt="home" viewBox="0 0 36 36" style="height: 24px; min-width: 24px; width: 24px; z-index: auto;"><path d="M26.882 19.414v10.454h-5.974v-5.227h-5.974v5.227H8.961V19.414H5.227L17.921 6.72l12.694 12.694h-3.733z"></path></svg></span>
                            
