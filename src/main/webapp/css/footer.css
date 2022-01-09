@@ -5,14 +5,15 @@
 }
 
 body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 400;
-    background-color: aliceblue;
+    /* FONT */
+  font-family: "Avenir LT Pro", sans-serif;
+  letter-spacing: 0.07em;
 }
 
 .footer{
-    padding: 40px 0; 
-    background-color: rgb(239, 243, 253);
+    padding-top: 30px;
+    padding-bottom: 5px;
+    background-color: rgb(239, 243, 253);    
 }
 
 .footer .social {
@@ -43,7 +44,7 @@ body{
     margin-top: 0;
     padding: 0;
     list-style: none;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.6;
     margin-bottom: 0;
     text-align: center;
@@ -66,8 +67,8 @@ body{
 }
 
 .footer .copyright{
-    margin-top: 15px;
+    margin-top: 14px;
     text-align: center;
-    font-size: 13px;
+    font-size: 11px;
     color: #aaa;
 }

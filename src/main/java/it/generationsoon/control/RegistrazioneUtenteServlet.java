@@ -59,7 +59,7 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
 			}
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
-			response.sendRedirect("500.html");
+			response.sendRedirect("500.jsp");
 		}
 	}
 

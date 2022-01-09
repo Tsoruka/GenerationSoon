@@ -7,11 +7,37 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+html,
 body {
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+  
+  /* FONT */
   font-family: "Avenir LT Pro", sans-serif;
-  background: radial-gradient(#2c2f42, #161824);
-  height: 100vh;
+  letter-spacing: 0.1em;
+
+  background: #181926;
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    #181926 0%,
+    #0e0f17 100%
+  );
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    #181926 0%,
+    #0e0f17 100%
+  );
+  background: radial-gradient(ellipse at center, #181926 0%, #0e0f17 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#181926', endColorstr='#0e0f17',GradientType=1 );
 }
+
 a {
   text-decoration: none;
 }
@@ -44,7 +70,7 @@ a {
   justify-content: space-between;
   align-items: center;
   font-weight: 400;
-  background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+  background: #2f3640;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -59,6 +85,7 @@ a {
 .nav-links ul {
   display: flex;
   white-space: nowrap;
+  margin-bottom: 0;
 }
 .nav-links ul li {
   margin-right: 30px;
@@ -77,20 +104,26 @@ a {
   font-size: 12px;
   margin-right: 10px;
   display: flex;
-  color: white;
+  color: #ff0080;
   align-items: center;
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  /* FONT */
+  font-family: "Avenir LT Pro", sans-serif;
+  letter-spacing: 0.3em;
 }
 
 .nav-links ul li button {
-  font-size: 12px;
+  font-size: 14px;
   margin-right: 10px;
   display: flex;
   color: white;
   align-items: center;
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  /* FONT */
+  font-family: "Avenir LT Pro", sans-serif;
+  letter-spacing: 0.3em;
 }
 
 
@@ -101,7 +134,7 @@ a {
   transition: 5s ease;
 }
 .nav-links p:after {
-  bottom: -5px;
+  bottom: 0px;
   /* bottom: 0; */
   content: "";
   display: block;
@@ -244,6 +277,14 @@ a {
 .profile p {
   color: white;
 }
+
+.my-nav-buttons p{
+    margin-bottom: 2px;
+    color: white;
+    /* FONT */
+  font-family: "Avenir LT Pro", sans-serif;
+  letter-spacing: 0.1em;
+}
 .profile:hover {
   top: 0;
   right: 0;
@@ -297,6 +338,7 @@ a {
 .profile-nav-profiles li {
   display: flex;
   align-items: center;
+  
 }
 .profile-nav-profiles img {
   margin-top: 15px;
@@ -321,7 +363,6 @@ a {
 .plus-perfil:hover {
   background: rgb(102, 102, 102);
 }
-
 
 
 /* effectto su login/registrazione/logout */

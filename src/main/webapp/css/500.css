@@ -1,105 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;700&display=swap');
+@charset "ISO-8859-1";
 
-:root {
-    --primary: #30a9de;
-    --light: #ecf3f8;
-    --body: #888;
-    --box-shadow: 0 8px 22px rgba(0,0,0,0.1);
-}
+/* ASTRONAUTA */
 
+  .arm-left{
+    animation: armSwipe 5s 1s infinite ease-in-out;
+    transform-origin: left top;
+    }
+    @keyframes armSwipe{
+      0%{transform: rotate(-10deg);}
+      50%{transform: rotate(0deg);}
+        100%{transform: rotate(-10deg);}
+    }
+    .arm-right{
+      animation: armRightSwipe 5s 1s infinite ease-in-out;
+      transform-origin: right top;
+    }
+    @keyframes armRightSwipe {
+      0%{transform: rotate(-1deg);}
+      50%{transform: rotate(-5deg);}
+        100%{transform: rotate(-1deg);}
+    }
+    .astronaut{
+      width: 50%;
+      height: auto;
+      overflow: visible;
+      animation: Levitation 5s 1s infinite ease-in-out;
 
+      position: fixed;
+      top: 0;
+      right: 100px;
+    }
+    @keyframes Levitation{
+      0%{transform: translateY(100px);}
+      50%{transform: translateY(80px); }
+      100%{transform: translateY(100px);}
+    }
+    .leg-right{
+      animation: LegSwipe 5s 1s infinite ease-out;
+      transform-origin: left bottom;
+    }
+    @keyframes LegSwipe {
+      0%{transform: rotate(8deg);}
+      50%{transform: rotate(5deg);}
+      100%{transform: rotate(8deg);}
+    }
+    
+    @keyframes LegLeftSwipe {
+      0%{transform: rotate(2deg);}
+      50%{transform: rotate(0deg);}
+      100%{transform: rotate(2deg);}
+    }
+    .reflect{
+      animation: faceOpacity 5s 1s infinite;
+    }
+    @keyframes faceOpacity {
+      0%{opacity: 0.7;}
+      70%{opacity: 1;}
+      100%{opacity: 0.7;}
+    }
+    .eye-right{
+      animation: eyeBlink 5s infinite step-start 0s;
+    }
+    .eye-left{
+      animation: eyeLeftBlink 5s infinite step-start 0s;
+    
+    }
+    @keyframes eyeBlink {
+      90%{transform: none; animation-timing-function: ease-in;}
+      93%{transform: translateY(135px) scaleY(0);}
+      100%{animation-timing-function: ease-in;}
+    }
+    @keyframes eyeLeftBlink {
+      90%{transform: none; animation-timing-function: ease-in;}
+      93%{transform: translateY(155px) scaleY(0);}
+      100%{animation-timing-function: ease-in;}
+    }
+    .stars{
+      width: 800px;
+      fill:#fff;
+      overflow: visible;
+      animation: starsRotate 155s 1s linear;
+      transform-origin: center;
+    }
+    @keyframes starsRotate {
+      0%{transform: rotate(0deg);}
+      100%{transform: rotate(360deg);}
+    }
+    
 
-body {
-  overflow: hidden;
-}
-
-a{
-    color: var(--primary);
-}
-
-html,
-body {
-  position: relative;
-  /*background-image: radial-gradient( circle farthest-corner at 32.7% 82.7%,  rgba(173,0,171,1) 8.3%, rgba(15,51,92,1) 79.4% );*/
-  /*background-image: radial-gradient( circle farthest-corner at -4.5% 34.3%,  rgba(13,20,174,1) 0%, rgba(243,165,140,1) 90% );*/
-  /*background-image: linear-gradient( 109.6deg,  rgba(21,20,20,1) 11.2%, rgba(229,11,11,1) 91.1% );*/
-  /*background-image: linear-gradient( 65.5deg,  rgba(23,205,205,1) -15.1%, rgba(23,25,95,1) 71.5% );*/
-  /*background-image: linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% );*/
-  /*background-image: radial-gradient( circle farthest-corner at -4% -12.9%,  rgba(74,98,110,1) 0.3%, rgba(30,33,48,1) 90.2% );*/
-  /*background-image: radial-gradient( circle farthest-corner at 6.6% 12%,  rgba(64,0,126,1) 20.8%, rgba(0,255,160,1) 100.2% );*/
-  /*background-image: linear-gradient( 89.7deg,  rgba(0,0,0,1) -10.7%, rgba(53,92,125,1) 88.8% );*/
-  background-image: linear-gradient( 181deg,  rgba(2,0,97,1) 15%, rgba(97,149,219,1) 158.5% );
-
-  min-height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #274c5e;
-  font-family: Sora, "sans-serif";
-  line-height: 1.7;
-  color: var(--light);
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.main {
-  justify-content: center;
-}
-
-/*style="font-size: 16px; opacity: 0.7"*/
-
+    
 .MainDescription {
-  max-width: 50%;
-  font-size: 1.2rem;
-  font-weight: lighter;
-}
-
-.MainGraphic {
-  position: relative;
-}
-
-.shuttle {
-  width: 5rem;
-  height: 5rem;
-  margin: 10rem;
-  transition: easeInOutQuint();
-  animation: CogAnimation 30s linear infinite;
-}
-
-.astronaut {
-  width: 15rem;
-  height: 15rem;
-  transition: easeInOutQuint();
-  animation: CogAnimation2 25s linear infinite;
-}
-
-.world {
-  width: 10rem;
-  height: 10rem;
-  transition: easeInOutQuint();
-  animation: CogAnimation2 123s infinite;
-}
-
-@keyframes CogAnimation {
-  0% {
-    transform: rotate(-360deg);
+    max-width: 50%;
+    font-size: 1.2rem;
+    font-weight: lighter;
   }
-  100% {
-    transform: rotate(0deg);
-  }
-}
 
-@keyframes CogAnimation2 {
-  0% {
-    transform: rotate(360deg);
+  .MainDescription h1, p{
+    color: #fff;
   }
-  100% {
-    transform: rotate(0deg);
+
+  .MainTitle{
+      color: #fff;
   }
-}
+
+  
+  .error-500{
+    position:fixed;
+    left:100px;
+    bottom:100px;
+  }

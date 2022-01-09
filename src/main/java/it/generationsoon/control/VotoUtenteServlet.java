@@ -55,13 +55,13 @@ public class VotoUtenteServlet extends HttpServlet {
 				votoUtenteFilmService.update(filmId, utenteId, voto);
 				response.sendRedirect("index.html");
 			} else {
-				response.sendRedirect("500.html");
+				response.sendRedirect("500.jsp");
 			}
 			
 			
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
-			response.sendRedirect("500.html");
+			response.sendRedirect("500.jsp");
 		}			
 	}
 

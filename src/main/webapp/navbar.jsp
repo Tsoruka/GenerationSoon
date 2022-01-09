@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<!-- Riferimenti alla taglib core <3 -->
+<%@ page isELIgnored="false" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- /////////////////////////////// -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +18,13 @@
     <!-- Styles CSS -->
     <link rel="stylesheet" href="css/header.css">
 
-    <link rel="shortcut icon" href="img/icons/logo.svg" type="image/x-icon">
     <title>Grezzo Soon</title>
 </head>
 <body>
 
     <!-- Header -->
     <header class="header">
-        <a href="index.html" class="logo"><img src="img/GrezzoSoon.png"></a>
+        <a href="index.html" class="logo"><img src="img/grezzo.png"></a>
             <nav class="nav-links">
                 <ul>
                     <li><form action="home.jsp">
