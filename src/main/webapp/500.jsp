@@ -12,6 +12,11 @@
 	<!-- Styles CSS -->
 	<link rel="stylesheet" href="css/500.css">
 	
+	<!-- LOGO formato icona per finestra di navigazione web -->
+    <!-- i dettagli fanno la differenza -->
+    <link rel="icon" href="img/logo-grezzo.png" type="image/x-icon" />
+    <!-- ////////////////////////////////////////////////// -->
+	
 	<meta charset="ISO-8859-1">
 	<title>Errore 500</title>
 </head>

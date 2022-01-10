@@ -19,6 +19,11 @@
 	<!-- Styles CSS -->
 	<link rel="stylesheet" href="css/lista-attori.css">
 	
+	<!-- LOGO formato icona per finestra di navigazione web -->
+    <!-- i dettagli fanno la differenza -->
+    <link rel="icon" href="img/logo-grezzo.png" type="image/x-icon" />
+    <!-- ////////////////////////////////////////////////// -->
+	
 	<meta charset="ISO-8859-1">
 	<title>Lista Attori</title>
 </head>
@@ -26,6 +31,13 @@
 
 	<!--NAVBAR GREZZO SOON -->
 	<%@ include file="navbar.jsp" %>
+	
+	<!-- Wrapper -->
+    <div class="wrapper">
+    <!-- //////// -->
+	
+	<!--CERCA FILM PER TITOLO -->
+	<%@ include file="cerca_attore.jsp" %>
 
 	<!--LISTA ATTORI-->
     <section class="attori container">
@@ -47,9 +59,13 @@
           </form>
 		</c:forEach>
 
-   </div>
- </section>
-
+   		</div>
+ 	  </section>
+ 
+ 
+	<!-- //////////// -->
+	</div>    
+	<!-- END Wrapper -->
 	
 	<!--FOOTER @James Davey Design -->
 	<%@ include file="footer.html" %>

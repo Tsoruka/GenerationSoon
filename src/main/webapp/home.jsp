@@ -12,6 +12,11 @@
 <meta charset="ISO-8859-1">
 <title>Home</title>
 
+	<!-- LOGO formato icona per finestra di navigazione web -->
+    <!-- i dettagli fanno la differenza -->
+    <link rel="icon" href="img/logo-grezzo.png" type="image/x-icon" />
+    <!-- ////////////////////////////////////////////////// -->
+
 	<!-- jQuery Api -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -42,6 +47,8 @@
   
   
     <!-- Wrapper -->
+    <div class="wrapper">
+    <!-- //////// -->
     
       <!-- Slide Carousel -->
       <div class="slide-carousel" id="one">
@@ -59,7 +66,9 @@
       </div>
     </div>
     
-
+	<!-- //////////// -->
+	</div>    
+	<!-- END Wrapper -->
 
 <%@ include file="footer.html" %>
 
