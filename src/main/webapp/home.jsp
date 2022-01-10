@@ -48,13 +48,14 @@
         <div class="arrow-left">&lsaquo;</div>
         <div class="arrow-right">&rsaquo;</div>
 
-        <div class="slides">
-          <div class="slide" id="slide1"><span class="title"></span></div>
-          <div class="slide" id="slide2"><span class="title"></span></div>
-          <div class="slide" id="slide3"><span class="title"></span></div>
-          <div class="slide" id="slide4"><span class="title"></span></div>
-          <div class="slide" id="slide5"><span class="title"></span></div>
-    	
+        <div class="slides" > 
+       <!-- il carousel è collegato con le pagine tramite href, non avendo in database questi film, non corrispondono correttamente ma una volta popolato il database basta cambiare l'id del filmId  -->
+          <div class="slide" id="slide1"> <a href="http://localhost:8080/GenerationSoon/dettaglio-film?filmId=1"><span class="title"></span></a></div> 
+          <div class="slide" id="slide2"><a href="http://localhost:8080/GenerationSoon/dettaglio-film?filmId=2"><span class="title"></span></a></div>
+          <div class="slide" id="slide3"><a href="http://localhost:8080/GenerationSoon/dettaglio-film?filmId=3"><span class="title"></span></a></div>
+          <div class="slide" id="slide4"><a href="http://localhost:8080/GenerationSoon/dettaglio-film?filmId=4"><span class="title"></span></a></div>
+          <div class="slide" id="slide5"><a href="http://localhost:8080/GenerationSoon/dettaglio-film?filmId=5"><span class="title"></span></a></div>
+    	 		
       </div>
     </div>
     
