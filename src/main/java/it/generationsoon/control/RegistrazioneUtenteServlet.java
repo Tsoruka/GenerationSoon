@@ -50,11 +50,13 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
 				session.setAttribute("username", utente.getUsername());
 				session.setAttribute("idUtente", utente.getId());
 				response.sendRedirect("login.jsp");
-//			} else if (controlloEmail.equals(utente.getEmail()) && controlloUsername == null) {
-//				response.sendRedirect("registrazione.jsp?errorUtenteEmail");
-//			} else if (controlloUsername.equals(utente.getUsername()) || controlloEmail == null) {
-//				response.sendRedirect("registrazione.jsp?errorUtenteUser");
-			} else if(controlloEmail.equals(utente.getEmail()) && controlloUsername.equals(utente.getUsername())) {
+			} 	
+			else if (controlloEmail.equals(utente.getEmail()) && controlloUsername.equals("error")) {
+				response.sendRedirect("registrazione.jsp?errorUtenteEmail");
+			} else if (controlloUsername.equals(utente.getUsername()) && controlloEmail.equals("error")) {
+				response.sendRedirect("registrazione.jsp?errorUtenteUser");
+			} 
+			else if(controlloEmail.equals(utente.getEmail()) && controlloUsername.equals(utente.getUsername())) {		
 				response.sendRedirect("registrazione.jsp?errorUtente");
 			}
 		} catch (ServiceException e) {

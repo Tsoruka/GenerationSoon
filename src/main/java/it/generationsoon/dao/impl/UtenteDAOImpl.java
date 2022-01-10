@@ -154,7 +154,9 @@ public class UtenteDAOImpl implements UtenteDAO {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
 		}
-		return usernameInUso;
+		if (usernameInUso!=null) {
+		return usernameInUso;}
+		else {return "error";}
 	}
 
 	@Override
@@ -178,7 +180,10 @@ public class UtenteDAOImpl implements UtenteDAO {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
 		}
+		if (emailInUso!=null) {
 		return emailInUso;
+		}
+		else {return "error";}
 	}
 
 }
