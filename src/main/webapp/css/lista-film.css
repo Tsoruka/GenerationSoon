@@ -12,6 +12,17 @@ section {
   padding: 3rem 0 2rem;
 }
 
+
+button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+
 .movie-box {
   position: relative;
   width: 100%;
