@@ -124,7 +124,7 @@
            
             <!--error message-->       
             <p style="font-size: 16px; opacity: 0.7">
-            Vai alla nostra <a href="index.html">home page</a>, o usa il menù soprastante per navigare in una specifica sezione.</p>
+            Vai alla nostra <a style="color: #5a86d3; text-decoration: underline;" href="index.html">home page</a>, o usa il menù soprastante per navigare in una specifica sezione.</p>
         </div>
 	
 	<!-- /////////////// -->

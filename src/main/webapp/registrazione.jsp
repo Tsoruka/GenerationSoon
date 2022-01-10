@@ -34,28 +34,28 @@
 
 	<!-- FRECCIA PER TORNARE A MENU PRINCIPALE -->
 	<div class="encircle">
-     <a href="login.jsp"> <div class="arrow"></div></a>
+     <a href="home.jsp"> <div class="arrow"></div></a>
     </div>
 
-	<!-- REGISTRAZIONE (PROVVISORIO) FORM --> 
-    <section class="vh-100 gradient-custom">
-    
+	<!-- REGISTRAZIONE FORM --> 
       <div class="container py-5 h-100">
-        <div
-          class="row d-flex justify-content-center align-items-center h-50 contenitore"
-        >
+        <div class="row d-flex justify-content-center align-items-center h-100">
+        
           <div class="col-10 col-sm-10 col-md-8 col-lg-6 col-xl-5">
             <div style="border-radius: 1rem; background-color: none">
+  
               <div class="card-body p-5">
                 <div class="mb-md-5 mt-md-4">
+                
                   <img
                     src="img/grezzo.png"
                     class="rounded mx-auto d-block properties"
                     alt="..."
                   />
+                  
                   <h2 class="fw-bold mb-2">Registrazione</h2>
                   <p class="text-dark-50 mb-4">
-                    Inserisci i tuoi dati per registrarti!
+                    Inserisci i tuoi dati per registrarti
                   </p>
                   
                   <!-- FORM COLLEGAMENTO SERVLET -->
@@ -63,14 +63,13 @@
 				  <!-- ///////////////////////// -->
 				  
 					
-                  <div class="form-outline form-white mb-4">
-                    <input
-                      type="text"
+                  <div class=" form-white row mb-4">
+                    <div class="col">
+                      <input type="text" 
                       name="nome"
-                      class="form-control form-control-lg"
-                      placeholder="Nome"
-                    />
-                  </div>
+                      class="form-control" 
+                      placeholder="Nome">
+                    </div>
                   	 <!-- My error - taglib core <3 -->
                      <c:if test="${errorNome != null}">
                   	<p class="my-error">${errorNome}</p>
@@ -78,20 +77,18 @@
                     <!-- ////////////////////////// -->
                   
 
-                  <div class="form-outline form-white mb-4">
-                    <input
-                      type="text"
+                  <div class="col">
+                      <input type="text" 
                       name="cognome"
-                      class="form-control form-control-lg"
-                      placeholder="Cognome"
-                    />
-                  </div>
+                      class="form-control" 
+                      placeholder="Cognome">
+                    </div>
                  <!-- My error - taglib core <3 -->
                   <c:if test="${errorCognome != null}">
                   	<p class="my-error">${errorCognome}</p>
                   </c:if>
                   <!-- ////////////////////////// -->
-                 
+                 </div>
                   
 				  <div class="form-outline form-white mb-4">
                     <input
@@ -159,14 +156,27 @@
                   </button>
 				 <!-- chiusura FORM per collegamento a servlet -->
                   </form>
-                 <!-- //////////////////////////////////////// -->
+                 <!-- //////////////////////////////////////// --> 
+                  </div>
                   
-                </div>
+                 <p class="mb-0 margine">
+                    Sei già registrato? 
+                    <a
+                      href="login.jsp"
+                      class="text-dark-50 fw-bold registrati"
+                      style="color: #f9f9f9"
+                      >Accedi</a>
+                </p>	
+              
+                  
+                  
+                  	
+                
             </div>
           </div>
         </div>
       </div>
-    </section>
+    
     
 </body>
 </html>
