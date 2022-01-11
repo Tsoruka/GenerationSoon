@@ -40,6 +40,7 @@ body {
   border: solid red;
 }
 
+
 .margine {
   margin-bottom: 100px;
 }
@@ -184,6 +185,10 @@ body {
   margin-right: 3px;
 }
 
+.scritta-rating{
+	line-height: 0;
+}
+
 .separatore {
   border: 1px;
   border-bottom-style: solid;
@@ -250,7 +255,26 @@ body {
 }
 
 .cast-title {
-  line-height: 2.25rem;
+  line-height: 1.5rem;
+  font-family: "Avenir LT Pro", sans-serif;
+  letter-spacing: 0.1em;
+  color: white;
+  font-size:16px;
+}
+
+.cast-ruolo {
+  color: hsl(0, 0%, 77%);
+  letter-spacing: 0.01786em;
+  line-height: 1.25rem;
+}
+
+button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
 }
 
 /*TRAILER*/

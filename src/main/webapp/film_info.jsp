@@ -6,6 +6,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- /////////////// -->
 
+<!-- TAGLIB FORMAT per avere la prima cifra significativa dopo la virgola (double mediaVotiUtente)  -->  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////  -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,51 +103,49 @@
         <img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/prove/play-page/jumanji.jpg" alt="" class="play-img" />
         <!-- Play text-->
         <div class="play-text">
-          <h2>${film.titolo}: Benvenuti nella Giungla</h2>
+          <h2>${film.titolo}</h2>
           <div class="anno__durata">
             <span class="anno">${film.anno}</span>
             <span>-</span>
             <span class="durata">${film.durata} minuti</span>
           </div>
-          <!--Rating-->
-          <!--<div class="rating">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>-->
-          <div id="rating_bar">
-            <span id="rate_1"></span>
-            <span id="rate_2"></span>
-            <span id="rate_3"></span>
-            <span id="rate_4"></span>
-            <span id="rate_5"></span>
-            
-            
+          
+          <!--Media Voti Utenti-->
+          <div id="rating">
+          	<h4>Grezzo Soon Rating</h4>
+            <i class="far fa-star" style="color: #ffcc00"></i>
+			<span class="scritta-rating">
+			<fmt:formatNumber type="number" maxFractionDigits="1" minFractionDigits="1" value="${film.mediaVoti}"/>
+			</span>
+			<span>/10</span> 
+			
+			 
+			<button type="button" class="bn3637 bn38" onclick="scrollVoto()">
+            Vota ora!
+          	</button>
           </div>
+
           <!--Tags-->
           <div class="tags">
             <span class="genere">${film.genere.value}</span>
           </div>
           <!--Trailer Button-->
           <!--SCRIPT PER ANDARE GIù-->
-          <button type="button" class="bn3637 bn38" onclick="scrollWin()">
+          <button type="button" class="bn3637 bn38" onclick="scrollTrailer()">
             Guarda il trailer
           </button>
           
+          <!--
           <form action="voto-utente" method="post">
 	
-	<!-- solo a titolo esplicativo -->
+	 solo a titolo esplicativo 
 	<p>idUtente in session => ${sessionScope.idUtente}</p>
-	<p>film id => ${film.id} </p>
-	<!-- ///////////////////////// -->
-			
+	<p>film id => ${film.id} </p>		
 		<input type="hidden" name="utenteId" value="${sessionScope.idUtente}">
 		<input type="hidden" name="filmId" value="${film.id}">
 		<input type="text" name="voto" placeholder="8"> /10
 		<input type="submit" name="Dai un voto">
-	</form>
+	</form> -->
         </div>
       </div>
       <!--About-->
@@ -196,32 +198,21 @@
         <!--CAST-->
         <h2 class="cast-heading">CAST</h2>
         <div class="cast">
-          <div class="cast-box">
-            <img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/prove/play-page/cast1.jpg" alt="" class="cast-img" />
-            <span class="cast-title">Dwayne Johnson</span>
-          </div>
-          <div class="cast-box">
-            <img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/prove/play-page/cast2.jpg" alt="" class="cast-img" />
-            <span class="cast-title">Karen Gillan</span>
-          </div>
-          <div class="cast-box">
-            <img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/prove/play-page/cast3.jpg" alt="" class="cast-img" />
-            <span class="cast-title">Kevin Heart</span>
-          </div>
-          <div class="cast-box">
-            <img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/prove/play-page/cast4.jpg" alt="" class="cast-img" />
-            <span class="cast-title">Jack Black</span>
-          </div>
-          <div class="cast-box">
-            <img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/prove/play-page/cast5.jpg" alt="" class="cast-img" />
-            <span class="cast-title">Nick Jonas</span>
-          </div>
-          <div class="cast-box">
-            <img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/prove/play-page/cast6.jpg" alt="" class="cast-img" />
-            <span class="cast-title">Madison Iseman</span>
-          </div>
+        
+        <c:forEach items="${film.attori}" var="cast">
+		<form action="dettaglio-attore" method="get">
+			<button class="cast-box" name="attoreId" value="${cast.attore.id}">
+				<img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/prove/play-page/cast1.jpg" alt="" class="cast-img" />
+				<span class="cast-title">${cast.attore.nome} ${cast.attore.cognome}</span>
+				<span class="anno">as <i>${cast.nomeRuolo}</i></span>
+			</button>
+		</form>
+		
+		</c:forEach>
         </div>
       </div>
+      
+       <!--TRAILER FILM-->
       <div>
         <div class="video-container">
           <iframe
@@ -246,9 +237,13 @@
 	
 	<!--JAVASCRIPT per bottone guarda trailer-->
     <script>
-      function scrollWin() {
+      function scrollTrailer() {
         window.scrollTo(0, 1500);
       }
+      
+      function scrollVoto() {
+          window.scrollTo(0, 1800);
+        }
     </script>
 	
 	 

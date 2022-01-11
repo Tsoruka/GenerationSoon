@@ -8,6 +8,15 @@
     border: solid rgba(1, 228, 209, 0.671);
 }
 
+button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
 .attori-content{
   
     display: grid;
@@ -82,16 +91,6 @@ section{
   object-fit: cover;
 }
 
-
-
-button {
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-}
 
 .attore-card .box-text {
   position: absolute;

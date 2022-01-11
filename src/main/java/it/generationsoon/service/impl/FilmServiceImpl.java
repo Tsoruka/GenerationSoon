@@ -1,8 +1,11 @@
 package it.generationsoon.service.impl;
 
 import java.sql.Connection;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import it.generationsoon.dao.DAOException;
 import it.generationsoon.dao.DBUtil;
@@ -42,7 +45,16 @@ public class FilmServiceImpl implements FilmService  {
 			DBUtil.setAutoCommit(connection, false);
 			film = filmDAO.findById(connection, id);
 			//richiamo la DAO corrispondente alla tabella voto_film
-			film.setMediaVoti(votoUtenteFilmDAO.mediaVotoFilm(connection, id));
+			double mediaVotoFilm = votoUtenteFilmDAO.mediaVotoFilm(connection, id);
+			//formattazione media voto alla prima cifra significativa 
+			
+//			DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.ITALIAN);
+//			otherSymbols.setDecimalSeparator(',');
+//			otherSymbols.setGroupingSeparator('.'); 
+//			DecimalFormat df = new DecimalFormat("0.0", otherSymbols);
+
+			film.setMediaVoti(mediaVotoFilm);
+			
 			Genere genere = genereDAO.findById(connection, film.getGenere().getId());
 			Regista regista = registaDAO.findById(connection, film.getRegista().getId());
 			
