@@ -75,9 +75,58 @@ public class RuoloDAOImpl implements RuoloDAO {
 		}
 		return cast;
 	}
+
+	@Override
+	public List<Ruolo> findFilmByAttoreId(Connection connection, int attoreid) throws DAOException {
+		List<Ruolo> film = new ArrayList<Ruolo>();
+		String sql = "select attore_film.id, attore_film.attore_id, attore_film.film_id, film.titolo, film.foto from film join attore_film on film.id = attore_film.Film_id where attore_film.Attore_id =  ?";
+		System.out.println(sql);
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			statement = connection.prepareStatement(sql);
+			//setta id del film (in session) per recuperare il cast di quel film 
+			//sostituire il "?" della query con filmId
+			statement.setInt(1, attoreid);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				Ruolo ruolo = new Ruolo();
+				//col (1) - id tabella Attore_Film
+				ruolo.setId(resultSet.getInt(1));
+				Attore attore = new Attore();
+				//col(2) - attore_id 
+				attore.setId(resultSet.getInt(2));
+				//assegno id attore al modello di Ruolo 
+				//(solo id del film, lascio gli altri spazi vuoti) 
+				ruolo.setAttore(attore);
+				
+				Film film2 = new Film();
+				//col(3) - film_id
+				film2.setId(resultSet.getInt(3));
+				
+				//col(4) - titolo del film in cui l'attore è presente  
+				film2.setTitolo(resultSet.getString(4));
+				film2.setFoto(resultSet.getString(5));
+				//(lascio gli altri spazi vuoti) 
+				ruolo.setFilm(film2);
+				
+				//aggiorna lista di ruoli 
+				film.add(ruolo);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return film;
+	}
+	}
 	
 
-}
+
 
 
 
