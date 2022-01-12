@@ -58,7 +58,7 @@ public class VotoUtenteServlet extends HttpServlet {
 				response.sendRedirect("trova-tutti-film");
 			} else if(controllo > 0) {
 				votoUtenteFilmService.update(filmId, utenteId, voto);
-				response.sendRedirect("index.html");
+				response.sendRedirect("home.jsp");
 			} else {
 				response.sendRedirect("500.jsp");
 				

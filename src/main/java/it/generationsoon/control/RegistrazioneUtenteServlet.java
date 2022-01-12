@@ -43,7 +43,7 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
 		try {
 			String controlloUsername = utenteService.usernameInUso(utente.getUsername());
 			String controlloEmail = utenteService.emailInUso(utente.getEmail());
-			if (controlloEmail == "error" && controlloUsername == "error") {
+			if (controlloEmail == "ok123" && controlloUsername == "ok123") {
 				utenteService.save(utente);
 
 				session.setAttribute("utente", utente);
@@ -51,9 +51,9 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
 				session.setAttribute("idUtente", utente.getId());
 				response.sendRedirect("login.jsp");
 			} 	
-			else if (controlloEmail.equals(utente.getEmail()) && controlloUsername.equals("error")) {
+			else if (controlloEmail.equals(utente.getEmail()) && controlloUsername.equals("ok123")) {
 				response.sendRedirect("registrazione.jsp?errorUtenteEmail");
-			} else if (controlloUsername.equals(utente.getUsername()) && controlloEmail.equals("error")) {
+			} else if (controlloUsername.equals(utente.getUsername()) && controlloEmail.equals("ok123")) {
 				response.sendRedirect("registrazione.jsp?errorUtenteUser");
 			} 
 			else if(controlloEmail.equals(utente.getEmail()) && controlloUsername.equals(utente.getUsername())) {		

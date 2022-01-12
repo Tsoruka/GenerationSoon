@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("username", utente.getUsername());
 				
 				//REMEMBER: operare cast sui tipi HttpServletRequest 
-				response.sendRedirect("index.html");
+				response.sendRedirect("home.jsp");
 			} 
 			else if(utente!= null && utente.getPassword().equals(password)!=true) {
 				response.sendRedirect("login.jsp?errorPassword");

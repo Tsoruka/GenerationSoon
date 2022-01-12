@@ -156,7 +156,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 		}
 		if (usernameInUso!=null) {
 		return usernameInUso;}
-		else {return "error";}
+		else {return "ok123";}
 	}
 
 	@Override
@@ -183,7 +183,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 		if (emailInUso!=null) {
 		return emailInUso;
 		}
-		else {return "error";}
+		else {return "ok123";}
 	}
 
 }

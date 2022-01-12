@@ -24,7 +24,7 @@
 
     <!-- Header -->
     <header class="header" id="nav">
-      <a href="index.html" class="logo"><img src="img/grezzo.png" /></a>
+      <a href="home.jsp" class="logo"><img src="img/grezzo.png" /></a>
       <nav class="nav-links">
         <ul>
           <li>

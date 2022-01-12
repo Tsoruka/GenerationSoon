@@ -37,7 +37,7 @@ public class RicercaAttoriServelt extends HttpServlet {
 		try {
 			//creazione di un oggetto tipo film a partire dal filmService
 			//tramite metodo findById(fimId)
-	List<Attore> listaAttori = attoreService.findAll();
+			List<Attore> listaAttori = attoreService.findAll();
 			//info relative al genere del medesimo film 
 			
 			//inoltro informazioni relative al film 

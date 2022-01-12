@@ -40,7 +40,7 @@ public class TrovaFilmPerTitoloServlet extends HttpServlet {
 		try {
 			//creazione di un oggetto tipo film a partire dal filmService
 			//tramite metodo findById(fimId)
-	List<Film> listaFilm = filmService.findByTitolo(titolo);
+			List<Film> listaFilm = filmService.findByTitolo(titolo);
 			//info relative al genere del medesimo film 
 			
 			//inoltro informazioni relative al film 
