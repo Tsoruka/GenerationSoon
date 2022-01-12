@@ -45,15 +45,14 @@
       <c:forEach items="${listaAttori}" var="attore">
 		<form action="dettaglio-attore" method="get">
         
-        <button class="attore-card">
+        <button class="attore-card" name="attoreId" value="${attore.id}">
             <img
-              src="https://lofficiel.imgix.net/production/monaco/images/1606754919732485-robert-pattinson-dior-campaing-5.jpeg?w=1900&fit=crop&crop=faces&auto=%5B%22format%22%2C%20%22compress%22%5D&cs=srgb"
+              src="${attore.foto}"
               alt=""
               class="attore-card-img"
             />
             <div class="box-text">
               <h3 class="attore-name">${attore.nome} ${attore.cognome}</h3>
-              <input type="hidden" name="attoreId" value="${attore.id}">
             </div>
           </button>
           </form>

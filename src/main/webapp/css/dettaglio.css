@@ -300,11 +300,12 @@ button {
 }
 
 /*---------------------*/
-.bn3637 {
+/*VOTA ORA*/
+.bn4647 {
   display: block;
   align-items: center;
   justify-content: center;
-  padding: 0.7rem 2rem;
+  padding: 0.7rem 1rem;
   font-weight: 700;
   font-size: 1rem;
   text-align: center;
@@ -312,23 +313,24 @@ button {
   backface-visibility: hidden;
   border: 1px solid transparent;
   border-radius: 1px;
-  width: 180px;
+  width: 9.5em;
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.15em;
+  margin-top: 15px;
 }
-.bn38 {
+.bn48 {
   border-color: #fff;
   transition: background-color 0.3s ease-in-out;
 }
 
-.bn38:hover {
+.bn48:hover {
   /*background-color: #60605e;*/
   cursor: pointer;
 }
 
-.bn3637:after {
+.bn4647:after {
   bottom: 0;
   content: "";
   display: block;
@@ -338,10 +340,21 @@ button {
   background: #fff;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
+  margin-left: 5px;
 }
-.bn3637:hover:after {
-  width: 100%;
+.bn4647:hover:after {
+  width: 90%;
   left: 0;
+}
+
+details summary {
+  list-style: none;
+}
+details summary:focus {
+  outline: none;
+}
+details summary::-webkit-details-marker {
+  display: none;
 }
 
 

@@ -15,6 +15,7 @@
 <head>
 	<!-- Styles CSS -->
 	<link rel="stylesheet" href="css/dettaglio.css">
+	<link rel="stylesheet" href="css/modal-voto.css">
 	
 	<!-- LOGO formato icona per finestra di navigazione web -->
     <!-- i dettagli fanno la differenza -->
@@ -46,7 +47,7 @@
 	<main class="info-film margine">
       <div class="video-container play-container container">
         <!-- Play img-->
-        <img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/prove/play-page/jumanji.jpg" alt="" class="play-img" />
+        <img src="${film.fotoGrande}" alt="" class="play-img" />
         <!-- Play text-->
         <div class="play-text">
           <h2>${film.titolo}</h2>
@@ -56,31 +57,91 @@
             <span class="durata">${film.durata} minuti</span>
           </div>
           
-          <!--Media Voti Utenti-->
-          <div style="justify-content: center;">
-           <div style="float: left;">
-          	<h4>Grezzo Soon Rating</h4>
-            <i class="far fa-star" style="color: #ffcc00"></i>
-			<span class="scritta-rating">
-			<fmt:formatNumber type="number" maxFractionDigits="1" minFractionDigits="1" value="${film.mediaVoti}"/>
-			</span>
-			<span>/10</span> 
-			 </div>
-          <div style="float: left; padding-left: 20px;"> 
-			<button type="button" class="bn3637 bn38" onclick="scrollVoto()">
-            Vota ora!
-          	</button>
-          </div>
-        </div>
-          
-          
-          
-          
-
           <!--Tags-->
-          <div class="tags">
-            <span class="genere">${film.genere.value}</span>
-          </div>
+            <div class="tags">
+              <span class="genere">${film.genere.value}</span>
+            </div>
+          
+          
+          <!--Media Voti Utenti-->
+            <div id="rating">
+              <div>
+                <span class="grezzo-rating">GrezzoSoon Rating </span>
+                <i class="far fa-star" style="color: #ffcc00"></i>
+                <span class="scritta-rating">
+                  <fmt:formatNumber
+                    type="number"
+                    maxFractionDigits="1"
+                    minFractionDigits="1"
+                    value="${film.mediaVoti}"
+                  />
+                </span>
+                <span>/10</span>
+              </div>
+            </div>
+            
+            
+            <!--VOTO FILM MODAL-->
+            <button
+              type="button"
+             
+              class="bn4647 bn48"
+            >
+              Vota ora!
+            </button>
+            <button type="button" class="bn3637 bn38"  data-modal-target="#modal">
+            Vota ora!
+          </button>
+            
+            <div class="modal" id="modal">
+              <div class="modal-header">
+                <div class="title">
+                  <img class="logo-modal" src="grezzo_png_white.png" alt="" />
+                </div>
+                <button data-close-button class="close-button">&times;</button>
+              </div>
+              <div class="modal-body">
+                <span>INSERISCI IL TUO VOTO</span>
+              </div>
+              <!---->
+              <div class="modal-body">
+                <!--<input class="label-modal" type="tel" id="voto" name="voto" />-->
+                <form action="">
+                  <select
+                    name=""
+                    id="label-modal"
+                    ,
+                    onfocus="this.size=5;"
+                    onblur="this.size=1;"
+                    onchange="this.size=1;"
+                  >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                </form>
+                <!---->
+                <span class="voto-max">/10</span>
+                <i class="fa fa-star star-modal" style="color: #ffcc00"></i>
+              </div>
+
+              <div class="modal-body">
+                <button class="invia">INVIA</button>
+              </div>
+            </div>
+
+            <!--POP-UP-->
+            <div id="overlay"></div>
+            
+
+          
           <!--Trailer Button-->
           <!--SCRIPT PER ANDARE GIù-->
           <button type="button" class="bn3637 bn38" onclick="scrollTrailer()">
@@ -160,7 +221,7 @@
         <c:forEach items="${film.attori}" var="cast">
 		<form action="dettaglio-attore" method="get">
 			<button class="cast-box" name="attoreId" value="${cast.attore.id}">
-				<img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/prove/play-page/cast1.jpg" alt="" class="cast-img" />
+				<img src="${cast.attore.foto}" alt="" class="cast-img" />
 				<span class="cast-title">${cast.attore.nome} ${cast.attore.cognome}</span>
 				<span class="anno">as <i>${cast.nomeRuolo}</i></span>
 			</button>
@@ -176,7 +237,7 @@
           <iframe
             width="100%"
             height="900"
-            src="https://www.youtube.com/embed/L7B1OYlD9q8"
+            src="${film.trailer}"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -196,13 +257,12 @@
 	<!--JAVASCRIPT per bottone guarda trailer-->
     <script>
       function scrollTrailer() {
-        window.scrollTo(0, 1500);
+        window.scrollTo(0, 1650);
       }
-      
-      function scrollVoto() {
-          window.scrollTo(0, 1800);
-        }
     </script>
+    
+    <!-- JS -->
+    <script src="js/modal-script.js"></script>
 	
 	 
 </body>

@@ -1,0 +1,133 @@
+@charset "ISO-8859-1";
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px #11131b;
+  border-radius: 5px;
+  z-index: 10;
+  background-image: linear-gradient(
+    -135.1deg,
+    rgba(32, 38, 57, 1) 1.2%,
+    rgb(55, 66, 102) 52.4%,
+    rgba(32, 38, 57, 1) 111.2%,
+    rgba(32, 38, 57, 1) 11.2%
+  );
+  width: 500px;
+  max-width: 80%;
+  z-index: 1000;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  padding: 10px 15px 0px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-header .close-button {
+  color: rgb(148, 147, 147);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-header .close-button:hover {
+  color: white;
+}
+
+.modal-body {
+  padding: 0px 15px 10px 15px;
+  display: flex;
+  justify-content: center;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.8); /*sfondo dietro*/
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.logo-modal {
+  width: 50px;
+  margin-top: 5px;
+}
+
+.voto-modal {
+  font-weight: 800;
+}
+
+.label-modal,
+#label-modal {
+  width: auto;
+  border-radius: 5px;
+  background-color: rgb(49, 52, 62);
+  color: white;
+  font-size: 2.5em;
+}
+#voto {
+  font-weight: bold;
+}
+.star-modal {
+  padding-top: 2px;
+  font-size: 35px;
+}
+
+.voto-max {
+  margin: -2px 17px 0px 8px;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.invia {
+  color: #fff;
+  background-image: linear-gradient(
+    150.1deg,
+    rgb(16, 19, 29) 42.2%,
+    rgba(32, 38, 57, 1) 35.2%,
+    rgb(23, 27, 39) 35.2%,
+    rgb(16, 19, 29) 11.2%
+  );
+
+  background-color: #181926;
+  width: flex;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 999em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: 0px;
+  margin-bottom: 18px;
+}

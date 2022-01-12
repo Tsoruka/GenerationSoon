@@ -9,56 +9,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.p{
- color: white;
-}
-
-</style>
-<meta charset="ISO-8859-1">
-<title>Attore info</title>
+	<!-- Styles CSS -->
+	<link rel="stylesheet" href="css/dettaglio.css">
+	
+	<!-- LOGO formato icona per finestra di navigazione web -->
+    <!-- i dettagli fanno la differenza -->
+    <link rel="icon" href="img/logo-grezzo.png" type="image/x-icon" />
+    <!-- ////////////////////////////////////////////////// -->
+    
+	<meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Attore info</title>
 </head>
 <body>
 
-<%@ include file="navbar.jsp" %>
+	<!--NAVBAR GREZZO SOON -->
+	<%@ include file="navbar.jsp" %>
 
+	<!-- Wrapper -->
+    <div class="wrapper">
+    <!-- //////// -->
 	
-	<div class ="p">
-	<p style="text-align: justify;" >
-	<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQynIAJReBEhr6FGTQHQkIo0jmfWLY07G0J7qMOUQow9hBHf-Ad" width="400px" height="500px"  style="float: left; margin-right: 10px; margin-bottom: 10px;"/>
-	<h1>Nome: ${attore.nome} ${attore.cognome}</h1>
-	<h3>Data di nascita: ${attore.dataDiNascita}</h3>
-	<h3>Luogo di nascita: ${attore.luogoDiNascita}</h3>
-	<h3>Data di decesso: ${attore.dataDiDecesso}</h3>
-	<h3>Biografia: ${attore.biografia}</h3>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h3>Film: </h3>
-	<c:forEach items="${attore.film}" var="presente">
+	<!--DETTAGLIO ATTORE -->
+	<main class="info-film margine">
+
+      <div class="info-container container">
+
+        <div class="row">
+          <!-- FOTO ATTORE -->
+          <div class="column" style="padding-top: 2rem;">
+            <img
+            src="${attore.foto}"
+            alt=""
+            class="attore-img"
+            /> 
+          </div>
+          <div class="column" style="padding-left: 1.5rem; padding-right: 3rem;">
+            
+            <!-- ABOUT ATTORE -->
+            <div class="contenitore__testo">
+              <div>
+                <span class="scritta">Nome : </span>
+                <span class="info">${attore.nome} ${attore.cognome}</span>
+              </div>
+              <div >
+                <span class="scritta">Data di nascita : </span>
+                <span class="info"> ${attore.dataDiNascita}</span>
+              </div>
+              <div >
+                <span class="scritta">Luogo di nascita : </span>
+                <span class="info">${attore.luogoDiNascita}</span>
+              </div>
+              <div >
+                <span class="scritta">Data di decesso : </span>
+                <span class="info">${attore.dataDiDecesso}</span>
+              </div>
+              
+              <div >
+                <h2>Biografia</h2>
+                <span class="descrizione-film">
+                  ${attore.biografia}
+                </span>
+              </div>
+              
+            </div>
+
+
+          </div>
+        </div>
+
+          
+
+        <!--FILMOGRAFIA-->
+        <h2 class="cast-heading">FILMOGRAFIA</h2>
+        <div class="cast">
+          
+        <c:forEach items="${attore.film}" var="presente">
 		<form action="dettaglio-film" method="get">
-		<button style="cursor:pointer;" type="submit">
-		<p>${presente.film.titolo} </p>
-			<img src="${presente.film.foto}" width="400px" height="500px">
-			<input type="hidden" name="filmId" value="${presente.film.id}">
-		</button>
-		</form>	
-	</c:forEach>
-	</div>	
+			<button class="cast-box" name="attoreId" value="${presente.film.id}">
+				<img src="${presente.film.foto}" alt="" class="cast-img" />
+				<span class="cast-title">${presente.film.titolo}</span>
+			</button>
+		</form>
+		</c:forEach>
+          
+        </div>
+      </div>
+      <div>
+     
+    </main>
+	
+	
+	
+	
+	<!-- //////////// -->
+	</div>    
+	<!-- END Wrapper -->
+
+	<!--FOOTER @James Davey Design -->
+	<%@ include file="footer.html" %>
+	
 	
 </body>
 </html>

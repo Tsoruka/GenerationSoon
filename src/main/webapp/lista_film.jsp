@@ -49,7 +49,7 @@
 		<form action="dettaglio-film" method="get">
 			<button class="movie-box">
               <img
-                src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/img/avventura/ai%20confini%20del%20mondo.jpg"
+                src="${film.foto}"
                 alt=""
                 class="movie-box-img"
               />
