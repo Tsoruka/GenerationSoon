@@ -101,9 +101,9 @@
               <!---->
               <div class="modal-body">
                 <!--<input class="label-modal" type="tel" id="voto" name="voto" />-->
-                <form action="">
+                <form action="voto-utente" method="post">
                   <select
-                    name=""
+                    name="voto"
                     id="label-modal",
                     onfocus="this.size=5;"
                     onblur="this.size=1;"
@@ -120,15 +120,18 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                   </select>
-                </form>
+                 <input type="hidden" name="utenteId" value="${sessionScope.idUtente}">
+				<input type="hidden" name="filmId" value="${film.id}">
+                
                 <!---->
                 <span class="voto-max">/10</span>
                 <i class="fa fa-star star-modal" style="color: #ffcc00"></i>
               </div>
 
               <div class="modal-body">
-                <button class="invia">INVIA</button>
+                <button class="invia" type="submit">INVIA</button>
               </div>
+              </form>
             </div>
 
             <!--POP-UP-->
@@ -141,21 +144,7 @@
             <button type="button" class="bn3637 bn38" onclick="scrollTrailer()">
             Guarda il trailer
           </button>
-          
-          <!--
-          <form action="voto-utente" method="post">
-	
-	 solo a titolo esplicativo 
-	<p>idUtente in session => ${sessionScope.idUtente}</p>
-	<p>film id => ${film.id} </p>		
-		<input type="hidden" name="utenteId" value="${sessionScope.idUtente}">
-		<input type="hidden" name="filmId" value="${film.id}">
-		<input type="text" name="voto" placeholder="8"> /10
-		<input type="submit" name="Dai un voto">
-	</form> -->
-	
-	
-	
+
         </div>
       </div>
       
