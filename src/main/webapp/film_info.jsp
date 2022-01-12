@@ -61,6 +61,7 @@
             <div class="tags">
               <span class="genere">${film.genere.value}</span>
             </div>
+            
           
           
           <!--Media Voti Utenti-->
@@ -82,21 +83,15 @@
             
             
             <!--VOTO FILM MODAL-->
-            <button
-              type="button"
-             
-              class="bn4647 bn48"
-            >
-              Vota ora!
-            </button>
-            <button type="button" class="bn3637 bn38"  data-modal-target="#modal">
+ 
+            <button type="button" class="bn4647 bn48"  data-modal-target="#modal">
             Vota ora!
           </button>
             
             <div class="modal" id="modal">
               <div class="modal-header">
                 <div class="title">
-                  <img class="logo-modal" src="grezzo_png_white.png" alt="" />
+                  <img class="logo-modal" src="img/grezzo.png" alt="" />
                 </div>
                 <button data-close-button class="close-button">&times;</button>
               </div>
@@ -109,12 +104,11 @@
                 <form action="">
                   <select
                     name=""
-                    id="label-modal"
-                    ,
+                    id="label-modal",
                     onfocus="this.size=5;"
                     onblur="this.size=1;"
-                    onchange="this.size=1;"
-                  >
+                    onchange="this.size=1;">
+                    
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -144,7 +138,7 @@
           
           <!--Trailer Button-->
           <!--SCRIPT PER ANDARE GIù-->
-          <button type="button" class="bn3637 bn38" onclick="scrollTrailer()">
+            <button type="button" class="bn3637 bn38" onclick="scrollTrailer()">
             Guarda il trailer
           </button>
           
@@ -257,12 +251,12 @@
 	<!--JAVASCRIPT per bottone guarda trailer-->
     <script>
       function scrollTrailer() {
-        window.scrollTo(0, 1650);
+        window.scrollTo(0, 1500);
       }
     </script>
     
     <!-- JS -->
-    <script src="js/modal-script.js"></script>
+    <script src="js/modal-voto.js"></script>
 	
 	 
 </body>

@@ -25,7 +25,7 @@ public class RuoloDAOImpl implements RuoloDAO {
 	//TODO: LISTA CAST ATTORI 
 	public List<Ruolo> findCastByFilmId(Connection connection, int filmId) throws DAOException {
 		List<Ruolo> cast = new ArrayList<Ruolo>();
-		String sql = "SELECT af.id, af.film_id, af.attore_id, af.ruolo, a.nome, a.cognome from Attore_Film AS af INNER JOIN Attore AS a ON a.id = af.Attore_id WHERE af.Film_id = ?";
+		String sql = "SELECT af.id, af.film_id, af.attore_id, af.ruolo, a.nome, a.cognome, a.foto from Attore_Film AS af INNER JOIN Attore AS a ON a.id = af.Attore_id WHERE af.Film_id = ?";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -58,6 +58,8 @@ public class RuoloDAOImpl implements RuoloDAO {
 				attore.setNome(resultSet.getString(5));
 				//col(6) - cognome attore
 				attore.setCognome(resultSet.getString(6));
+				//col(7) - foto attore
+				attore.setFoto(resultSet.getString(7));
 				
 				//assegno id, nome e cognome attore al modello di Ruolo 
 				//(lascio gli altri spazi vuoti) 

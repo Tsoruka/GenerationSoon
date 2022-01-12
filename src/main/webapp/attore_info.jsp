@@ -87,7 +87,7 @@
           
         <c:forEach items="${attore.film}" var="presente">
 		<form action="dettaglio-film" method="get">
-			<button class="cast-box" name="attoreId" value="${presente.film.id}">
+			<button class="cast-box" name="filmId" value="${presente.film.id}">
 				<img src="${presente.film.foto}" alt="" class="cast-img" />
 				<span class="cast-title">${presente.film.titolo}</span>
 			</button>

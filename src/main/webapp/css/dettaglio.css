@@ -38,9 +38,8 @@ body {
   max-width: 1280px;
   margin: auto;
   width: 100%;
-  border: solid red;
+  /*border: solid red;*/
 }
-
 
 .margine {
   margin-bottom: 100px;
@@ -49,9 +48,10 @@ body {
 .info-film {
   max-width: 1280px;
   min-width: 360px;
-  margin: auto;
+  margin: -50px auto auto auto;
+
   width: 100%;
-  /*border: solid yellow;*/
+  border: solid yellow;
   padding-bottom: 100px;
   padding-left: 10px;
   padding-right: 10px;
@@ -122,6 +122,11 @@ body {
   margin-top: 4px;
 }
 
+.grezzo-rating {
+  font-weight: 700;
+  margin-right: 10px;
+}
+
 .genere {
   display: inline-block;
   border: 2px solid white;
@@ -138,7 +143,7 @@ body {
   letter-spacing: 0.01786em;
   align-items: center;
   border-radius: 1rem;
-  cursor: pointer;
+  /*cursor: pointer;*/
   display: inline-flex;
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
@@ -184,10 +189,6 @@ body {
   display: inline-flex;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   margin-right: 3px;
-}
-
-.scritta-rating{
-	line-height: 0;
 }
 
 .separatore {
@@ -242,7 +243,7 @@ body {
   transition-duration: 300ms;
   transition-property: transform, box-shadow;
   transition-timing-function: ease-out;
-  box-shadow: rgb(0 0 0 / 90%) 0px 30px 20px -10px;
+  box-shadow: rgb(0 0 0 / 90%) 0px 20px 10px -10px;
   cursor: pointer;
 }
 
@@ -256,26 +257,10 @@ body {
 }
 
 .cast-title {
-  line-height: 1.5rem;
-  font-family: "Avenir LT Pro", sans-serif;
-  letter-spacing: 0.1em;
-  color: white;
-  font-size:16px;
-}
-
-.cast-ruolo {
-  color: hsl(0, 0%, 77%);
-  letter-spacing: 0.01786em;
-  line-height: 1.25rem;
-}
-
-button {
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
+  line-height: 2.25rem;
+    color: white;
+    
+    font-weight: 700;
 }
 
 /*TRAILER*/
@@ -297,9 +282,55 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
+  /*z-index: -1;*/
 }
 
-/*---------------------*/
+/*GUARDA IL TRAILER*/
+.bn3637 {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  background: #131313;
+  backface-visibility: hidden;
+  border: 1px solid transparent;
+  border-radius: 1px;
+  width: 180px;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  margin-top: 20px;
+}
+.bn38 {
+  border-color: #fff;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.bn38:hover {
+  /*background-color: #60605e;*/
+  cursor: pointer;
+}
+
+.bn3637:after {
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0%;
+  position: relative;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.bn3637:hover:after {
+  width: 100%;
+  left: 0;
+}
+
 /*VOTA ORA*/
 .bn4647 {
   display: block;
@@ -345,6 +376,17 @@ button {
 .bn4647:hover:after {
   width: 90%;
   left: 0;
+}
+
+
+
+button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
 }
 
 details summary {
