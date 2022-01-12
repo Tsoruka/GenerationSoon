@@ -47,7 +47,16 @@ public class LoginServlet extends HttpServlet {
 				
 				//REMEMBER: operare cast sui tipi HttpServletRequest 
 				response.sendRedirect("index.html");
-			} else {
+			} 
+			else if(utente!= null && utente.getPassword().equals(password)!=true) {
+				response.sendRedirect("login.jsp?errorPassword");
+			}
+			
+			else if(utente== null) {
+				response.sendRedirect("login.jsp?errorUser");
+			}
+			
+			else {
 				response.sendRedirect("500.jsp");
 				// TODO password errata/chiedere di reinserire dati
 			}

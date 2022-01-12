@@ -51,6 +51,9 @@
                     alt="..."
                   />
                   <h2 class="fw-bold mb-2">Accedi</h2>
+                   <c:if test="${param.errorVoto != null}">
+                  	<p class="my-error">Per votare è necessario effetttuare il login</p>
+                    </c:if>
                   <p class="text-dark-50 mb-4">
                     Inserisci i tuoi dati per accedere
                   </p>
@@ -66,6 +69,9 @@
                       class="form-control form-control-lg"
                       placeholder="Username"
                     />
+                     <c:if test="${param.errorUser != null}">
+                  	<p class="my-error">Utente non esistente</p>
+                    </c:if>
                   </div>
 
                   <div class="form-outline form-white mb-4">
@@ -75,6 +81,9 @@
                       class="form-control form-control-lg"
                       placeholder="Password"
                     />
+                    <c:if test="${param.errorPassword != null}">
+                  	<p class="my-error">Password errata</p>
+                    </c:if>
                   </div>
                   
 

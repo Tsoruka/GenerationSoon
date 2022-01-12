@@ -42,6 +42,11 @@ public class VotoUtenteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		try {
 			//richiamo idUtente salvato in session con login utente
+			if (session.getAttribute("idUtente")==null) {
+				response.sendRedirect("film_info.jsp?errorLogin");
+				response.sendRedirect("login.jsp?errorVoto");
+			}
+			else {
 			int utenteId = (Integer) session.getAttribute("idUtente");
 			
 			//variabile di controllo per scelta del tipo di voto save/update 
@@ -56,9 +61,10 @@ public class VotoUtenteServlet extends HttpServlet {
 				response.sendRedirect("index.html");
 			} else {
 				response.sendRedirect("500.jsp");
+				
 			}
 			
-			
+			}	
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
 			response.sendRedirect("500.jsp");

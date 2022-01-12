@@ -120,6 +120,8 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                   </select>
+                 
+                  
                  <input type="hidden" name="utenteId" value="${sessionScope.idUtente}">
 				<input type="hidden" name="filmId" value="${film.id}">
                 
@@ -129,7 +131,12 @@
               </div>
 
               <div class="modal-body">
+               <c:if test="${sessionScope.idUtente!=null}">
                 <button class="invia" type="submit">INVIA</button>
+                </c:if>
+                <c:if test="${sessionScope.idUtente==null}">
+                <p class="my-error">E' necessario effettuare il <a href="login.jsp">login </a> per votare</p>
+                </c:if>
               </div>
               </form>
             </div>

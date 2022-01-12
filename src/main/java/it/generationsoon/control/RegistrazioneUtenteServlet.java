@@ -43,7 +43,7 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
 		try {
 			String controlloUsername = utenteService.usernameInUso(utente.getUsername());
 			String controlloEmail = utenteService.emailInUso(utente.getEmail());
-			if (controlloEmail == null && controlloUsername == null) {
+			if (controlloEmail == "error" && controlloUsername == "error") {
 				utenteService.save(utente);
 
 				session.setAttribute("utente", utente);
