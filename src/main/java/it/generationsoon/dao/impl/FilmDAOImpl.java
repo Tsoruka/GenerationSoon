@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import it.generationsoon.dao.DAOException;
@@ -38,13 +41,32 @@ public class FilmDAOImpl implements FilmDAO{
 				film.setAnno(resultSet.getInt(4));
 				film.setDurata(resultSet.getInt(5));
 				film.setFoto(resultSet.getString(6));
-				film.setDistribuzione(resultSet.getString(7));
-				film.setPaese(resultSet.getString(8));
-				film.setDataDiUscita(resultSet.getString(9));
-				film.setGenere(Genere.fromId(resultSet.getInt(10)));
+				//aggiunta FOTO GRANDE
+				film.setFotoGrande(resultSet.getString(7));
+				film.setDistribuzione(resultSet.getString(8));
+				film.setPaese(resultSet.getString(9));
+				//format data di uscita FILM
+				String dataDB = resultSet.getString(10);
+				Date formatData = new Date();
+				//format data AAAA-MM-GG
+				SimpleDateFormat ymdFormat = new SimpleDateFormat("yyyy-MM-dd");
+				try {
+					formatData = ymdFormat.parse(dataDB);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
+				//format data GG-MM-AAAA
+				SimpleDateFormat dmyFormat = new SimpleDateFormat("dd-MM-yyyy");
+				String dataUscitaFilm = dmyFormat.format(formatData);
+				
+				film.setDataDiUscita(dataUscitaFilm);
+				//aggiunta TRAILER
+				film.setTrailer(resultSet.getString(11));
+				film.setGenere(Genere.fromId(resultSet.getInt(12)));
 				//preso genere con metodo fromId
 				Regista regista = new Regista();
-				regista.setId(resultSet.getInt(11));
+				regista.setId(resultSet.getInt(13));
 				film.setRegista(regista);
 				
 				
@@ -84,12 +106,16 @@ public class FilmDAOImpl implements FilmDAO{
 				film.setAnno(resultSet.getInt(4));
 				film.setDurata(resultSet.getInt(5));
 				film.setFoto(resultSet.getString(6));
-				film.setDistribuzione(resultSet.getString(7));
-				film.setPaese(resultSet.getString(8));
-				film.setDataDiUscita(resultSet.getString(9));
-				film.setGenere(Genere.fromId(resultSet.getInt(10)));
+				//aggiunta FOTO GRANDE
+				film.setFotoGrande(resultSet.getString(7));		
+				film.setDistribuzione(resultSet.getString(8));
+				film.setPaese(resultSet.getString(9));
+				film.setDataDiUscita(resultSet.getString(10));
+				//aggiunta TRAILER
+				film.setTrailer(resultSet.getString(11));
+				film.setGenere(Genere.fromId(resultSet.getInt(12)));
 				Regista regista = new Regista();
-				regista.setId(resultSet.getInt(11));
+				regista.setId(resultSet.getInt(13));
 				film.setRegista(regista);
 				
 				//aggiorna lista di ruoli 
@@ -133,12 +159,16 @@ public class FilmDAOImpl implements FilmDAO{
 				film.setAnno(resultSet.getInt(4));
 				film.setDurata(resultSet.getInt(5));
 				film.setFoto(resultSet.getString(6));
-				film.setDistribuzione(resultSet.getString(7));
-				film.setPaese(resultSet.getString(8));
-				film.setDataDiUscita(resultSet.getString(9));
-				film.setGenere(Genere.fromId(resultSet.getInt(10)));
+				//aggiunta FOTO GRANDE
+				film.setFotoGrande(resultSet.getString(7));	
+				film.setDistribuzione(resultSet.getString(8));
+				film.setPaese(resultSet.getString(9));
+				film.setDataDiUscita(resultSet.getString(10));
+				//aggiunta TRAILER
+				film.setTrailer(resultSet.getString(11));
+				film.setGenere(Genere.fromId(resultSet.getInt(12)));
 				Regista regista = new Regista();
-				regista.setId(resultSet.getInt(11));
+				regista.setId(resultSet.getInt(13));
 				film.setRegista(regista);
 				
 				//aggiorna lista di ruoli 
@@ -201,13 +231,16 @@ public class FilmDAOImpl implements FilmDAO{
 				film.setAnno(resultSet.getInt(4));
 				film.setDurata(resultSet.getInt(5));
 				film.setFoto(resultSet.getString(6));
-				film.setDistribuzione(resultSet.getString(7));
-				film.setPaese(resultSet.getString(8));
-				film.setDataDiUscita(resultSet.getString(9));
-				
-				film.setGenere(Genere.fromId(resultSet.getInt(10)));
+				//aggiunta FOTO GRANDE
+				film.setFotoGrande(resultSet.getString(7));	
+				film.setDistribuzione(resultSet.getString(8));
+				film.setPaese(resultSet.getString(9));
+				film.setDataDiUscita(resultSet.getString(10));
+				//aggiunta TRAILER
+				film.setTrailer(resultSet.getString(11));
+				film.setGenere(Genere.fromId(resultSet.getInt(12)));
 				Regista regista = new Regista();
-				regista.setId(resultSet.getInt(11));
+				regista.setId(resultSet.getInt(13));
 				film.setRegista(regista);
 				
 				//aggiorna lista di ruoli 

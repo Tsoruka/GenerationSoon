@@ -18,23 +18,47 @@ public class Film {
 	private double mediaVoti;
 //  `foto` VARCHAR(500) NOT NULL,
 	private String foto;
+//	`foto_grande` VARCHAR(500) NOT NULL,
+	private String fotoGrande;
 //  `distribuzione` VARCHAR(45) NOT NULL,
 	private String distribuzione;
 //  `paese` VARCHAR(45) NOT NULL,
 	private String paese;
 //  `data_di_uscita` DATE NOT NULL,
 	private String dataDiUscita;
+//	`trailer` VARCHAR(500) NOT NULL,
+	private String trailer;
 //  `genere` VARCHAR(100) NOT NULL,
 	private Genere genere;
 //  `Regista_id` INT NOT NULL,
 	private Regista regista;
 	
+	
+	
+
+	
+	public String getFotoGrande() {
+		return fotoGrande;
+	}
+	public void setFotoGrande(String fotoGrande) {
+		this.fotoGrande = fotoGrande;
+	}
+	public String getTrailer() {
+		return trailer;
+	}
+	public void setTrailer(String trailer) {
+		this.trailer = trailer;
+	}
+
 	//lista dei ruoli interpretati dagli attori 
 	private List<Ruolo> attori = new ArrayList<Ruolo>();
 	//lista dei voti dati al film dagli N utenti
 	private List<VotoUtenteFilm> votiUtenti = new ArrayList<VotoUtenteFilm>();
 //  PRIMARY KEY (`id`),
 //	FOREIGN KEY (`Regista_id`) REFERENCES `generation_soon`.`Regista` (`id`)
+	
+	
+	
 	public int getId() {
 		return id;
 	}

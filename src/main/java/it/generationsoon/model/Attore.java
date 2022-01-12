@@ -17,7 +17,9 @@ public class Attore {
 	private String luogoDiNascita;
 //  `data_di_decesso` VARCHAR(45) NULL,
 	private String dataDiDecesso;
-//  `biografia` TEXT NOT NULL,
+//  `foto` VARCHAR(500) NOT NULL,
+	private String foto;
+	//  `biografia` TEXT NOT NULL,
 	private String biografia;
 //  PRIMARY KEY (`id`));
 	
@@ -69,6 +71,12 @@ public class Attore {
 	}
 	public void setDataDiDecesso(String dataDiDecesso) {
 		this.dataDiDecesso = dataDiDecesso;
+	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	public String getBiografia() {
 		return biografia;

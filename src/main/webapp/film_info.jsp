@@ -14,7 +14,7 @@
 <html>
 <head>
 	<!-- Styles CSS -->
-	<link rel="stylesheet" href="css/dettaglio-film.css">
+	<link rel="stylesheet" href="css/dettaglio.css">
 	
 	<!-- LOGO formato icona per finestra di navigazione web -->
     <!-- i dettagli fanno la differenza -->
@@ -37,60 +37,6 @@
 	
 	<!--NAVBAR GREZZO SOON -->
 	<%@ include file="navbar.jsp" %>
-	
-	<!--    
-
-    <section class="container" id="">
-
-	<h1>Titolo: ${film.titolo}</h1>
-
-	<h3>Anno: ${film.anno} </h3>
-	
-	<h3>Durata: ${film.durata}</h3>
-	
-	<br>
-	<br>
-	<h3>Descrizione: </h3>
-	<p>${film.descrizione}</p>
-	<br>
-	<br>
-	<h3>Distribuzione: ${film.distribuzione}</h3>
-
-	<h3>Paese: ${film.paese}</h3>
-	
-	<h3>Data di Uscita: ${film.dataDiUscita}</h3>
-	
-	<br>
-	<br>
-	
-	<h3>Genere: ${film.genere.value}</h3>
-
-	<h3>Regista: ${film.regista.nome} ${film.regista.cognome} </h3>
-	
-	<h3>Media voto: ${film.mediaVoti}</h3>
-	<br>
-	<form action="voto-utente" method="post">	
-		<input type="hidden" name="utenteId" value="${sessionScope.idUtente}">
-		<input type="hidden" name="filmId" value="${film.id}">
-		<input type="text" name="voto" placeholder="8"> /10
-		<input type="submit" name="Dai un voto">
-	</form>
-	
-	<br>
-	<h3>Cast: </h3>
-
-	<c:forEach items="${film.attori}" var="cast">
-		<form action="dettaglio-attore" method="get">
-		<button style="cursor:pointer;" type="submit">
-		<p>${cast.attore.nome} ${cast.attore.cognome} interpreta <i>${cast.nomeRuolo}</i></p>
-			<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQynIAJReBEhr6FGTQHQkIo0jmfWLY07G0J7qMOUQow9hBHf-Ad" width="400px" height="500px">
-			<input type="hidden" name="attoreId" value="${cast.attore.id}">
-		</button>
-		</form>
-		
-	</c:forEach>
-	</section>
-	-->
 
 	<!-- Wrapper -->
     <div class="wrapper">
@@ -111,19 +57,25 @@
           </div>
           
           <!--Media Voti Utenti-->
-          <div id="rating">
+          <div style="justify-content: center;">
+           <div style="float: left;">
           	<h4>Grezzo Soon Rating</h4>
             <i class="far fa-star" style="color: #ffcc00"></i>
 			<span class="scritta-rating">
 			<fmt:formatNumber type="number" maxFractionDigits="1" minFractionDigits="1" value="${film.mediaVoti}"/>
 			</span>
 			<span>/10</span> 
-			
-			 
+			 </div>
+          <div style="float: left; padding-left: 20px;"> 
 			<button type="button" class="bn3637 bn38" onclick="scrollVoto()">
             Vota ora!
           	</button>
           </div>
+        </div>
+          
+          
+          
+          
 
           <!--Tags-->
           <div class="tags">
@@ -146,8 +98,14 @@
 		<input type="text" name="voto" placeholder="8"> /10
 		<input type="submit" name="Dai un voto">
 	</form> -->
+	
+	
+	
         </div>
       </div>
+      
+      
+      
       <!--About-->
       <div class="info-container container">
         <h2>Descrizione</h2>
@@ -207,8 +165,8 @@
 				<span class="anno">as <i>${cast.nomeRuolo}</i></span>
 			</button>
 		</form>
-		
 		</c:forEach>
+		
         </div>
       </div>
       

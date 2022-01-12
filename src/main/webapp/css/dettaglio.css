@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* DETTAGLIO FILM */
 :root {
   --text-color: white;
 }
@@ -344,24 +345,26 @@ button {
 }
 
 
-/* STELLINE */ 
-#rating_bar {
-  width: 139px;
-  height: 30px;
-  display: inline-block;
-  display: inline;
-  cursor: pointer;
-}
-#rating_bar > span:before {
-  content: "★";
-  color: #c7c5c5;
-  cursor: pointer;
-  font-size: 1.7em;
-}
-#rating_bar:hover > span:before {
-  color: #ffcc00;
+/* ==================================================== */
+/* ==================================================== */
+/* ==================================================== */
+
+/* DETTAGLIO ATTORE */
+
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
 }
 
-#rating_bar > span:hover ~ span:before {
-  color: #c7c5c5;
+/* Clear floats after the columns */
+.row{
+  display: flex;
+  padding: 10px;
+}
+
+.attore-img{
+  width: 250px;
+  height: 320px;
+  box-shadow: 0 70px 63px -60px #000;
 }
