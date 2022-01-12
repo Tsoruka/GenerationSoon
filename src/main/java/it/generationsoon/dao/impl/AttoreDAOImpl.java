@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import it.generationsoon.dao.AttoreDAO;
@@ -32,10 +35,45 @@ public class AttoreDAOImpl implements AttoreDAO {
 				attore.setId(resultSet.getInt(1));
 				attore.setNome(resultSet.getString(2));
 				attore.setCognome(resultSet.getString(3));
-				attore.setDataDiNascita(resultSet.getString(4));
+				//format data di nascita ATTORE
+				String dataDB = resultSet.getString(4);
+				Date formatData = new Date();
+				//format data AAAA-MM-GG
+				SimpleDateFormat ymdFormat = new SimpleDateFormat("yyyy-MM-dd");
+				try {
+					formatData = ymdFormat.parse(dataDB);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
+				//format data GG-MM-AAAA
+				SimpleDateFormat dmyFormat = new SimpleDateFormat("dd-MM-yyyy");
+				String dataNascitaAttore = dmyFormat.format(formatData);
+				
+				attore.setDataDiNascita(dataNascitaAttore);
 				attore.setLuogoDiNascita(resultSet.getString(5));
-				attore.setDataDiDecesso(resultSet.getString(6));
-				attore.setBiografia(resultSet.getString(7));
+				
+				//format data di decesso ATTORE
+				String dataDDB = resultSet.getString(6);
+				Date formatDData = new Date();
+				//format data AAAA-MM-GG
+				//SimpleDateFormat ymdFormat = new SimpleDateFormat("yyyy-MM-dd");
+				try {
+					formatDData = ymdFormat.parse(dataDDB);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
+				//format data GG-MM-AAAA
+				//SimpleDateFormat dmyFormat = new SimpleDateFormat("dd-MM-yyyy");
+				String dataDecessoAttore = dmyFormat.format(formatDData);
+				
+				attore.setDataDiNascita(dataDecessoAttore);
+				//attore.setDataDiDecesso(resultSet.getString(6));
+				
+				//aggiunta FOTO ATTORE
+				attore.setFoto(resultSet.getString(7));
+				attore.setBiografia(resultSet.getString(8));
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -71,7 +109,9 @@ public class AttoreDAOImpl implements AttoreDAO {
 				attore.setDataDiNascita(resultSet.getString(4));
 				attore.setLuogoDiNascita(resultSet.getString(5));
 				attore.setDataDiDecesso(resultSet.getString(6));
-				attore.setBiografia(resultSet.getString(7));	
+				//aggiunta FOTO ATTORE
+				attore.setFoto(resultSet.getString(7));
+				attore.setBiografia(resultSet.getString(8));	
 				//aggiorna lista di attore
 				listaAttore.add(attore);
 			}
