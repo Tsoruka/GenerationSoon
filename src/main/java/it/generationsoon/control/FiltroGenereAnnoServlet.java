@@ -53,7 +53,7 @@ public class FiltroGenereAnnoServlet extends HttpServlet {
 		try {
 			//creazione di un oggetto tipo film a partire dal filmService
 			//tramite metodo findById(fimId)
-	List<Film> listaFilm = filmService.filterByGenereAndAnno(genere, anno);
+			List<Film> listaFilm = filmService.filterByGenereAndAnno(genere, anno);
 			//info relative al genere del medesimo film 
 			
 			//inoltro informazioni relative al film 

@@ -254,12 +254,15 @@ a {
 @media screen and (min-width: 1080px) {
   .name-user {
     display: inline;
+    font-size: 18px;
   }
   .name-tag {
     display: inline;
+    font-size: 16px;
   }
   .hidden-p {
     display: inline;
+    font-size: 18px;
   }
   .nav-links ul li {
     margin-right: 30px;

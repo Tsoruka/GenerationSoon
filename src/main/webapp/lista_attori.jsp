@@ -25,6 +25,7 @@
       />
 	<!-- Styles CSS -->
 	<link rel="stylesheet" href="css/lista-attori.css">
+	<link rel="stylesheet" href="css/form.css">
 	
 	<!-- LOGO formato icona per finestra di navigazione web -->
     <!-- i dettagli fanno la differenza -->
@@ -45,6 +46,11 @@
 
 	<!--LISTA ATTORI-->
     <section class="attori container">
+    
+    	<div class="spazio-box inner-div">
+    		<h2 class="anno" style="color:white">Lista ATTORI</h2>
+    	</div>
+    	
       <div class="attori-content">
       <c:forEach items="${listaAttori}" var="attore">
 		<form action="dettaglio-attore" method="get">

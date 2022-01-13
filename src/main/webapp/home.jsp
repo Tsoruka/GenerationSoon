@@ -53,6 +53,7 @@
     <link rel="stylesheet" href="css/homepage/overlay.css">
     <link rel="stylesheet" href="css/homepage/slider.css">
     <link rel="stylesheet" href="css/homepage/film.css">
+    <link rel="stylesheet" href="css/homepage/disney.css">
     
     
     
@@ -97,12 +98,61 @@
     
     
     
+     <!-- /////////////////////////////////////////////  STREAMING PLATFORMS  //////////////////////////////////////////////  -->
+    <div class="container-general">
+       <!-- Container Disney-->
+      <div class="main disney-rows">
+        <div class="grid">
+          <div class="card-disney">
+            <div class="item-border">
+              <img src="img/disney/disney-txt.png" class="item-image" />
+              <img src="img/disney/disney.gif" class="item-image hover-image" />
+            </div>
+          </div>
+          <div class="card-disney">
+            <div class="item-border">
+              <img src="img/disney/pixar-txt.png" class="item-image" />
+              <img src="img/disney/pixar.gif" class="item-image hover-image" />
+            </div>
+          </div>
+          <div class="card-disney">
+            <div class="item-border">
+              <img src="img/disney/marvel-txt.png" class="item-image" />
+              <img src="img/disney/marvel.gif" class="item-image hover-image" />
+            </div>
+          </div>
+          <div class="card-disney">
+            <div class="item-border">
+              <img src="img/disney/star-txt.png" class="item-image" />
+              <img
+                src="img/disney/starwars.gif"
+                class="item-image hover-image"
+              />
+            </div>
+          </div>
+          <div class="card-disney">
+            <div class="item-border">
+              <img src="img/disney/national-txt.png" class="item-image" />
+              <img
+                src="img/disney/national.gif"
+                class="item-image hover-image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+        
+    </div>
+    <!-- /////////////////////////////////////////////  END STREAMING PLATFORMS  //////////////////////////////////////////////  -->
+    
+    
+    
     <!-- /////////////////////////////////////////////  Section Films  //////////////////////////////////////////////  -->
     <div class="container-general">
         <header></header>
         <!-- Films -->
-        <div class="main movies-rows">
-            <h3 class="list-title">AL CINEMA</h3>
+        <div class="main movies-rows" >
+            <h2 class="list-title">AL CINEMA</h2>
             <div class="slider responsive">
               <c:forEach items="${listaFilmUscita}" var="film">
             	<form action="dettaglio-film" method="get">
@@ -115,7 +165,7 @@
             </c:forEach>
             </div>
             
-            <h3 class="list-title">I PI&Uacute APPREZZATI DAL PUBBLICO </h3>
+            <h2 class="list-title">I PI&Uacute APPREZZATI DAL PUBBLICO </h2>
             <div class="slider responsive">
             <c:forEach items="${listaFilmVoto}" var="film">
             	<form action="dettaglio-film" method="get">
@@ -128,7 +178,7 @@
             </c:forEach>
             </div>
             
-            <h3 class="list-title">MARVEL STUDIOS</h3>
+            <h2 class="list-title">MARVEL STUDIOS</h2>
             <div class="slider responsive">
               <c:forEach items="${listaFilmMarvel}" var="film">
             	<form action="dettaglio-film" method="get">
@@ -146,9 +196,17 @@
     <!-- /////////////////////////////////////////////  END Section Films  //////////////////////////////////////////////  -->
     
     
+    
+   
+    
 	<!-- //////////// -->
 	</div>    
 	<!-- END Wrapper -->
+	
+	
+	
+	
+	
 
 <%@ include file="footer.html" %>
 

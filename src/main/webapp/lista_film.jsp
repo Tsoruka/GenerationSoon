@@ -47,10 +47,14 @@
     <!-- //////// -->
 	
 	<!--CERCA FILM PER TITOLO -->
-	
+	<%@ include file="cerca_film.jsp" %>
 
 	<!--LISTA FILM-->
 	<section class="movies container" id="film">
+		<div class="spazio-box inner-div">
+    		<h2 class="anno" style="color:white">Lista FILM</h2>
+    	</div>
+    	
     	<div class="movies-content">
 
 		<c:forEach items="${listaFilm}" var="film">

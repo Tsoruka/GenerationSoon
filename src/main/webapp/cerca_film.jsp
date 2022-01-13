@@ -31,26 +31,77 @@
        <!-- FORM COLLEGAMENTO SERVLET -->
        <form action="trova-film-per-titolo" method="get">
        <!-- ///////////////////////// -->
+	
+             <!-------------------------->
+          <div class="outer-div">
+          <div class="spazio-box inner-div">
+          
+          <div class="row g-3" style="padding-left:30px; padding-right:30px;">
 		
-		<div class="row g-3" style="padding-left:30px; padding-right:30px;">
-		
-		<div class="col">
-         <div class="form-outline form-white mb-4">
-           <input
-             type="text"
-             name="titolo"
-             class="form-control form-control-lg"
-             placeholder="Inserisci titolo"
-           />
-		   </div> 
-		  
+			<div class="col">
+          
+          
+            <h2 class="genere" style="color:white">Genere</h2>
+            <label for="generi"></label>
+            <input
+              placeholder="Nessun genere selezionato.."
+              list="generi"
+              id="selection"
+              name="genere"
+              spellcheck="false"
+            />
+
+            <datalist id="generi">
+              <option value="ANIMAZIONE"></option>
+              <option value="AZIONE"></option>
+              <option value="AVVENTURA"></option>
+              <option value="BIOGRAFIA"></option>
+              <option value="COMMEDIA"></option>
+              <option value="DOCUMENTARIO"></option>
+              <option value="DRAMMATICO"></option>
+              <option value="FANTASCIENZA"></option>
+              <option value="FANTASTICO"></option>
+              <option value="GIALLO"></option>
+              <option value="GUERRA"></option>
+              <option value="HORROR"></option>
+              <option value="MUSICALE"></option>
+              <option value="SENTIMENTALE"></option>
+              <option value="STORICO"></option> 
+              <option value="THRILLER"></option>
+              <option value="WESTERN"></option>
+            </datalist>
+			</div>
+			
+			<div class="col">
+			<h2 class="anno" style="color:white">Anno</h2>
+            <label for="ice-cream-choice"></label>
+            <input
+              placeholder="Nessun anno selezionato.."
+              list="anni"
+              id="selection"
+              name="anno"
+              spellcheck="false"
+            />
+
+            <datalist id="anni">
+              <option value="Chocolate"></option>
+              <option value="Coconut"></option>
+              <option value="Mint"></option>
+              <option value="Strawberry"></option>
+              <option value="Vanilla"></option>
+            </datalist>
+            
+          </div>
+          
+          <div class="col">
+          <h2 class="genere" style="opacity: 0">Submit</h2>
+          	<button class="invia">INVIA</button>
+          </div>
 		</div>
-       
-       <div class="col">
-			<button class="btn btn-grad col-4 col-md-3 col-lg-4 px-5" type="submit" style="font-family: Avenir LT Pro, sans-serif">
-       			 Cerca
-			</button>	
-	   </div>
+          <!-------------------------->
+		</div>
+
+	   
 	   </div>
        
        <!-- chiusura FORM per collegamento a servlet -->
@@ -58,5 +109,7 @@
        <!-- //////////////////////////////////////// -->
        
     </section>
+    
+    
 </body>
 </html>

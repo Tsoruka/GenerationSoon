@@ -58,9 +58,9 @@ button {
   margin-bottom: 15px;
   position: relative;
 }
-.slider h3 {
+.slider h2 {
   border-radius: 5px;
-  position: relative;
+  position: center;
   text-align: center;
 }
 .slider div img {
@@ -99,16 +99,7 @@ button {
   box-shadow: rgb(0 0 0 / 90%) 0px 30px 20px -10px;
   cursor: pointer;
 }
-/* .slick-prev {
-  left: 0px;
-  display: none !important;
-  z-index: 9;
-}
-.slick-next {
-  z-index: 9;
-  display: none !important;
-  right: 0px;
-} */
+
 .responsive div {
   /*distanza tra i poster*/
   margin-right: 10px;
@@ -121,7 +112,7 @@ button {
 }
 @media (min-width: 768px) {
   .list-title {
-    font-size: 20px;
+    font-size: 27px;
     font-weight: 500;
   }
 }
