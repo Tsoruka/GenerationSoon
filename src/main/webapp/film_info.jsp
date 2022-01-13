@@ -135,7 +135,8 @@
                 <button class="invia" type="submit">INVIA</button>
                 </c:if>
                 <c:if test="${sessionScope.idUtente==null}">
-                <p class="my-error">E' necessario effettuare il <a href="login.jsp">login </a> per votare</p>
+                <p class="my-error">E' necessario effettuare il 
+                <a style="color: #5a86d3; text-decoration: underline; "href="login.jsp">login</a> per votare</p>
                 </c:if>
               </div>
               </form>

@@ -17,6 +17,20 @@
     <link rel="icon" href="img/logo-grezzo.png" type="image/x-icon" />
     <!-- ////////////////////////////////////////////////// -->
     
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100;200;300;400;500;600;700&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/828184f452.js"
+      crossorigin="anonymous"
+    ></script>
+    
 	<meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -78,9 +92,9 @@
 
           </div>
         </div>
-
+		</div>
           
-
+		<div class="info-container container">
         <!--FILMOGRAFIA-->
         <h2 class="cast-heading">FILMOGRAFIA</h2>
         <div class="cast">

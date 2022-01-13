@@ -26,6 +26,15 @@ public class AttoreDAOImpl implements AttoreDAO {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		
+		//GESTIONE DATA FORMAT 
+		Date formatData = new Date();
+		//format data AAAA-MM-GG
+		SimpleDateFormat ymdFormat = new SimpleDateFormat("yyyy-MM-dd");
+		//format data GG-MM-AAAA
+		SimpleDateFormat dmyFormat = new SimpleDateFormat("dd-MM-yyyy");
+		String dataDB = null;
+		///////////////////////
+		
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, id);
@@ -36,18 +45,12 @@ public class AttoreDAOImpl implements AttoreDAO {
 				attore.setNome(resultSet.getString(2));
 				attore.setCognome(resultSet.getString(3));
 				//format data di nascita ATTORE
-				String dataDB = resultSet.getString(4);
-				Date formatData = new Date();
-				//format data AAAA-MM-GG
-				SimpleDateFormat ymdFormat = new SimpleDateFormat("yyyy-MM-dd");
+				dataDB = resultSet.getString(4);
 				try {
 					formatData = ymdFormat.parse(dataDB);
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				
-				//format data GG-MM-AAAA
-				SimpleDateFormat dmyFormat = new SimpleDateFormat("dd-MM-yyyy");
 				String dataNascitaAttore = dmyFormat.format(formatData);
 				
 				attore.setDataDiNascita(dataNascitaAttore);
@@ -68,7 +71,7 @@ public class AttoreDAOImpl implements AttoreDAO {
 				//SimpleDateFormat dmyFormat = new SimpleDateFormat("dd-MM-yyyy");
 				String dataDecessoAttore = dmyFormat.format(formatDData);
 				
-				attore.setDataDiNascita(dataDecessoAttore);
+				attore.setDataDiDecesso(dataDecessoAttore);
 				//attore.setDataDiDecesso(resultSet.getString(6));
 				
 				//aggiunta FOTO ATTORE
@@ -88,7 +91,7 @@ public class AttoreDAOImpl implements AttoreDAO {
 	@Override
 	public List<Attore> findAll(Connection connection) throws DAOException {
 		List<Attore> listaAttore= new ArrayList<Attore>(); 
-		String sql = "SELECT * FROM Attore";
+		String sql = "SELECT * FROM Attore ORDER BY nome ASC";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;

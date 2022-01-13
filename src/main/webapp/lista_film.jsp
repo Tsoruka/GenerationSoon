@@ -25,7 +25,9 @@
     <!-- ////////////////////////////////////////////////// -->
 	
 	
-	<meta charset="ISO-8859-1">
+	<meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Lista Film</title>
 </head>
 <body>
@@ -38,7 +40,7 @@
     <!-- //////// -->
 	
 	<!--CERCA FILM PER TITOLO -->
-	<%@ include file="cerca_film.jsp" %>
+	
 
 	<!--LISTA FILM-->
 	<section class="movies container" id="film">
@@ -55,7 +57,7 @@
               />
               <div class="box-text">
                 <h3 class="movie-title">${film.titolo}</h3>
-                <span class="movie-type">${film.genere.value}</span>
+                <span class="movie-type" style="text-transform: uppercase;">${film.genere.value}</span>
                 <input type="hidden" name="filmId" value="${film.id}">
               </div>
             </button>

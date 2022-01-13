@@ -5,7 +5,7 @@
   max-width: 1280px;
   margin: auto;
   width: 100%;
-  border: solid red;
+  /*border: solid red;*/
 }
 
 section {
@@ -25,7 +25,7 @@ button {
 
 .movie-box {
   position: relative;
-  width: 100%;
+  width: 298px;
   height: auto;
   overflow: hidden;
   box-shadow: rgb(0 0 0) 0px 16px 10px -10px;
