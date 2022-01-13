@@ -39,7 +39,10 @@
 
 	<!-- FRECCIA PER TORNARE A MENU PRINCIPALE -->
 	<div class="encircle">
-     <a href="home.jsp"> <div class="arrow"></div></a>
+	<c:set value="${pageContext.request.contextPath}"
+        var="contextUrl" />
+	
+     <a href="${contextUrl}"> <div class="arrow"></div></a>
     </div>
 
 	<!-- REGISTRAZIONE FORM --> 

@@ -100,20 +100,20 @@
             <div class="slider responsive">
               <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
             </div>
-            <h3 class="list-title">I PIU VOTATI/I PIU APPREZZATI DAL PUBBLICO (QUINDI es.MEDIA VOTO > 7) oppure </h3>
+            
+            <h3 class="list-title">I PIU APPREZZATI DAL PUBBLICO ${listaFilmVoto} </h3>
             <div class="slider responsive">
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
+            <c:forEach items="${listaFilm}" var="film">
+            	
+            		<div class="card">
+            		<h3>
+            		<img src="${film.foto}">
+            		</h3>
+            		</div>
+            	
+            </c:forEach>
             </div>
+            
             <h3 class="list-title">don't know</h3>
             <div class="slider responsive">
               <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>

@@ -260,7 +260,7 @@ public class FilmDAOImpl implements FilmDAO{
 	@Override
 	public List<Film> OrderByVoto(Connection connection) throws DAOException {
 		List<Film> listaFilm= new ArrayList<Film>(); 
-		String sql = " select film.id, film.titolo, avg(voto) from voto_film inner join film on voto_film.Film_id = film.id group by Film_id order by avg(voto) desc";
+		String sql = " select film.id, film.titolo, film.foto, avg(voto) from voto_film inner join film on voto_film.Film_id = film.id group by Film_id order by avg(voto) desc";
 		System.out.println(sql);
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -277,7 +277,8 @@ public class FilmDAOImpl implements FilmDAO{
 				
 				film.setId(resultSet.getInt(1));
 				film.setTitolo(resultSet.getString(2));
-				film.setMediaVoti(resultSet.getDouble(3));
+				film.setFoto(resultSet.getString(3));
+				film.setMediaVoti(resultSet.getDouble(4));
 				
 				//aggiorna lista di ruoli 
 				listaFilm.add(film);

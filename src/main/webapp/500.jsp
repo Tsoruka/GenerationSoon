@@ -127,9 +127,11 @@
                 Milano, abbiamo un errore 500
             </h1>
            
-            <!--error message-->       
+            <!--error message-->   
+            <c:set value="${pageContext.request.contextPath}" var="contextUrl" />
+                
             <p style="font-size: 16px; opacity: 0.7">
-            Vai alla nostra <a style="color: #5a86d3; text-decoration: underline;" href="home.jsp">home page</a>, o usa il menù soprastante per navigare in una specifica sezione.</p>
+            Vai alla nostra <a style="color: #5a86d3; text-decoration: underline;" href="${contextUrl}">home page</a>, o usa il menù soprastante per navigare in una specifica sezione.</p>
         </div>
 	
 	<!-- /////////////// -->

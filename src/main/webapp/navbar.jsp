@@ -23,12 +23,15 @@
 <body>
 
     <!-- Header -->
+    <c:set value="${pageContext.request.contextPath}"
+        var="contextUrl" />
+    
     <header class="header" id="nav">
-      <a href="home.jsp" class="logo"><img src="img/grezzo.png" /></a>
+      <a href="${contextUrl}" class="logo"><img src="img/grezzo.png" /></a>
       <nav class="nav-links">
         <ul>
           <li>
-            <form action="home.jsp">
+            <form action="${contextUrl}">
               <button class="my-nav-buttons">
                 <span class="icons"
                   ><svg

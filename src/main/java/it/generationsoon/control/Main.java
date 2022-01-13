@@ -43,8 +43,22 @@ public class Main {
 		// filtro("z", 0);
 		// controlloVotoUtente();
 		// findUtenteByEmail("mario.rossi@gmail.com");
-		controlloEmailUtente();
+		//controlloEmailUtente();
+		listaperVoto();
 	}
+	
+	
+	private static void listaperVoto() {
+
+		try {
+			List<Film> lista = filmService.OrderByVoto();
+			System.out.println(lista);
+
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+		
 	
 	private static void controlloEmailUtente() {
 		try {
