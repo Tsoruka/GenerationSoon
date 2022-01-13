@@ -11,6 +11,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- nasconde scroll down browser -->
+	<style type="text/css">
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    
 	<!-- Styles CSS -->
 	<link rel="stylesheet" href="css/dettaglio.css">
 	

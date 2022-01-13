@@ -9,6 +9,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- nasconde scroll down browser -->
+	<style type="text/css">
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    
 	<!--BOOTSTRAP CSS-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -49,7 +56,7 @@
 		<c:forEach items="${listaFilm}" var="film">
 		
 		<form action="dettaglio-film" method="get">
-			<button class="movie-box">
+			<button class="movie-box" name="filmId" value="${film.id}">
               <img
                 src="${film.foto}"
                 alt=""
@@ -58,7 +65,7 @@
               <div class="box-text">
                 <h3 class="movie-title">${film.titolo}</h3>
                 <span class="movie-type" style="text-transform: uppercase;">${film.genere.value}</span>
-                <input type="hidden" name="filmId" value="${film.id}">
+                
               </div>
             </button>
 		</form>

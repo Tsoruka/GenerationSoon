@@ -3,14 +3,14 @@
   left: -200px;
   z-index: 1;
   padding: 60px 200px 60px 20px;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   opacity: 1;
 }
 .responsive .slick-next {
   right: -200px;
   z-index: 1;
   padding: 60px 200px 60px 20px;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   opacity: 1;
 }
 .slick-prev:hover {

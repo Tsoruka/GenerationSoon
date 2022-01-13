@@ -35,12 +35,17 @@ public class HomeServlet extends HttpServlet {
 		try {
 			//creazione di una lista di film a partire dal filmService
 			//tramite metodo findAll()
-			List<Film> listaFilm = filmService.OrderByVoto();
+			List<Film> listaFilmVoto = filmService.OrderByVoto();
+			List<Film> listaFilmUscita = filmService.findAll();
+			List<Film> listaFilmGenere = filmService.filterByGenereAndAnno("commedia", 0);
+			
 			//info relative al genere del medesimo film 
 			
 			//inoltro richiesta HTTP per la stampa (in una pagina web) della lista film 
 			//che sono stati presi dalle info del database di riferimento 
-			request.setAttribute("listaFilm", listaFilm);
+			request.setAttribute("listaFilmUscita", listaFilmUscita);
+			request.setAttribute("listaFilmVoto", listaFilmVoto);
+			request.setAttribute("listaFilmGenere", listaFilmGenere);
 			
 			//formula magica per inoltrare gli attributi alla nostra pagina web
 			request.getRequestDispatcher("home.jsp").forward(request, response);

@@ -182,8 +182,8 @@
               <!--Cast-->
             </span>
             <span class="info">
-            <c:forEach items="${film.attori}" var="cast">
-				${cast.attore.nome} ${cast.attore.cognome},
+            <c:forEach items="${film.attori}" var="cast" varStatus="loop">
+				${cast.attore.nome} ${cast.attore.cognome}<c:if test="${!loop.last}">,</c:if>
 			</c:forEach> 
             
             </span>

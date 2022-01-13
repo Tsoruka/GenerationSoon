@@ -9,6 +9,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- nasconde scroll down browser -->
+	<style type="text/css">
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 
 	<!-- LOGO formato icona per finestra di navigazione web -->
     <!-- i dettagli fanno la differenza -->
@@ -96,33 +102,43 @@
         <header></header>
         <!-- Films -->
         <div class="main movies-rows">
-            <h3 class="list-title">AL CINEMA(quindi film usciti nell'ultimo mese e mezzo)</h3>
+            <h3 class="list-title">AL CINEMA</h3>
             <div class="slider responsive">
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-            </div>
-            
-            <h3 class="list-title">I PIU APPREZZATI DAL PUBBLICO ${listaFilmVoto} </h3>
-            <div class="slider responsive">
-            <c:forEach items="${listaFilm}" var="film">
-            	
-            		<div class="card">
+              <c:forEach items="${listaFilmUscita}" var="film">
+            	<form action="dettaglio-film" method="get">
+            		<button class="card" name="filmId" value="${film.id}">
             		<h3>
             		<img src="${film.foto}">
             		</h3>
-            		</div>
-            	
+            		</button>
+            	</form>
             </c:forEach>
             </div>
             
-            <h3 class="list-title">don't know</h3>
+            <h3 class="list-title">I PI&Uacute APPREZZATI DAL PUBBLICO </h3>
             <div class="slider responsive">
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
-              <div class="card"><h3><img src="https://raw.githubusercontent.com/Tsoruka/MoviePosters/main/AQualcunoPiaceCaldo.jpeg"></h3></div>
+            <c:forEach items="${listaFilmVoto}" var="film">
+            	<form action="dettaglio-film" method="get">
+            		<button class="card" name="filmId" value="${film.id}">
+            		<h3>
+            		<img src="${film.foto}">
+            		</h3>
+            		</button>
+            	</form>
+            </c:forEach>
+            </div>
+            
+            <h3 class="list-title">COMMEDIA</h3>
+            <div class="slider responsive">
+              <c:forEach items="${listaFilmGenere}" var="film">
+            	<form action="dettaglio-film" method="get">
+            		<button class="card" name="filmId" value="${film.id}">
+            		<h3>
+            		<img src="${film.foto}">
+            		</h3>
+            		</button>
+            	</form>
+            </c:forEach>
             </div>
           </div>
         </div>

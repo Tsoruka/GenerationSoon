@@ -14,6 +14,15 @@ a {
   text-decoration: none;
 }
 
+button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
 .slick-list {
   overflow: inherit;
 }
@@ -34,7 +43,7 @@ a {
   .movies-rows {
     max-width: 1800px;
     margin: 0 auto;
-    border: solid red;
+   /* border: solid red;*/
   }
 }
 /**/
