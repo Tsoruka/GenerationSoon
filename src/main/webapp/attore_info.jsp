@@ -4,6 +4,8 @@
 <!-- TAGLIB CORE <3  -->   
 <%@ page isELIgnored="false" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- /////////////// -->
 
 <!DOCTYPE html>
@@ -75,11 +77,12 @@
                 <span class="scritta">Luogo di nascita : </span>
                 <span class="info">${attore.luogoDiNascita}</span>
               </div>
+              <c:if test="${attore.dataDiDecesso != null }">
               <div >
                 <span class="scritta">Data di decesso : </span>
-                <span class="info">${attore.dataDiDecesso}</span>
+                <span class="info"><fmt:formatDate pattern="dd-MM-yyyy" value="${attore.dataDiDecesso}" /></span>
               </div>
-              
+              </c:if>
               <div >
                 <h2>Biografia</h2>
                 <span class="descrizione-film">

@@ -1,6 +1,7 @@
 package it.generationsoon.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Attore {
@@ -16,7 +17,7 @@ public class Attore {
 //  `luogo_di_nascita` VARCHAR(45) NOT NULL,
 	private String luogoDiNascita;
 //  `data_di_decesso` VARCHAR(45) NULL,
-	private String dataDiDecesso;
+	private Date dataDiDecesso;
 //  `foto` VARCHAR(500) NOT NULL,
 	private String foto;
 	//  `biografia` TEXT NOT NULL,
@@ -66,10 +67,10 @@ public class Attore {
 	public void setLuogoDiNascita(String luogoDiNascita) {
 		this.luogoDiNascita = luogoDiNascita;
 	}
-	public String getDataDiDecesso() {
+	public Date getDataDiDecesso() {
 		return dataDiDecesso;
 	}
-	public void setDataDiDecesso(String dataDiDecesso) {
+	public void setDataDiDecesso(Date dataDiDecesso) {
 		this.dataDiDecesso = dataDiDecesso;
 	}
 	public String getFoto() {

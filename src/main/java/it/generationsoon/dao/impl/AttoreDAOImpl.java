@@ -57,23 +57,12 @@ public class AttoreDAOImpl implements AttoreDAO {
 				attore.setLuogoDiNascita(resultSet.getString(5));
 				
 				//format data di decesso ATTORE
-				String dataDDB = resultSet.getString(6);
-				Date formatDData = new Date();
-				//format data AAAA-MM-GG
-				//SimpleDateFormat ymdFormat = new SimpleDateFormat("yyyy-MM-dd");
-				try {
-					formatDData = ymdFormat.parse(dataDDB);
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
+				if(resultSet.getDate(6) != null) {
+				Date formatDData = new Date(resultSet.getDate(6).getTime());
 				
-				//format data GG-MM-AAAA
-				//SimpleDateFormat dmyFormat = new SimpleDateFormat("dd-MM-yyyy");
-				String dataDecessoAttore = dmyFormat.format(formatDData);
-				
-				attore.setDataDiDecesso(dataDecessoAttore);
+				attore.setDataDiDecesso(formatDData);
 				//attore.setDataDiDecesso(resultSet.getString(6));
-				
+				}
 				//aggiunta FOTO ATTORE
 				attore.setFoto(resultSet.getString(7));
 				attore.setBiografia(resultSet.getString(8));
@@ -110,8 +99,13 @@ public class AttoreDAOImpl implements AttoreDAO {
 				attore.setNome(resultSet.getString(2));
 				attore.setCognome(resultSet.getString(3));
 				attore.setDataDiNascita(resultSet.getString(4));
-				attore.setLuogoDiNascita(resultSet.getString(5));
-				attore.setDataDiDecesso(resultSet.getString(6));
+				attore.setLuogoDiNascita(resultSet.getString(5));	
+				if(resultSet.getDate(6) != null) {
+					Date formatDData = new Date(resultSet.getDate(6).getTime());
+					
+					attore.setDataDiDecesso(formatDData);
+					//attore.setDataDiDecesso(resultSet.getString(6));
+					}
 				//aggiunta FOTO ATTORE
 				attore.setFoto(resultSet.getString(7));
 				attore.setBiografia(resultSet.getString(8));	
