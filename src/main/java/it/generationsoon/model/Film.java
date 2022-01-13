@@ -153,8 +153,8 @@ public class Film {
 				+ ", attori=" + attori + ", votiUtenti=" + votiUtenti + "]";
 	}
 	
-	
-	
+
+
 	
 	
 	

@@ -23,4 +23,6 @@ public interface FilmService {
 	//funzionalità 3 -> trova i film per il titolo
 	List<Film> findByTitolo(String titolo) throws ServiceException;
 	
+	List<Film> OrderByVoto() throws ServiceException;
+	
 }

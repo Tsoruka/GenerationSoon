@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -138,6 +139,26 @@ public class FilmServiceImpl implements FilmService  {
 			DBUtil.close(connection);
 		}
 		return listaFilm;
+	}
+
+	@Override
+	public List<Film> OrderByVoto() throws ServiceException {
+		List<Film> listaFilm= new ArrayList<Film>(); 
+		Connection connection = null;
+		try {
+			connection = DataSource.getInstance().getConnection();
+			DBUtil.setAutoCommit(connection, false);
+			listaFilm = filmDAO.OrderByVoto(connection);
+		} catch (DAOException e) {
+			System.err.println(e.getMessage());
+			DBUtil.rollback(connection);
+			throw new ServiceException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(connection);
+		}
+		return listaFilm;
 	}	
+
+
 
 }

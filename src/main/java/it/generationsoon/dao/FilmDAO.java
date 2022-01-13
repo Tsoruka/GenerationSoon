@@ -14,5 +14,7 @@ public interface FilmDAO {
 	List<Film> findByTitolo(Connection connection, String titolo) throws DAOException;
 
 	List<Film> filterByGenereAndAnno(Connection connection,String genere, int anno) throws DAOException; 
+	
+	List<Film> OrderByVoto(Connection connection) throws DAOException; 
 
 }

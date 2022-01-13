@@ -257,4 +257,39 @@ public class FilmDAOImpl implements FilmDAO{
 		
 	}
 
+	@Override
+	public List<Film> OrderByVoto(Connection connection) throws DAOException {
+		List<Film> listaFilm= new ArrayList<Film>(); 
+		String sql = " select film.id, film.titolo, avg(voto) from voto_film inner join film on voto_film.Film_id = film.id group by Film_id order by avg(voto) desc";
+		System.out.println(sql);
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			statement = connection.prepareStatement(sql);
+			//setta id del film (in session) per recuperare il cast di quel film 
+			//sostituire il "?" della query con filmId
+			
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				
+				Film film = new Film();
+				
+				film.setId(resultSet.getInt(1));
+				film.setTitolo(resultSet.getString(2));
+				film.setMediaVoti(resultSet.getDouble(3));
+				
+				//aggiorna lista di ruoli 
+				listaFilm.add(film);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return listaFilm;
+	}
+
 }
