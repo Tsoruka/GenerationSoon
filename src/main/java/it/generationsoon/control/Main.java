@@ -44,10 +44,19 @@ public class Main {
 		// controlloVotoUtente();
 		// findUtenteByEmail("mario.rossi@gmail.com");
 		//controlloEmailUtente();
-		listaperVoto();
+		// listaperVoto();
+		marvel();
 	}
 	
-	
+	private static void marvel() {
+		try {
+			List<Film> marvel = filmService.findMarvel();
+			System.out.println(marvel);
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+		
+	}
 	private static void listaperVoto() {
 
 		try {

@@ -16,5 +16,8 @@ public interface FilmDAO {
 	List<Film> filterByGenereAndAnno(Connection connection,String genere, int anno) throws DAOException; 
 	
 	List<Film> OrderByVoto(Connection connection) throws DAOException; 
+	
+	List<Film> findMarvel(Connection connection) throws DAOException;
+	
 
 }

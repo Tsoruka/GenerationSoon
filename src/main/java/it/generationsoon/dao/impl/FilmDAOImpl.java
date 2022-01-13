@@ -293,4 +293,32 @@ public class FilmDAOImpl implements FilmDAO{
 		return listaFilm;
 	}
 
+	@Override
+	public List<Film> findMarvel(Connection connection) throws DAOException {
+		String sql = "SELECT id,titolo,foto,distribuzione FROM generation_soon.Film WHERE distribuzione LIKE '%Marvel Studios%'";
+		System.out.println(sql);
+		List<Film> marvel = new ArrayList<Film>();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.prepareStatement(sql);
+			resultSet= statement.executeQuery();
+			while(resultSet.next()) {
+				Film film = new Film();
+				film.setId(resultSet.getInt(1));
+				film.setTitolo(resultSet.getString(2));
+				film.setFoto(resultSet.getString(3));
+				film.setDistribuzione(resultSet.getString(4));
+				marvel.add(film);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return marvel;
+	}
+
 }

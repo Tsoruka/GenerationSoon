@@ -128,9 +128,9 @@
             </c:forEach>
             </div>
             
-            <h3 class="list-title">COMMEDIA</h3>
+            <h3 class="list-title">MARVEL STUDIOS</h3>
             <div class="slider responsive">
-              <c:forEach items="${listaFilmGenere}" var="film">
+              <c:forEach items="${listaFilmMarvel}" var="film">
             	<form action="dettaglio-film" method="get">
             		<button class="card" name="filmId" value="${film.id}">
             		<h3>

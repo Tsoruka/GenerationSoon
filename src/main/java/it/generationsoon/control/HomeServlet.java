@@ -37,7 +37,7 @@ public class HomeServlet extends HttpServlet {
 			//tramite metodo findAll()
 			List<Film> listaFilmVoto = filmService.OrderByVoto();
 			List<Film> listaFilmUscita = filmService.findAll();
-			List<Film> listaFilmGenere = filmService.filterByGenereAndAnno("commedia", 0);
+			List<Film> listaFilmMarvel = filmService.findMarvel();
 			
 			//info relative al genere del medesimo film 
 			
@@ -45,7 +45,7 @@ public class HomeServlet extends HttpServlet {
 			//che sono stati presi dalle info del database di riferimento 
 			request.setAttribute("listaFilmUscita", listaFilmUscita);
 			request.setAttribute("listaFilmVoto", listaFilmVoto);
-			request.setAttribute("listaFilmGenere", listaFilmGenere);
+			request.setAttribute("listaFilmMarvel", listaFilmMarvel);
 			
 			//formula magica per inoltrare gli attributi alla nostra pagina web
 			request.getRequestDispatcher("home.jsp").forward(request, response);

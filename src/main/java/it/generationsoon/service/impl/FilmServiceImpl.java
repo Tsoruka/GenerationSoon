@@ -149,6 +149,7 @@ public class FilmServiceImpl implements FilmService  {
 			connection = DataSource.getInstance().getConnection();
 			DBUtil.setAutoCommit(connection, false);
 			listaFilm = filmDAO.OrderByVoto(connection);
+			DBUtil.commit(connection);
 		} catch (DAOException e) {
 			System.err.println(e.getMessage());
 			DBUtil.rollback(connection);
@@ -157,6 +158,25 @@ public class FilmServiceImpl implements FilmService  {
 			DBUtil.close(connection);
 		}
 		return listaFilm;
+	}
+
+	@Override
+	public List<Film> findMarvel() throws ServiceException {
+		List<Film> marvel = new ArrayList<Film>();
+		Connection connection = null;
+		try {
+			connection = DataSource.getInstance().getConnection();
+			DBUtil.setAutoCommit(connection, false);
+			marvel = filmDAO.findMarvel(connection);
+			DBUtil.commit(connection);
+		} catch (DAOException e) {
+			System.err.println(e.getMessage());
+			DBUtil.rollback(connection);
+			throw new ServiceException(e.getMessage(), e);
+		} finally {
+			DBUtil.close(connection);
+		}
+		return marvel;
 	}	
 
 
