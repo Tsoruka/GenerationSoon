@@ -40,6 +40,7 @@
     <!-- //////// -->
 	
 	<!--CERCA FILM PER TITOLO -->
+	<%@ include file="cerca_film_titolo.jsp" %>
 	<%@ include file="cerca_film.jsp" %>
 
 	<!--LISTA FILM-->

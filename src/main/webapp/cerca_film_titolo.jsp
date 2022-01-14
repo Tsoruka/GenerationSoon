@@ -34,20 +34,21 @@
 		
 		<div class="col">
          <div class="form-outline form-white mb-4">
+         <h2 class="genere" style="color:white">Titolo</h2>
            <input
              type="text"
              name="titolo"
              class="form-control form-control-lg"
-             placeholder="Inserisci attore"
+             placeholder="Inserisci titolo film"
            />
 		   </div> 
 		  
 		</div>
        
        <div class="col">
-			<button class="btn btn-grad col-4 col-md-3 col-lg-4 px-5" type="submit" style="font-family: Avenir LT Pro, sans-serif">
-       			 Cerca
-			</button>	
+			<h2 class="genere" style="opacity: 0">Submit</h2>
+          	<button class="invia">INVIA</button>
+          </div>
 	   </div>
 	   </div>
        
