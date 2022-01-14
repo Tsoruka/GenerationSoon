@@ -2,8 +2,11 @@ package it.generationsoon.control;
 
 import java.io.IOException;
 
+import it.generationsoon.model.Film;
+import it.generationsoon.service.FilmService;
 import it.generationsoon.service.ServiceException;
 import it.generationsoon.service.VotoUtenteFilmService;
+import it.generationsoon.service.impl.FilmServiceImpl;
 import it.generationsoon.service.impl.VotoUtenteFilmServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,6 +23,7 @@ public class VotoUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private VotoUtenteFilmService votoUtenteFilmService = new VotoUtenteFilmServiceImpl();
+	private FilmService filmService = new FilmServiceImpl();
     /**
      * Default constructor. 
      */
@@ -55,10 +59,16 @@ public class VotoUtenteServlet extends HttpServlet {
 			//se controllo è a 0 allora save new voto 
 			if(controllo == 0) {
 				votoUtenteFilmService.save(filmId, utenteId, voto);
-				response.sendRedirect("trova-tutti-film");
+				//response.sendRedirect("trova-tutti-film");
+				Film film = filmService.findById(filmId);
+				request.setAttribute("film", film);
+				request.getRequestDispatcher("film_info.jsp").forward(request, response);
 			} else if(controllo > 0) {
 				votoUtenteFilmService.update(filmId, utenteId, voto);
-				response.sendRedirect(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath());
+				Film film = filmService.findById(filmId);
+				request.setAttribute("film", film);
+				request.getRequestDispatcher("film_info.jsp").forward(request, response);
+				//response.sendRedirect(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath());
 			} else {
 				response.sendRedirect("500.jsp");
 				
