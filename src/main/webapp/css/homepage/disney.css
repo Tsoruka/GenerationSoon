@@ -4,17 +4,17 @@
 }
 .main {
   margin: 0 auto;
-  padding: 100px 20px;
+
 }
 
 @media (min-width: 1300px) {
   .disney-rows {
-    max-width: 1600px;
+    max-width: 90vw;
     margin: 0 auto;
   }
 }
 .disney-rows {
-  margin: 0 auto;
+ margin: 18px auto;
  padding: 20px 0 0 20px;
 }
 

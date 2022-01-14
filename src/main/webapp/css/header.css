@@ -6,7 +6,7 @@
 
 
 .wrapper {
-  padding: 7rem 0 2rem;
+  padding: 5rem 0 2rem;
   /*border: solid red;*/
 }
 
@@ -105,6 +105,7 @@ a {
     rgba(0, 0, 0, 0.694) 88%,
     rgba(0, 0, 0, 0.8)
   );
+  z-index:9999;
 }
 
 .nav-links li {

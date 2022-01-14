@@ -185,10 +185,8 @@
   font-size: 70px;
   font-weight: 300;
   color: white;
-
   text-align: center;
-
-  z-index: 9999;
+  z-index: 10;
 }
 
 /* Navigation Arrow Left */
