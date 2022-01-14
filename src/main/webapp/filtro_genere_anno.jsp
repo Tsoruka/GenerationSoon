@@ -25,11 +25,12 @@
 	<title>Search box</title>
 </head>
 <body>
+
 	 
 	 <!-- SEACH BOX - CERCA FILM PER TITOLO -->
 	 <section class="container">
        <!-- FORM COLLEGAMENTO SERVLET -->
-       <form action="trova-film-per-titolo" method="get">
+       <form action="filtro-genere-anno" method="get">
        <!-- ///////////////////////// -->
 	
              <!-------------------------->
@@ -82,14 +83,6 @@
               name="anno"
               spellcheck="false"
             />
-
-            <datalist id="anni">
-              <option value="Chocolate"></option>
-              <option value="Coconut"></option>
-              <option value="Mint"></option>
-              <option value="Strawberry"></option>
-              <option value="Vanilla"></option>
-            </datalist>
             
           </div>
           

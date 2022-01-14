@@ -27,7 +27,7 @@
 	 <!-- SEACH BOX - CERCA FILM PER TITOLO -->
 	 <section class="container">
        <!-- FORM COLLEGAMENTO SERVLET -->
-       <form action="trova-attore-per-nome-cognome" method="get">
+       <form action="trova-film-per-titolo" method="get">
        <!-- ///////////////////////// -->
 		
 		<div class="row g-3" style="padding-left:30px; padding-right:30px;">

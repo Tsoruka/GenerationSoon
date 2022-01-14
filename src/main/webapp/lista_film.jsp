@@ -41,7 +41,7 @@
 	
 	<!--CERCA FILM PER TITOLO -->
 	<%@ include file="cerca_film_titolo.jsp" %>
-	<%@ include file="cerca_film.jsp" %>
+	<%@ include file="filtro_genere_anno.jsp" %>
 
 	<!--LISTA FILM-->
 	<section class="movies container" id="film">
