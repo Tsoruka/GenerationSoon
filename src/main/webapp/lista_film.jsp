@@ -41,7 +41,7 @@
 	
 	<!--CERCA FILM PER TITOLO -->
 	<%@ include file="cerca_film_titolo.jsp" %>
-	<%@ include file="filtro_genere_anno.jsp" %>
+	
 
 	<!--LISTA FILM-->
 	<section class="movies container" id="film">
@@ -58,8 +58,7 @@
               <img
                 src="${film.foto}"
                 alt=""
-                class="movie-box-img"
-              />
+                class="movie-box-img"/>
               <div class="box-text">
                 <h3 class="movie-title">${film.titolo}</h3>
                 <span class="movie-type" style="text-transform: uppercase;">${film.genere.value}</span>

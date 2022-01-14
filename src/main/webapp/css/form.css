@@ -246,3 +246,12 @@ section{
   pointer-events: auto;
 }
 
+
+/* FILTRI DI RICERCA AVANZATA */
+.content {
+  padding: 0 18px; 
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background: none;
+} 
