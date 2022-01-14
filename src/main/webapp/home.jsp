@@ -9,13 +9,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- nasconde scroll down browser -->
-	<style type="text/css">
-        body::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
-
 	<!-- LOGO formato icona per finestra di navigazione web -->
     <!-- i dettagli fanno la differenza -->
     <link rel="icon" href="img/logo-grezzo.png" type="image/x-icon" />

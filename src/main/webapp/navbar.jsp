@@ -9,6 +9,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!-- nasconde scroll down browser -->
+	<style type="text/css">
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

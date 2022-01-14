@@ -9,13 +9,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- nasconde scroll down browser -->
-	<style type="text/css">
-        body::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
-    
 	<!--BOOTSTRAP CSS-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
