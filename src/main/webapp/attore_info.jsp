@@ -55,9 +55,9 @@
     <!-- //////// -->
 	
 	<!--DETTAGLIO ATTORE -->
-	<main class="info-film margine">
+	<main class="info-attore margine">
 
-      <div class="info-container container">
+      <div class=" container-attore">
 
         <div class="row">
           <!-- FOTO ATTORE -->
@@ -71,10 +71,10 @@
           <div class="column" style="padding-left: 1.5rem; padding-right: 3rem;">
             
             <!-- ABOUT ATTORE -->
-            <div class="contenitore__testo">
+            <div class="contenitore__testo box-attore">
               <div>
-                <span class="scritta">Nome : </span>
-                <span class="info">${attore.nome} ${attore.cognome}</span>
+             
+                <span class="info nome-attore">${attore.nome} ${attore.cognome}</span>
               </div>
               <div >
                 <span class="scritta">Data di nascita : </span>
@@ -90,9 +90,9 @@
                 <span class="info"><fmt:formatDate pattern="dd-MM-yyyy" value="${attore.dataDiDecesso}" /></span>
               </div>
               </c:if>
-              <div >
+              <div class="biografia">
                 <h2>Biografia</h2>
-                <span class="descrizione-film">
+                <span class="descrizione-film biografia">
                   ${attore.biografia}
                 </span>
               </div>
@@ -104,16 +104,16 @@
         </div>
 		</div>
           
-		<div class="info-container container">
+		<div class="film-attore container-attore">
         <!--FILMOGRAFIA-->
-        <h2 class="cast-heading">FILMOGRAFIA</h2>
-        <div class="cast">
+        <h2 class="film-heading">FILMOGRAFIA</h2>
+        <div class="filmografia">
           
         <c:forEach items="${attore.film}" var="presente">
 		<form action="dettaglio-film" method="get">
 			<button class="cast-box" name="filmId" value="${presente.film.id}">
-				<img src="${presente.film.foto}" alt="" class="cast-img" />
-				<span class="cast-title">${presente.film.titolo}</span>
+				<img src="${presente.film.foto}" alt="" class="filmografia-img" />
+				<span class="film-title">${presente.film.titolo}</span>
 			</button>
 		</form>
 		</c:forEach>
